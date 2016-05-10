@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:a4j="http://richfaces.org/a4j"
+		xmlns:composite="http://java.sun.com/jsf/composite">
+		<composite:interface>
+			<composite:attribute name="tittleAlterar" required="false" 	default="Selecionado o registro para alteração." />
+			<composite:attribute name="actionAlterar" required="true" method-signature="java.lang.String action()"/>
+			<composite:attribute name="tittleDeletar" required="false"  default="Deleta o registro selecionado." />
+			<composite:attribute name="mensagemDeletar" required="false"  default="Deseja realmente deletar o registro?" />
+			<composite:attribute name="actionDeletar" required="true" method-signature="java.lang.String action()"/>
+			<composite:attribute name="renderDeletar" required="true" />
+			<composite:attribute name="dataDeletar" required="true" />
+		</composite:interface>
+		<composite:implementation>
+			<h:commandButton title="#{cc.attrs.tittleAlterar}"  
+				image="/resources/imagens/edit.png" action="#{cc.attrs.actionAlterar}">
+			</h:commandButton>
+			&nbsp;&nbsp;	
+			<a4j:commandButton title="#{cc.attrs.tittleDeletar}" 
+				image="/resources/imagens/delete.png"
+				onclick="if(!window.confirm('#{cc.attrs.mensagemDeletar}')){return false;}" 
+				action="#{cc.attrs.actionDeletar}" render="#{cc.attrs.renderDeletar}" 
+				data="#{cc.attrs.dataDeletar}" oncomplete="tratarErros(event.data);">
+			</a4j:commandButton>
+		</composite:implementation>
+</html>

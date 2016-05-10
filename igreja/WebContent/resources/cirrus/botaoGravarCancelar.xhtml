@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:a4j="http://richfaces.org/a4j"
+		xmlns:composite="http://java.sun.com/jsf/composite">
+		<composite:interface>
+			<composite:attribute name="actionGravar" required="true" method-signature="java.lang.String action()"/>
+			<composite:attribute name="data" required="true" />
+			<composite:attribute name="alterar" required="true" />
+			<composite:attribute name="actionCancelar" required="true" method-signature="java.lang.String action()"/>
+			<composite:attribute name="btCancelar" required="false" default="btCancelar" />
+			<composite:attribute name="container" required="true" />
+		</composite:interface>
+		<composite:implementation>
+			<a4j:commandButton value="Gravar" rendered="#{cc.attrs.alterar == false}" execute="@form" 
+				action="#{cc.attrs.actionGravar}" render="@form" data="#{cc.attrs.data}" 
+				oncomplete="tratarErros(event.data);focoEntrada();">
+			</a4j:commandButton>
+			<a4j:commandButton value="Gravar" rendered="#{cc.attrs.alterar}" execute="@form" 
+				action="#{cc.attrs.actionGravar}" render="@form" data="#{cc.attrs.data}"
+				oncomplete="eventoClickBotao(event.data,'#{cc.attrs.container}:#{cc.attrs.btCancelar}')">
+			</a4j:commandButton>
+			<h:commandButton id="#{cc.attrs.btCancelar}" value="Cancelar" action="#{cc.attrs.actionCancelar}" />
+		</composite:implementation>
+</html>

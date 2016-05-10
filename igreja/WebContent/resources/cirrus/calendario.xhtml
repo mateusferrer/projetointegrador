@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rich="http://richfaces.org/rich" 
+	xmlns:composite="http://java.sun.com/jsf/composite">
+<composite:interface>
+	<composite:attribute name="valor" required="true" />
+	<composite:attribute name="oninputclick" targets="link-mobile" />
+	<composite:attribute name="ondateselect" targets="link-mobile" />
+	<composite:attribute name="pattern" targets="campoCalendario" default="dd/MM/yyyy" />
+	<composite:editableValueHolder name="conversor" targets="campoCalendario" />
+</composite:interface>
+<composite:implementation>
+	<rich:calendar id="campoCalendario" showFooter="false" datePattern="#{cc.attrs.pattern}" showInput="true"
+		locale="PT_BR" inputSize="10" showWeekDaysBar="true" showWeeksBar="false" showApplyButton="false"
+		mode="client" todayControlMode="scroll" popup="true"  value="#{cc.attrs.valor}"/>
+</composite:implementation>
+</html>

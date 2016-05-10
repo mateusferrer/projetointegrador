@@ -1,0 +1,116 @@
+Copyright:
+ -----------
+ /**
+ * Copyright (c) FOR-J Treinamentos LTDA Londrina-PR Brazil. Todos os direitos reservados. Este componente
+ * java cont�m informa��es confidenciais e de propriedade exclusiva da FOR-J Treinamentos LTDA e n�o deve ser
+ * utilizado sem a devida permiss�o. E-mail: fernandofranzini@gmail.com
+ */
+ 
+Pacotes:
+ ---------
+ package dominio:
+ * Provid�ncia classes de dom�nio para o m�dulo <b>NOME_MODULO</b>.
+
+package chave pk:
+ * Provid�ncia classes de chave composta para o m�dulo <b>NOME_MODULO</b>.
+
+package dao:
+ * Provid�ncia classes de persist�ncia utilizados no m�dulo <b>NOME_MODULO</b>.
+
+ package facade:
+ * Provid�ncia classes de processamento utilizados no m�dulo <b>NOME_MODULO</b>.
+
+ package teste:
+ * Provid�ncia classes de testes automatizados para o m�dulo <b>NOME_MODULO</b>.
+
+ package apresentac�o:
+ * Provid�ncia classes de interfaces grafica GUI JSF tilizados do m�dulo <b>NOME_MODULO</b>.
+ 
+ Fabrica:
+ --------
+ * Fabrica gerenciador de cria��o de {@link NOME_DOMINIO} do m�dulo <b>NOME_MODULO</b>.
+ class Fabrica
+
+ Persist�ncia:
+ --------------- 
+ * Gerenciador de opera��es de persist�ncia ORM para o dom�nio {@link NOME_DOMINIO} 
+ * do m�dulo <b>NOME_MODULO</b>.
+ class Eao
+ 
+ * Gerenciador de opera��es de persist�ncia DAO para o dom�nio {@link NOME_DOMINIO} 
+ * do m�dulo <b>NOME_MODULO</b>.
+ class Dao
+ 
+ /** Armazena OQL que busca de XYZ por XYZ. **/
+ POR_STATUS = "cielo.afiliacao.porStatus";
+
+Neg�cio:
+ ----------
+ * Gerenciador das regras de neg�cio para o dom�nio <b>NOME_DOMINIO</b> do m�dulo
+ * <b>NOME_MODULO</b>.
+ class Dominio
+ 
+ * Gerenciador das regras de DESCRI��O_DO_CONTEXTO do m�dulo <b>NOME_MODULO</b>.
+ class Objeto de Valor
+ 
+  * Agrupador de campos utilizado como objeto de par�metros do m�dulo <b>NOME_MODULO</b>.
+ class Objeto de Parametros/Filtro
+ 
+ * Chave composta do dom�nio <b>NOME_DOMINIO</b> do m�dulo <b>NOME_MODULO</b>.
+ class ErroAfiliacaoPk implements Serializable
+
+ * Gerenciador de flags para o dominio {@link NOME_DOMINIO} do m�dulo <b>NOME_MODULO</b>.
+ enum StatusAfiliacao
+
+Facade:
+ --------
+ * Contrato de opera��es de caso de uso de manuten��o de <b> NOME_DOMINIO}</b> do
+ * m�dulo <b>NOME_MODULO</b>.
+ interface ServicoBean
+
+ * Implementa o contrato de opera��es de caso de uso de manuten��o de<b>NOME_DOMINIO</b> do
+ * m�dulo <b>NOME_MODULO</b>.
+ class ServicoBeanImp
+
+ * Gerenciador de processos de neg�cio para o dom�nio <b> NOME_DOMINIO</b>  do 
+ * m�dulo <b>NOME_MODULO</b>.
+ class ServicoBean (Sem interface)
+ 
+ * Pesquisa registros atrav�s <DESCRI��O DOS CRIT�RIOS>
+ * @return listagem dentro do crit�rio de busca.
+ * @throws NegocioException caso ocorrer erros.
+ List<Dominio> getPendentesDia(Date dataInicial, String tipo) throws NegocioException;
+ 
+ Apresenta��o:
+ ----------------- 
+ * Gerenciador de formulários GUI JSF de manutenação de <b>NOME_DOMINIO</b>.
+ class FormJSF
+ 
+ /** Armazena o dom�nio utilizado para as opera��es de CRUD. **/
+ private Dominio objetoTal;
+ 
+ /** Armazena o dom�nio selecionado na listagem. **/
+ private Dominio selecionado;
+   
+ DI Padr�es:
+ ---------------
+/** Gerenciador simulador de teste. **/ 
+private SimuladorDominio teste;
+
+/** Gerenciador do opera��es JPA. **/
+private FacadeJpa facadeJpa;
+
+/** Gerenciador do opera��es JDBC. **/
+private FacadeJdbc facadeJdbc;
+
+/** Gerenciador de opera��es de persist�ncia. **/
+private ObjetoDao dao;
+ 
+/** Gerenciador de opera��es de persist�ncia. **/
+private ObjetoEao eao;
+
+/** Gerenciador do processos de neg�cio. **/
+private ObjetoBean bean;
+
+/** Gerenciador do processos de relat�rio. **/
+private RelatorioBean Relatoriobean;  

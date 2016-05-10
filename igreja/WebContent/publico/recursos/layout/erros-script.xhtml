@@ -1,0 +1,72 @@
+<!-- 
+	Componente tratador de erros padrões para ações ajax via JSF.
+	@autor: Fernando Franzini
+	@data: 11/09/2013
+ -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:composition>
+	<script>
+			var agencia = "\nEm caso de dúvida entre em contado com sua agência.";			
+			var pathPadrao = '#{facesContext.externalContext.requestContextPath}';
+			function ajaxErro(data) {
+				// Acesso negado por não ter usuário logado
+			    if (data.responseCode == 401) {
+				    var restrito = "/publico/erros/restrito.faces?erro=1";
+			    	location = pathPadrao + restrito;
+			    	return;
+			    }
+			    
+				// Falha de comunicação com internet.
+			    if (data.responseCode == 512 || data.responseCode == 502   
+					    || data.responseCode == 12029 || data.responseCode == 0) {
+			        window.alert("Navegador perdeu a comunicação com o sistema."
+					        +"\nAguarde um tempo e tente novamente ou verifique " 
+					        +"sua conexão com a internet." + agencia);
+			        return; 
+			    }
+
+				// Servidor java esta fora
+			    if (data.responseCode == 404 || data.responseCode == 500 || data.responseCode == 503) {
+			        window.alert("Sistema momentaneamente em manutenção."
+					        +"\nAguarde um tempo e tente novamente." + agencia);
+			        return; 
+			    }
+
+				// Exception de erro lançada pelo servidor, erro de Java.
+			    if (data.responseCode == 200) {
+				    var desc = "";
+				    if (data.description == null || data.description == '') {
+						desc = "Erro sem descrição.";
+					} else {
+						desc = data.description;
+					}
+					
+					// Erro de JSF ViewExpiredException.
+					if (desc.indexOf(".faces não pôde ser restaurada.") > -1){
+				        window.alert('Tempo de sessão expirado. Favor refazer o login.');
+				        location = pathPadrao;
+				        return;
+					}
+					
+					// Erro genérico
+			    	var mes = 'Ocorreu um erro inesperado:' + '\n' + desc;
+			    	mes += agencia;
+			        window.alert(mes);
+			        return;
+			    }
+  
+				// Qualquer erro não identificado.
+		    	var mes = 'Ocorreram erros não identificados.' + agencia
+		    		+ '\nCódigo: ' + data.responseCode
+		    		+ '\nDescrição:' + data.description;
+		        window.alert(mes);
+			}
+			jsf.ajax.addOnError(ajaxErro);
+		</script>
+</ui:composition>
+</html>

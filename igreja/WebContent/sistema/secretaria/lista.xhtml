@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus">
+<ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
+	<ui:define name="titulo">#{secretariaFrm.titulo}</ui:define>
+	<ui:define name="processo">
+		<fieldset>
+			<h:form id="frmLista">
+				<table align="center" width="100%">
+					<tr>
+						<td><a4j:commandButton id="btPesquisa" value="Pesquisa" execute="nome"
+								action="#{secretariaFrm.pesquisar()}" render="@form" data="#{secretariaFrm.erros}"
+								oncomplete="tratarErros(event.data);" /> <h:commandButton value="Novo" action="#{secretariaFrm.novo}" />
+						</td>
+					</tr>
+					<tr>
+						<td><h:panelGroup id="lista" style="height: 200px; " styleClass="divTabela" layout="block">
+								<rich:dataTable id="listaDados" rowClasses="odd-row, even-row" value="#{secretariaFrm.colecao}"
+									var="secretaria" rows="#{secretariaFrm.paginacao}" styleClass="tabela">
+									<rich:column style="width:40%">
+										<f:facet name="header">
+											<h:outputText value="Igreja Responsável" />
+										</f:facet>
+										<h:outputText value="#{secretaria.igrejaResponsavel.fantasia}" />
+									</rich:column>
+									<rich:column style="width:40%">
+										<f:facet name="header">
+											<h:outputText value="Pastor Responsável" />
+										</f:facet>
+										<h:outputText value="#{secretaria.pastorResponsavel.nome}" />
+									</rich:column>
+									<rich:column style="width:20%; text-align:center;">
+										<f:facet name="header">
+											<h:outputText value="AÇÃO" />
+										</f:facet>
+										<cirrus:botaoAlterarDeletar actionAlterar="#{secretariaFrm.alterar(secretaria)}"
+											actionDeletar="#{secretariaFrm.deletar(secretaria)}" renderDeletar="frmLista"
+											dataDeletar="#{secretariaFrm.erros}">
+										</cirrus:botaoAlterarDeletar>
+									</rich:column>
+								</rich:dataTable>
+								<cirrus:grifaTabela />
+							</h:panelGroup></td>
+					</tr>
+					<tr>
+						<td align="center"><rich:dataScroller id="scroller" for="listaDados" render="lista" /></td>
+					</tr>
+				</table>
+			</h:form>
+		</fieldset>
+	</ui:define>
+</ui:composition>
+</html>

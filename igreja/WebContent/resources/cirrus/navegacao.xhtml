@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a4j="http://richfaces.org/a4j" 
+	xmlns:composite="http://java.sun.com/jsf/composite">
+<composite:interface>
+	<composite:attribute name="action" required="true" method-signature="java.lang.String action()" />
+	<composite:attribute name="render" required="true" />
+	<composite:attribute name="data" required="true" />
+	<composite:attribute name="oncomplete" required="true" />
+	<composite:attribute name="value" required="true" />
+</composite:interface>
+<composite:implementation>
+	<a4j:commandButton id="btNavegar" value="..." action="#{cc.attrs.action}" render="#{cc.attrs.render}"
+		data="#{cc.attrs.data}" oncomplete="#{cc.attrs.oncomplete}">
+	</a4j:commandButton>
+	<h:inputText id="campoRetorno" readonly="true" value="#{cc.attrs.value}" />
+</composite:implementation>
+</html>

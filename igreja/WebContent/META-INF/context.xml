@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Context>
+
+	<!-- Disabilita a persistencia padrão de sessão -->
+	<Manager pathname="" />
+
+	<Resource 
+		auth="Container" name="jdbc/sistema" 
+		initialSize="3" maxActive="5" maxIdle="1" maxWait="20000"
+		type="javax.sql.DataSource" 
+		driverClassName="com.mysql.jdbc.Driver" 
+		url="jdbc:mysql://localhost/igreja"
+		username="root" 
+		password="root" 
+		closeMethod="close" 
+	/>
+
+</Context>

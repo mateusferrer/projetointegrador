@@ -1,0 +1,63 @@
+.ui-widget { 
+	font-size: 11px;
+	font-family: Arial, Verdana, sans-serif ;
+}
+
+.divTabela {
+	overflow: auto;
+	border: 1px solid #c0c0c0;
+	width: 100%; 
+	height: 400px; 
+	background-color: #FFFFFF ;
+}
+
+.tabela {
+	width: 97.7%;
+}
+
+.hide {
+	display: none;
+}
+
+.even-row {
+	background-color: #ECF3FE;
+}
+ 
+.odd-row {
+    background-color: #FFFFFF;
+}
+ 
+.active-row {
+    background-color: #FFFF99 !important;
+    cursor: pointer;
+}
+
+.colunaOrdenacao {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.colunaOrdenacao:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+.rotulo {
+	font-weight: bold;
+	text-align: right;
+}
+
+.centerBold {
+	text-align: center;
+	font-weight: bold;
+}
+
+.leftBold {
+	text-align: center;
+	font-weight: bold;
+}
+
+.rightBold {
+	text-align: center;
+	font-weight: bold;
+}

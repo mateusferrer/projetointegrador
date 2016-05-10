@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd">
+
+	<!-- CONFIGURAÇÃO CIRRUS -->
+
+	<!-- Habilitação do JSF 2 View Scope -->
+	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+		<property name="scopes">
+			<map>
+				<entry key="view">
+					<bean class="com.forj.cirrus.infra.spring.ViewScope" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- Data Source JEE Container -->
+	<bean id="dataSourceBean" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/sistema" />
+		<property name="resourceRef" value="true" />
+	</bean>
+
+	<!-- Propagador de transação JPA para JDBC do Hibernate -->
+	<bean id="jpaDialectBean" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+
+	<!-- Configurador de JPA -->
+	<bean id="emfBean" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="sistema" />
+		<property name="dataSource" ref="dataSourceBean" />
+		<property name="packagesToScan" value="sistema.negocio.dominio" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="emBean" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+		<property name="entityManagerFactory" ref="emfBean" />
+	</bean>
+
+	<!-- Gerenciador de transação JPA -->
+	<bean id="transacaoCirrusBean" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="emfBean" />
+		<property name="dataSource" ref="dataSourceBean" />
+		<property name="jpaDialect" ref="jpaDialectBean" />
+	</bean>
+
+	<!-- Localiza e faz auto DI para os bean com @Transaction -->
+	<tx:annotation-driven transaction-manager="transacaoCirrusBean" />
+
+	<!-- Localiza e faz auto DI para os bean com @PersistenceContext -->
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<!-- Jdbc suporte Spring -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSourceBean" />
+	</bean>
+
+	<!-- facadeJdbc suporte Cirrus -->
+	<bean id="facadeJdbc" class="com.forj.cirrus.infra.persistencia.jdbc.FacadeJdbcImp">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
+	<!-- facadeJpa suporte Cirrus -->
+	<bean id="facadeJpa" class="com.forj.cirrus.infra.persistencia.jpa.FacadeJpaImp">
+		<property name="entityManager" ref="emBean" />
+	</bean>
+
+	<!-- ModeloDao genérico Cirrus -->
+	<bean id="cirrusEao" class="com.forj.cirrus.infra.persistencia.eao.DominioEaoImp">
+		<property name="entityManager" ref="emBean" />
+	</bean>
+
+	<!-- ModeloBean genérico Cirrus -->
+	<bean id="cirrusBean" class="com.forj.cirrus.negocio.aplicativo.DominioBeanImp" />
+
+	<!-- Provider de Spring ApplicationContext -->
+	<bean id="springUtilBean" class="com.forj.cirrus.infra.spring.SpringUtils" />
+
+	<!-- Carga dos objetos anotados nos pacote. -->
+	<context:annotation-config />
+
+	<!-- Carga dos objetos de sistema. -->
+	<context:component-scan base-package="sistema" />
+
+</beans>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+	<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:a4j="http://richfaces.org/a4j"
+		xmlns:composite="http://java.sun.com/jsf/composite">
+		<composite:interface>
+			<composite:attribute name="acao" required="true" method-signature="java.lang.String action()"/>
+			<composite:attribute name="executar" default="@form"/>
+			<composite:attribute name="renderizar" default="@form"/>
+			<composite:attribute name="erros" required="true" default="erros"/>
+		<composite:interface>
+		<composite:implementation>
+			<a4j:commandButton value="Pesquisa" execute="#{cc.attrs.executar}" action="#{cc.attrs.acao}" 
+				render="#{cc.attrs.renderizar}" data="#{cc.attrs.erros}"oncomplete="tratarErros(event.data);" /> 
+		</composite:implementation>
+</html>

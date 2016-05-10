@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus">
+<ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
+	<ui:define name="titulo">#{cargoEclesiasticoFrm.titulo}</ui:define>
+	<ui:define name="processo">
+		<h:form id="frmDetalhe">
+			<fieldset>
+				<table align="center">
+					<tr>
+						<td><h:panelGroup id="areaDadosDetalhe" layout="block">
+								<table>
+									<tr>
+										<td class="rotulo">Descrição:</td>
+										<td><h:inputText value="#{cargoEclesiasticoFrm.getDominio().descricao}" /></td>
+									</tr>
+								</table>
+							</h:panelGroup></td>
+					</tr>
+					<tr>
+						<td align="center"><cirrus:botaoGravarCancelar id="bts"
+								actionGravar="#{cargoEclesiasticoFrm.gravar}" data="#{cargoEclesiasticoFrm.erros}"
+								alterar="#{cargoEclesiasticoFrm.alterar}" actionCancelar="#{cargoEclesiasticoFrm.cancelar}"
+								container="frmDetalhe:bts">
+							</cirrus:botaoGravarCancelar></td>
+					</tr>
+				</table>
+			</fieldset>
+		</h:form>
+		<script>
+			function abrirModalCaptura(data) {
+				if (data != null) {
+					tratarErros(data);
+					focoEntrada();
+				} else {
+					#{rich:component('modalCapturaCargoEclesiastico')}.show();
+					focoEntradaCapturaCargoEclesiastico();
+				}
+			}
+		</script>
+	</ui:define>
+	<ui:define name="modal">
+		<ui:include src="/sistema/cargoeclesiastico/captura.xhtml" />
+	</ui:define>
+</ui:composition>
+</html>
