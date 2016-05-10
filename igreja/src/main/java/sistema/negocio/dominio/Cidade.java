@@ -11,7 +11,6 @@ import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 
 /**
  * Gerenciador das regras de negócio para o domínio <b>Estado</b>.
- * 
  * @author Lucas Francisquini
  * @version 1.0 - 04/05/2016
  * @since 04/05/2016
@@ -21,34 +20,34 @@ import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 @NamedQueries({ @NamedQuery(name = Cidade.POR_ESTADO, query = "select c from Cidade c where c.idEstado = ?") })
 public class Cidade extends AbstractDominio {
 
-	/** Armazena a versão da classe. **/
-	private static final long serialVersionUID = -597565216572849121L;
+    /** Armazena a versão da classe. **/
+    private static final long serialVersionUID = -597565216572849121L;
 
-	/** Armazena o oql que busca todos. **/
-	public static final String POR_ESTADO = "cidade.porEstado";
+    /** Armazena o oql que busca todos. **/
+    public static final String POR_ESTADO = "cidade.porEstado";
 
-	/** Armazena o código da cidade. **/
-	@Id
-	@Column(name = "cod_cidade")
-	private Integer id;
+    /** Armazena o código da cidade. **/
+    @Id
+    @Column(name = "cod_cidade")
+    private Long id;
 
-	/** Armazena o código do estado. **/
-	@Column(name = "cod_estado")
-	private Integer idEstado;
+    /** Armazena o código do estado. **/
+    @Column(name = "cod_estado")
+    private Long idEstado;
 
-	/** Armazena a descrição. **/
-	@Column(name = "nom_cidade")
-	private String nome;
+    /** Armazena a descrição. **/
+    @Column(name = "nom_cidade")
+    private String nome;
 
-	public Integer getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Integer getIdEstado() {
-		return idEstado;
-	}
+    public Long getIdEstado() {
+        return idEstado;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 }

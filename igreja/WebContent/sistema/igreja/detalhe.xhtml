@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
-	xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus">
 <ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
 	<ui:define name="titulo">#{igrejaFrm.titulo}</ui:define>
 	<ui:define name="processo">
@@ -18,71 +14,72 @@
 								<table>
 									<tr>
 										<td class="rotulo">Razão Social:</td>
-										<td><h:inputText value="#{igrejaFrm.getDominio().razao}" /></td>
+										<td><h:inputText value="#{igrejaFrm.dominio.razao}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Nome Fantasia:</td>
-										<td><h:inputText
-												value="#{igrejaFrm.getDominio().fantasia}" /></td>
+										<td><h:inputText value="#{igrejaFrm.dominio.fantasia}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cnpj:</td>
-										<td><h:inputText value="#{igrejaFrm.getDominio().cnpj}"
-												maxlength="14" /></td>
+										<td><h:inputText value="#{igrejaFrm.dominio.cnpj}" maxlength="14" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cep:</td>
-										<td><h:inputText value="#{igrejaFrm.getDominio().cep}"
-												maxlength="8" /></td>
+										<td><h:inputText value="#{igrejaFrm.dominio.cep}" maxlength="8" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Endereço:</td>
-										<td><h:inputText
-												value="#{igrejaFrm.getDominio().logradouro}" /></td>
+										<td><h:inputText value="#{igrejaFrm.dominio.logradouro}" /></td>
 										<td class="rotulo">N°:</td>
-										<td><h:inputText
-												value="#{igrejaFrm.getDominio().numLogradouro}" /></td>
+										<td><h:inputText value="#{igrejaFrm.dominio.numLogradouro}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Estado:</td>
-										<td><h:inputText value="#{igrejaFrm.getDominio().estado}" /></td>
+										<td><h:selectOneMenu value="#{igrejaFrm.estadoSelecionado}">
+												<f:selectItems value="#{igrejaFrm.estados}" var="estado" itemLabel="#{estado.sigla - estado.nome}"
+													itemValue="#{estado}" />
+												<f:ajax event="change" immediate="true" listener="#{igrejaFrm.buscarCidades()}" />
+											</h:selectOneMenu></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cidade:</td>
-										<td><h:inputText value="#{igrejaFrm.getDominio().cidade}" /></td>
+
+										<td><rich:autocomplete mode="cachedAjax" tokens="," converter="cidadeConverter" minChars="0"
+												autofill="false" selectFirst="false" autocompleteMethod="#{igrejaFrm.buscarCidades()}">
+											</rich:autocomplete></td>
+
+
+										<td><h:selectOneMenu id="cmboCidades" value="#{igrejaFrm.cidadeSelecionada}">
+												<f:selectItems value="#{igrejaFrm.cidades}" />
+											</h:selectOneMenu></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Email:</td>
-										<td><h:inputText value="#{igrejaFrm.getDominio().email}" /></td>
+										<td><h:inputText value="#{igrejaFrm.dominio.email}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Telefone:</td>
-										<td><h:inputText
-												value="#{igrejaFrm.getDominio().telefone}" /></td>
+										<td><h:inputText value="#{igrejaFrm.dominio.telefone}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Tipo Igreja:</td>
-										<td><h:selectOneRadio
-												value="#{igrejaFrm.getDominio().tipo}">
-												<f:selectItems value="#{igrejaFrm.getTipoIgreja()}" />
+										<td><h:selectOneRadio value="#{igrejaFrm.dominio.tipo}">
+												<f:selectItems value="#{igrejaFrm.cmboTipoIgreja}" />
 											</h:selectOneRadio></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Igreja:</td>
-										<td><rich:autocomplete mode="cachedAjax" tokens=","
-												converter="igrejaConverter" minChars="0" autofill="false"
-												selectFirst="false"
-												autocompleteMethod="#{suggestionboxBean.complemento}">
+										<td><rich:autocomplete mode="cachedAjax" tokens="," converter="igrejaConverter" minChars="0"
+												autofill="false" selectFirst="false" autocompleteMethod="#{suggestionboxBean.complemento}">
 											</rich:autocomplete></td>
 									</tr>
 								</table>
 							</h:panelGroup></td>
 					</tr>
 					<tr>
-						<td align="center"><cirrus:botaoGravarCancelar id="bts"
-								actionGravar="#{igrejaFrm.gravar}" data="#{igrejaFrm.erros}"
-								alterar="#{igrejaFrm.alterar}"
-								actionCancelar="#{igrejaFrm.cancelar}"
+						<td align="center"><cirrus:botaoGravarCancelar id="bts" actionGravar="#{igrejaFrm.gravar}"
+								data="#{igrejaFrm.erros}" alterar="#{igrejaFrm.alterar}" actionCancelar="#{igrejaFrm.cancelar}"
 								container="frmDetalhe:bts">
 							</cirrus:botaoGravarCancelar></td>
 					</tr>

@@ -11,44 +11,47 @@ import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 
 /**
  * Gerenciador das regras de negócio para o domínio <b>Estado</b>.
- * 
  * @author Lucas Francisquini
  * @version 1.0 - 04/05/2016
  * @since 04/05/2016
  */
 @Entity
 @Table(name = "estado")
-@NamedQueries({ @NamedQuery(name = Estado.TODOS, query = "select e from Estado e") })
+@NamedQueries({ @NamedQuery(name = Estado.TODOS, query = "select e from Estado e"),
+        @NamedQuery(name = Estado.POR_SIGLA, query = "select e from Estado e where e.sigla = ?") })
 public class Estado extends AbstractDominio {
 
-	/** Armazena a versão da classe. **/
-	private static final long serialVersionUID = -424718442955207299L;
+    /** Armazena a versão da classe. **/
+    private static final long serialVersionUID = -424718442955207299L;
 
-	/** Armazena o oql que busca todos. **/
-	public static final String TODOS = "estado.todos";
+    /** Armazena o oql que busca todos. **/
+    public static final String TODOS = "estado.todos";
 
-	/** Armazena o id do banco de dados. **/
-	@Id
-	@Column(name = "cod_estado")
-	private Integer id;
+    /** Armazena o oql que busca todos. **/
+    public static final String POR_SIGLA = "estado.porSigla";
 
-	/** Armazena a descrição. **/
-	@Column(name = "sgl_estado")
-	private String sigla;
+    /** Armazena o id do banco de dados. **/
+    @Id
+    @Column(name = "cod_estado")
+    private Long id;
 
-	/** Armazena a descrição. **/
-	@Column(name = "nm_estado")
-	private String nome;
+    /** Armazena a descrição. **/
+    @Column(name = "sgl_estado")
+    private String sigla;
 
-	public Integer getId() {
-		return id;
-	}
+    /** Armazena a descrição. **/
+    @Column(name = "nom_estado")
+    private String nome;
 
-	public String getSigla() {
-		return sigla;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public String getSigla() {
+        return sigla;
+    }
+
+    public String getNome() {
+        return nome;
+    }
 }
