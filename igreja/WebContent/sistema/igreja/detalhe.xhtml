@@ -36,20 +36,20 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Estado:</td>
-										<td><h:selectOneMenu value="#{igrejaFrm.estadoSelecionado}">
-												<f:selectItems value="#{igrejaFrm.estados}" var="estado" itemLabel="#{estado.sigla - estado.nome}"
-													itemValue="#{estado}" />
-												<f:ajax event="change" immediate="true" listener="#{igrejaFrm.buscarCidades()}" />
+										<td><rich:autocomplete mode="cachedAjax" minChars="1" autofill="false" selectFirst="false"
+												var="estado" converter="estadoConverter" autocompleteMethod="#{igrejaFrm.pesquisarPorNome}">
+											</rich:autocomplete></td>
+
+										<td><h:selectOneMenu value="#{igrejaFrm.estadoSelecionado}" converter="estadoConverter">
+												<f:selectItems value="#{igrejaFrm.estados}" var="estado" itemValue="#{estado.id}" />
+												<f:ajax event="change" render="cmboCidades" listener="#{igrejaFrm.buscarCidades()}" />
 											</h:selectOneMenu></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cidade:</td>
-
-										<td><rich:autocomplete mode="cachedAjax" tokens="," converter="cidadeConverter" minChars="0"
-												autofill="false" selectFirst="false" autocompleteMethod="#{igrejaFrm.buscarCidades()}">
+										<td><rich:autocomplete mode="cachedAjax" minChars="1" autofill="false" selectFirst="false"
+												autocompleteMethod="#{igrejaFrm.buscarCidades()}">
 											</rich:autocomplete></td>
-
-
 										<td><h:selectOneMenu id="cmboCidades" value="#{igrejaFrm.cidadeSelecionada}">
 												<f:selectItems value="#{igrejaFrm.cidades}" />
 											</h:selectOneMenu></td>

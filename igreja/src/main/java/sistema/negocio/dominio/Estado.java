@@ -18,17 +18,18 @@ import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 @Entity
 @Table(name = "estado")
 @NamedQueries({ @NamedQuery(name = Estado.TODOS, query = "select e from Estado e"),
-        @NamedQuery(name = Estado.POR_SIGLA, query = "select e from Estado e where e.sigla = ?") })
+        @NamedQuery(name = Estado.POR_ID, query = "select e from Estado e where e.id = ?"),
+        @NamedQuery(name = Estado.POR_TEXTO, query = "select e from Estado e where e.nome like '?%'") })
 public class Estado extends AbstractDominio {
-
-    /** Armazena a versão da classe. **/
-    private static final long serialVersionUID = -424718442955207299L;
 
     /** Armazena o oql que busca todos. **/
     public static final String TODOS = "estado.todos";
 
     /** Armazena o oql que busca todos. **/
-    public static final String POR_SIGLA = "estado.porSigla";
+    public static final String POR_ID = "estado.porID";
+
+    /** Armazena o oql que busca todos. **/
+    public static final String POR_TEXTO = "estado.porTexto";
 
     /** Armazena o id do banco de dados. **/
     @Id
@@ -53,5 +54,11 @@ public class Estado extends AbstractDominio {
 
     public String getNome() {
         return nome;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public String toString() {
+        return sigla + " - " + nome;
     }
 }

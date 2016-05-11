@@ -7,7 +7,7 @@ import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import sistema.negocio.dominio.Estado;
+import sistema.negocio.dominio.Cidade;
 
 import com.forj.cirrus.infra.exceptions.NegocioException;
 import com.forj.cirrus.negocio.aplicativo.DominioBean;
@@ -17,20 +17,19 @@ import com.forj.cirrus.negocio.aplicativo.DominioBean;
  * @version 1.0 - 04/05/2016
  * @since 04/05/2016
  */
-@FacesConverter("estadoConverter")
+@FacesConverter("cidadeConverter")
 @Named
-public class EstadoConverter implements Converter {
+public class CidadeConverter implements Converter {
 
     /** Armazena o gerenciador dos processos de persistência. **/
     @Inject
-    private DominioBean<Estado> bean;
+    private DominioBean<Cidade> bean;
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        Long id = Long.parseLong(value);
-        Estado retorno = new Estado();
+        Cidade retorno = new Cidade();
         try {
-            retorno = (Estado) bean.get(Estado.POR_ID, id);
+            retorno = (Cidade) bean.get(Cidade.POR_ID, value);
         } catch (NegocioException e) {
             e.printStackTrace();
         }

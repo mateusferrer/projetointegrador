@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS lancamento_campanha;
+DROP TABLE IF EXISTS contribuinte_campanha;
 DROP TABLE IF EXISTS campanha;
 DROP TABLE IF EXISTS lancamento;
 DROP TABLE IF EXISTS agenda;
@@ -14,9 +14,9 @@ DROP TABLE IF EXISTS cidade;
 DROP TABLE IF EXISTS estado;
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
-#     BASE DE DADOS DO SISTEMA DE GEST�O DE IGREJA     #
+#     BASE DE DADOS DO SISTEMA DE GESTÃO DE IGREJA     #
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
-# Cria��o tem que seguir orden��o logica de dependencias:
+# Criação tem que seguir ordenção logica de dependencias:
 
 CREATE TABLE estado (
     cd_estado int NOT NULL,
@@ -125,8 +125,8 @@ CREATE TABLE diretoria (
   dt_alteracao datetime NOT NULL,
   nm_usuario_alteracao varchar(10) NOT NULL,
   PRIMARY KEY (cd_diretoria),
-  FOREIGN KEY fk_cd_membro_responsavel (cd_responsavel) references membro (cd_membro),
-  FOREIGN KEY fk_cd_igreja_responsavel (cd_igreja) references igreja (cd_igreja)
+  FOREIGN KEY (cd_responsavel) references membro (cd_membro),
+  FOREIGN KEY (cd_igreja) references igreja (cd_igreja)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE membro_administrativo (
@@ -139,8 +139,8 @@ CREATE TABLE membro_administrativo (
   nm_usuario_alteracao varchar(10) NOT NULL,
   dt_desocupacao date NULL,
   PRIMARY KEY (cd_membro_adm),
-  FOREIGN KEY fk_cd_membro_adm (cd_membro) references membro (cd_membro),
-  FOREIGN KEY fk_cd_funcao_adm (cd_funcao) references funcao (cd_funcao)
+  FOREIGN KEY (cd_membro) references membro (cd_membro),
+  FOREIGN KEY (cd_funcao) references funcao (cd_funcao)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE agenda (
@@ -164,14 +164,13 @@ CREATE TABLE agenda (
   nr_dia_mes int(2) NULL,
   INDEX (ds_agendamento),
   PRIMARY KEY (cd_agenda),
-  FOREIGN KEY fk_cd_tipo_evento (cd_tipo_evento) references tipo_evento (cd_tipo)
+  FOREIGN KEY (cd_tipo_evento) references tipo_evento (cd_tipo)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE campanha (
   cd_campanha int(10) NOT NULL AUTO_INCREMENT,
   ds_campanha char(1) NOT NULL,
   vl_total decimal(10,2) NOT NULL,
-  nr_parcelas int(2) NOT NULL,
   dt_cadastro datetime NOT NULL,
   dt_alteracao datetime NOT NULL,
   nm_usuario_alteracao varchar(10) NOT NULL,
@@ -181,40 +180,43 @@ CREATE TABLE campanha (
   cd_igreja int(10) NOT NULL,
   INDEX (ds_campanha),
   PRIMARY KEY (cd_campanha),
-  FOREIGN KEY fk_cd_igreja_campanha (cd_igreja) references igreja (cd_igreja)
+  FOREIGN KEY (cd_igreja) references igreja (cd_igreja)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE lancamento (
   cd_lancamento int(10) NOT NULL AUTO_INCREMENT,
-  in_tipo_lancamento char(1) NOT NULL,
+  in_tipo_lancamento char(1) NOT NULL, -- Se lançamento = Campanha, então cd_membro obrigatório.
   in_rec_des char(2) NOT NULL,
   vl_lancamento decimal(10,2) NOT NULL,
   dt_cadastro datetime NOT NULL,
   dt_alteracao datetime NOT NULL,
-  dt_pgto_campanha date NULL,
+  dt_pgto_campanha date NULL, -- Se lançamento = campanha, então dt_pgto_campanha obrigatório.
   nm_usuario_alteracao varchar(10) NOT NULL,
   cd_membro int(10) NULL,
   tx_observacao varchar(250),
   in_status char(1) NOT NULL,
+  in_pago char(1) NOT NULL, -- Será sempre 'S', exceto quando o tipo for campanha, que dessa forma, poderá ser alterado.
   cd_igreja int(10) NOT NULL,
   PRIMARY KEY (cd_lancamento),
-  FOREIGN KEY fk_cd_membro_lancamento (cd_membro) references membro (cd_membro),
-  FOREIGN KEY fk_cd_igreja_lancamento (cd_igreja) references igreja (cd_igreja)
+  FOREIGN KEY (cd_membro) references membro (cd_membro),
+  FOREIGN KEY (cd_igreja) references igreja (cd_igreja)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE lancamento_campanha (
-  cd_lanc_camp int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE contribuinte_campanha (
+  cd_contribuinte int(10) NOT NULL AUTO_INCREMENT,
   cd_campanha int(10) NOT NULL,
   cd_membro int(10) NOT NULL,
-  nr_parcela int(2) NOT NULL,
-  in_pago char(1) NOT NULL,
-  dt_alteracao date NOT NULL,
+  vl_contribuido decimal(10,2) NOT NULL, -- Valor total a ser contribuido pelo contribuinte.
+  dt_inicial date NOT NULL,
+  dt_final date NOT NULL,
+  dt_cadastro datetime NOT NULL,
+  dt_alteracao datetime NOT NULL,
   nm_usuario_alteracao varchar(10) NOT NULL,
-  cd_receita int(10) NULL,
-  PRIMARY KEY (cd_lanc_camp),
-  FOREIGN KEY fk_cd_campanha_lanc_camp (cd_campanha) references campanha (cd_campanha),
-  FOREIGN KEY fk_cd_membro_lanc_camp (cd_membro) references membro (cd_membro),
-  FOREIGN KEY fk_cd_lanc_camp (cd_receita) references lancamento (cd_lancamento) ON DELETE CASCADE
+  cd_lancamento int(10) NULL,
+  PRIMARY KEY (cd_contribuinte),
+  FOREIGN KEY (cd_campanha) references campanha (cd_campanha),
+  FOREIGN KEY (cd_membro) references membro (cd_membro),
+  FOREIGN KEY (cd_receita) references lancamento (cd_lancamento) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE usuario (
@@ -224,5 +226,5 @@ CREATE TABLE usuario (
   in_situacao char(1) NOT NULL,
   cd_diretoria int(10) NOT NULL,
   PRIMARY KEY (nm_usuario, ds_senha),
-  FOREIGN KEY fk_cd_usuario_diretoria (cd_diretoria) references diretoria (cd_diretoria)
+  FOREIGN KEY (cd_diretoria) references diretoria (cd_diretoria)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

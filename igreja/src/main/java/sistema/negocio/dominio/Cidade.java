@@ -20,11 +20,11 @@ import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 @NamedQueries({ @NamedQuery(name = Cidade.POR_ESTADO, query = "select c from Cidade c where c.idEstado = ?") })
 public class Cidade extends AbstractDominio {
 
-    /** Armazena a versão da classe. **/
-    private static final long serialVersionUID = -597565216572849121L;
-
     /** Armazena o oql que busca todos. **/
     public static final String POR_ESTADO = "cidade.porEstado";
+
+    /** Armazena o oql que busca todos. **/
+    public static final String POR_ID = "cidade.porID";
 
     /** Armazena o código da cidade. **/
     @Id

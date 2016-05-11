@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
-	xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
 	<ui:define name="titulo">#{membroFrm.titulo}</ui:define>
@@ -23,23 +19,19 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Rg:</td>
-										<td><h:inputText value="#{membroFrm.getDominio().rg}"
-												maxlength="9" /></td>
+										<td><h:inputText value="#{membroFrm.getDominio().rg}" maxlength="9" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cpf:</td>
-										<td><h:inputText value="#{membroFrm.getDominio().cpf}"
-												maxlength="11" /></td>
+										<td><h:inputText value="#{membroFrm.getDominio().cpf}" maxlength="11" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Data Nascimento:</td>
-										<td><cirrus:calendario
-												valor="#{membroFrm.getDominio().dataNascimento}"></cirrus:calendario></td>
+										<td><cirrus:calendario valor="#{membroFrm.getDominio().dataNascimento}"></cirrus:calendario></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Sexo:</td>
-										<td><h:selectOneRadio
-												value="#{membroFrm.getDominio().sexo}">
+										<td><h:selectOneRadio value="#{membroFrm.getDominio().sexo}">
 												<f:selectItems value="#{membroFrm.getSexo()}" />
 											</h:selectOneRadio></td>
 									</tr>
@@ -49,11 +41,9 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Endereço:</td>
-										<td><h:inputText
-												value="#{membroFrm.getDominio().logradouro}" /></td>
+										<td><h:inputText value="#{membroFrm.getDominio().logradouro}" /></td>
 										<td class="rotulo">Nº:</td>
-										<td><h:inputText
-												value="#{membroFrm.getDominio().numLogradouro}" /></td>
+										<td><h:inputText value="#{membroFrm.getDominio().numLogradouro}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Estado:</td>
@@ -69,16 +59,13 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Telefone:</td>
-										<td><h:inputText
-												value="#{membroFrm.getDominio().telefone}" /></td>
+										<td><h:inputText value="#{membroFrm.getDominio().telefone}" /></td>
 										<td class="rotulo">Celular:</td>
-										<td><h:inputText
-												value="#{membroFrm.getDominio().celular}" /></td>
+										<td><h:inputText value="#{membroFrm.getDominio().celular}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Igreja:</td>
-										<td><cirrus:navegacao id="igreja"
-												action="#{capturaIgrejaFrm.entrar(1)}"
+										<td><cirrus:navegacao id="igreja" action="#{capturaIgrejaFrm.entrar(1)}"
 												render="painelIgrejaCaptura" data="#{membroFrm.erros}"
 												oncomplete="abrirModalCapturaIgreja(event.data);"
 												value="#{membroFrm.getDominio().getIgreja().fantasia}">
@@ -86,48 +73,39 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Igreja Prime</td>
-										<td><rich:autocomplete value="" var="matriz"
-												autocompleteMethod="#{igrejaFrm.autoComplete}"
+										<td><rich:autocomplete value="" var="matriz" autocompleteMethod="#{igrejaFrm.autoComplete}"
 												converter="igrejaConverter">
 												<rich:column></rich:column>
 											</rich:autocomplete></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cargo Eclesiástico:</td>
-										<td><cirrus:navegacao id="cargo"
-												action="#{capturaCargoEclesiasticoFrm.entrar(1)}"
-												render="painelCargoEclesiasticoCaptura"
-												data="#{membroFrm.erros}"
+										<td><cirrus:navegacao id="cargo" action="#{capturaCargoEclesiasticoFrm.entrar(1)}"
+												render="painelCargoEclesiasticoCaptura" data="#{membroFrm.erros}"
 												oncomplete="abrirModalCapturaCargo(event.data);"
 												value="#{membroFrm.getDominio().getCargo().descricao}">
 											</cirrus:navegacao></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Status:</td>
-										<td><h:selectOneRadio
-												value="#{membroFrm.getDominio().status}">
+										<td><h:selectOneRadio value="#{membroFrm.getDominio().status}">
 												<f:selectItems value="#{membroFrm.getStatus()}" />
 											</h:selectOneRadio></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Data Batismo:</td>
-										<td><cirrus:calendario
-												valor="#{membroFrm.getDominio().dataBatismo}"></cirrus:calendario></td>
+										<td><cirrus:calendario valor="#{membroFrm.getDominio().dataBatismo}"></cirrus:calendario></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Registro Batismo:</td>
-										<td><h:inputText
-												value="#{membroFrm.getDominio().registroBatismo}"
-												maxlength="5" /></td>
+										<td><h:inputText value="#{membroFrm.getDominio().registroBatismo}" maxlength="5" /></td>
 									</tr>
 								</table>
 							</h:panelGroup></td>
 					</tr>
 					<tr>
-						<td align="center"><cirrus:botaoGravarCancelar id="bts"
-								actionGravar="#{membroFrm.gravar}" data="#{membroFrm.erros}"
-								alterar="#{membroFrm.alterar}"
-								actionCancelar="#{membroFrm.cancelar}"
+						<td align="center"><cirrus:botaoGravarCancelar id="bts" actionGravar="#{membroFrm.gravar}"
+								data="#{membroFrm.erros}" alterar="#{membroFrm.alterar}" actionCancelar="#{membroFrm.cancelar}"
 								container="frmDetalhe:bts">
 							</cirrus:botaoGravarCancelar></td>
 					</tr>
