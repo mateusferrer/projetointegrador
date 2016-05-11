@@ -7,9 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,32 +23,46 @@ import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
  * @since 11/05/2016
  */
 @Entity
-@Table(name = "campanha")
-@NamedQueries({ @NamedQuery(name = MembroContribuinte.TODOS, query = "select c from Campanha c") })
-public class MembroContribuinte extends AbstractDominio {
+@Table(name = "contribuinte")
+@NamedQueries({ @NamedQuery(name = Contribuinte.TODOS, query = "select c from Contribuinte c") })
+public class Contribuinte extends AbstractDominio {
 
     /** Armazena o oql que busca todos. **/
     public static final String TODOS = "campanha.todos";
 
     /** Armazena o código da campanha. **/
     @Id
-    @Column(name = "cd_campanha")
+    @Column(name = "cd_contribuinte")
     private Long id;
 
-    /** Armazena o código da campanha. **/
-    @Obrigatorio(rotulo = "Descrição")
-    @Column(name = "ds_campanha")
-    private String descricao;
+    /** Armazena a campanha. **/
+    @ManyToOne
+    @Obrigatorio(rotulo = "Campanha")
+    @JoinColumn(name = "cd_campanha")
+    private Campanha campanha;
+
+    /** Armazena o membro contribuinte. **/
+    @ManyToOne
+    @Obrigatorio(rotulo = "Membro")
+    @JoinColumn(name = "cd_membro")
+    private Membro membro;
 
     /** Armazena o valor da campanha. **/
-    @Obrigatorio(rotulo = "Valor")
-    @Column(name = "vl_campanha")
+    @Obrigatorio(rotulo = "Valor Contribuído")
+    @Column(name = "vl_contribuido")
     private BigDecimal valor;
 
-    /** Armazena a quantidade de parcelas. **/
-    @Obrigatorio(rotulo = "Quantidade de Parcelas")
-    @Column(name = "nr_parcelas")
-    private String qtdeParcelas;
+    /** Armazena a data inicial da campanha. **/
+    @Obrigatorio(rotulo = "Data Inicial")
+    @Column(name = "dt_inicial")
+    @Temporal(TemporalType.DATE)
+    private Date dataInicial;
+
+    /** Armazena a data final da campanha. **/
+    @Obrigatorio(rotulo = "Data Final")
+    @Column(name = "dt_final")
+    @Temporal(TemporalType.DATE)
+    private Date dataFinal;
 
     /** Armazena a data de cadastro. **/
     @Obrigatorio(rotulo = "Data de Cadastro")
@@ -66,28 +80,5 @@ public class MembroContribuinte extends AbstractDominio {
     @Obrigatorio(rotulo = "Usuario")
     @Column(name = "cd_usuario")
     private String nomeUsuario;
-
-    /** Armazena a data inicial da campanha. **/
-    @Obrigatorio(rotulo = "Data Inicial")
-    @Column(name = "dt_inicial")
-    @Temporal(TemporalType.DATE)
-    private Date dataInicial;
-
-    /** Armazena a data final da campanha. **/
-    @Obrigatorio(rotulo = "Data Final")
-    @Column(name = "dt_final")
-    @Temporal(TemporalType.DATE)
-    private Date dataFinal;
-
-    /** Armazena o status da campanha. **/
-    @Obrigatorio(rotulo = "Status")
-    @Column(name = "in_status")
-    private String status;
-
-    /** Armazena a igreja que realiza a campanha. **/
-    @Obrigatorio(rotulo = "Igreja")
-    @JoinColumn(name = "cd_igreja")
-    @OneToOne
-    private Igreja igreja;
 
 }

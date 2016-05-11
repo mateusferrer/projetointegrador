@@ -48,24 +48,7 @@ public class Campanha extends AbstractDominio {
     /** Armazena a quantidade de parcelas. **/
     @Obrigatorio(rotulo = "Quantidade de Parcelas")
     @Column(name = "nr_parcelas")
-    private String qtdeParcelas;
-
-    /** Armazena a data de cadastro. **/
-    @Obrigatorio(rotulo = "Data de Cadastro")
-    @Column(name = "dt_cadastro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataCadastro;
-
-    /** Armazena a data de alteração. **/
-    @Obrigatorio(rotulo = "Data de Alteração")
-    @Column(name = "dt_alteracao")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataAlteracao;
-
-    /** Armazena o nome usuário de alteração/inclusão. **/
-    @Obrigatorio(rotulo = "Usuario")
-    @Column(name = "cd_usuario")
-    private String nomeUsuario;
+    private String numParcelas;
 
     /** Armazena a data inicial da campanha. **/
     @Obrigatorio(rotulo = "Data Inicial")
@@ -89,5 +72,22 @@ public class Campanha extends AbstractDominio {
     @JoinColumn(name = "cd_igreja")
     @OneToOne
     private Igreja igreja;
+
+    /** Armazena a data de cadastro. **/
+    @Obrigatorio(rotulo = "Data de Cadastro")
+    @Column(name = "dt_cadastro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataCadastro;
+
+    /** Armazena a data de alteração. **/
+    @Obrigatorio(rotulo = "Data de Alteração")
+    @Column(name = "dt_alteracao")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataAlteracao;
+
+    /** Armazena o nome usuário de alteração/inclusão. **/
+    @Obrigatorio(rotulo = "Usuario")
+    @Column(name = "cd_usuario")
+    private String nomeUsuario;
 
 }
