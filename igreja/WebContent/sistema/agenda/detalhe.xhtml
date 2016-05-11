@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus">
 <ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
 	<ui:define name="titulo">#{agendaFrm.titulo}</ui:define>
 	<ui:define name="processo">
@@ -14,7 +18,7 @@
 								<table>
 									<tr>
 										<td class="rotulo">Tipo Agenda:</td>
-										<td><h:selectOneRadio value="#{agendaFrm.getDominio().tipo}">
+										<td><h:selectOneRadio value="#{agendaFrm.dominio.tipo}">
 												<f:selectItems value="#{agendaFrm.getTipoAgenda()}" />
 												<a4j:ajax render="@form" />
 											</h:selectOneRadio></td>
@@ -22,7 +26,8 @@
 									<a4j:outputPanel rendered="#{agendaFrm.dominio.agendaEvento}">
 										<tr>
 											<td class="rotulo">Tipo Evento:</td>
-											<td><cirrus:navegacao id="tipoEvento" action="#{capturaTipoEventoFrm.entrar(1)}"
+											<td><cirrus:navegacao id="tipoEvento"
+													action="#{capturaTipoEventoFrm.entrar(1)}"
 													render="painelTipoEventoCaptura" data="#{agendaFrm.erros}"
 													oncomplete="abrirModalCapturaTipoEvento(event.data);"
 													value="#{agendaFrm.getDominio().getTipoEvento().descricao}">
@@ -31,32 +36,38 @@
 									</a4j:outputPanel>
 									<tr>
 										<td class="rotulo">Nome:</td>
-										<td><h:inputText value="#{agendaFrm.getDominio().nome}" /></td>
+										<td><h:inputText value="#{agendaFrm.dominio.nome}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Local:</td>
-										<td><h:inputText value="#{agendaFrm.getDominio().local}" /></td>
+										<td><h:inputText value="#{agendaFrm.dominio.local}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Data/Hora:</td>
-										<td><cirrus:calendario valor="#{agendaFrm.getDominio().data}" pattern="dd/MM/yyyy HH:mm"></cirrus:calendario></td>
+										<td><cirrus:calendario
+												valor="#{agendaFrm.getDominio().data}"
+												pattern="dd/MM/yyyy HH:mm"></cirrus:calendario></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Status:</td>
-										<td><h:selectOneRadio value="#{agendaFrm.getDominio().status}">
+										<td><h:selectOneRadio value="#{agendaFrm.dominio.status}">
 												<f:selectItems value="#{agendaFrm.getStatus()}" />
 											</h:selectOneRadio></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Descrição:</td>
-										<td><h:inputTextarea value="#{agendaFrm.getDominio().descricao}" cols="80" rows="5" /></td>
+										<td><h:inputTextarea
+												value="#{agendaFrm.dominio.descricao}" cols="80"
+												rows="5" /></td>
 									</tr>
 								</table>
 							</h:panelGroup></td>
 					</tr>
 					<tr>
-						<td align="center"><cirrus:botaoGravarCancelar id="bts" actionGravar="#{agendaFrm.gravar}"
-								data="#{agendaFrm.erros}" alterar="#{agendaFrm.alterar}" actionCancelar="#{agendaFrm.cancelar}"
+						<td align="center"><cirrus:botaoGravarCancelar id="bts"
+								actionGravar="#{agendaFrm.gravar}" data="#{agendaFrm.erros}"
+								alterar="#{agendaFrm.alterar}"
+								actionCancelar="#{agendaFrm.cancelar}"
 								container="frmDetalhe:bts">
 							</cirrus:botaoGravarCancelar></td>
 					</tr>
