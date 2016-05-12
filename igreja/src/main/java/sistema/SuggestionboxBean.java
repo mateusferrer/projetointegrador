@@ -24,9 +24,6 @@ public class SuggestionboxBean {
 
 	public SuggestionboxBean() {
 		lista = new ArrayList();
-		for (int i = 0; i < 10; i++) {
-			lista.add("Item" + i);
-		}
 	}
 
 	public List<String> complemento(Object event) {

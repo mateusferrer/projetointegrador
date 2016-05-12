@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
-	xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
-	xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
 	<ui:define name="titulo">#{membroFrm.titulo}</ui:define>
 	<ui:define name="processo">
@@ -23,18 +19,15 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Rg:</td>
-										<td><h:inputText value="#{membroFrm.dominio.rg}"
-												maxlength="9" /></td>
+										<td><h:inputText value="#{membroFrm.dominio.rg}" maxlength="9" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cpf:</td>
-										<td><h:inputText value="#{membroFrm.dominio.cpf}"
-												maxlength="11" /></td>
+										<td><h:inputText value="#{membroFrm.dominio.cpf}" maxlength="11" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Data Nascimento:</td>
-										<td><cirrus:calendario
-												valor="#{membroFrm.dominio.dataNascimento}"></cirrus:calendario></td>
+										<td><cirrus:calendario valor="#{membroFrm.dominio.dataNascimento}"></cirrus:calendario></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Sexo:</td>
@@ -50,8 +43,7 @@
 										<td class="rotulo">Endereço:</td>
 										<td><h:inputText value="#{membroFrm.dominio.logradouro}" /></td>
 										<td class="rotulo">Nº:</td>
-										<td><h:inputText
-												value="#{membroFrm.dominio.numLogradouro}" /></td>
+										<td><h:inputText value="#{membroFrm.dominio.numLogradouro}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Estado:</td>
@@ -73,8 +65,7 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Igreja:</td>
-										<td><cirrus:navegacao id="igreja"
-												action="#{capturaIgrejaFrm.entrar(1)}"
+										<td><cirrus:navegacao id="igreja" action="#{capturaIgrejaFrm.entrar(1)}"
 												render="painelIgrejaCaptura" data="#{membroFrm.erros}"
 												oncomplete="abrirModalCapturaIgreja(event.data);"
 												value="#{membroFrm.dominio().getIgreja().fantasia}">
@@ -82,47 +73,38 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Igreja Prime</td>
-										<td><rich:autocomplete value="" var="matriz"
-												autocompleteMethod="#{igrejaFrm.autoComplete}"
+										<td><rich:autocomplete value="" var="matriz" autocompleteMethod="#{igrejaFrm.autoComplete}"
 												converter="igrejaConverter">
 												<rich:column></rich:column>
 											</rich:autocomplete></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cargo Eclesiástico:</td>
-										<td><cirrus:navegacao id="cargo"
-												action="#{capturaCargoEclesiasticoFrm.entrar(1)}"
-												render="painelCargoEclesiasticoCaptura"
-												data="#{membroFrm.erros}"
-												oncomplete="abrirModalCapturaCargo(event.data);"
-												value="#{membroFrm.dominio.cargo.descricao}">
+										<td><cirrus:navegacao id="cargo" action="#{capturaCargoEclesiasticoFrm.entrar(1)}"
+												render="painelCargoEclesiasticoCaptura" data="#{membroFrm.erros}"
+												oncomplete="abrirModalCapturaCargo(event.data);" value="#{membroFrm.dominio.cargo.descricao}">
 											</cirrus:navegacao></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Status:</td>
-										<td><h:selectOneRadio
-												value="#{membroFrm.dominio().status}">
+										<td><h:selectOneRadio value="#{membroFrm.dominio().status}">
 												<f:selectItems value="#{membroFrm.getStatus()}" />
 											</h:selectOneRadio></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Data Batismo:</td>
-										<td><cirrus:calendario
-												valor="#{membroFrm.dominio.dataBatismo}"></cirrus:calendario></td>
+										<td><cirrus:calendario valor="#{membroFrm.dominio.dataBatismo}"></cirrus:calendario></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Registro Batismo:</td>
-										<td><h:inputText
-												value="#{membroFrm.dominio.registroBatismo}" maxlength="5" /></td>
+										<td><h:inputText value="#{membroFrm.dominio.registroBatismo}" maxlength="5" /></td>
 									</tr>
 								</table>
 							</h:panelGroup></td>
 					</tr>
 					<tr>
-						<td align="center"><cirrus:botaoGravarCancelar id="bts"
-								actionGravar="#{membroFrm.gravar}" data="#{membroFrm.erros}"
-								alterar="#{membroFrm.alterar}"
-								actionCancelar="#{membroFrm.cancelar}"
+						<td align="center"><cirrus:botaoGravarCancelar id="bts" actionGravar="#{membroFrm.gravar}"
+								data="#{membroFrm.erros}" alterar="#{membroFrm.alterar}" actionCancelar="#{membroFrm.cancelar}"
 								container="frmDetalhe:bts">
 							</cirrus:botaoGravarCancelar></td>
 					</tr>

@@ -5,7 +5,7 @@ import static com.forj.cirrus.util.validacao.Val.*
 import javax.inject.Named
 
 import sistema.negocio.dominio.CargoEclesiastico
-import sistema.negocio.dominio.Igreja
+import sistema.negocio.dominio.Congregacao
 import sistema.negocio.dominio.Membro
 
 import com.forj.cirrus.infra.exceptions.NegocioException

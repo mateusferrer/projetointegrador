@@ -24,11 +24,11 @@ import com.forj.cirrus.util.validacao.Val;
  * @since 26/11/2015
  */
 @Entity
-@Table(name = "igreja")
+@Table(name = "congregacao")
 @NamedQueries({
-		@NamedQuery(name = Igreja.TODOS, query = "select c from Igreja c"),
-		@NamedQuery(name = Igreja.POR_CODIGO, query = "select c from Igreja c where c.id = ?") })
-public class Igreja extends AbstractDominio {
+		@NamedQuery(name = Congregacao.TODOS, query = "select c from Congregacao c"),
+		@NamedQuery(name = Congregacao.POR_CODIGO, query = "select c from Congregacao c where c.id = ?") })
+public class Congregacao extends AbstractDominio {
 
 	/** Versão da classe. **/
 	private static final long serialVersionUID = -7179268262691485857L;
@@ -42,7 +42,7 @@ public class Igreja extends AbstractDominio {
 	/** Armazena o id do banco de dados. **/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cd_igreja")
+	@Column(name = "cd_congregacao")
 	private Integer id;
 
 	/** Armazena a razão social. **/
@@ -109,10 +109,10 @@ public class Igreja extends AbstractDominio {
 
 	/** Armazena a igreja matriz. **/
 	@Column(name = "cd_igreja_matriz")
-	private Igreja igreja;
+	private Congregacao igreja;
 
 	/** Cria um novo objeto com valores padrões. */
-	public Igreja() {
+	public Congregacao() {
 	}
 
 	/**
@@ -130,10 +130,10 @@ public class Igreja extends AbstractDominio {
 	 * @param tipo a ser informado.
 	 * @param igreja a ser informada.
 	 */
-	public Igreja(String razao, String fantasia, String cnpj, Long cep,
+	public Congregacao(String razao, String fantasia, String cnpj, Long cep,
 			String logradouro, Integer numLogradouro, Estado estado,
 			Cidade cidade, String email, String telefone, TipoIgreja tipo,
-			Igreja igreja) {
+			Congregacao igreja) {
 		this.razao = razao;
 		this.fantasia = fantasia;
 		this.cnpj = cnpj;
@@ -248,11 +248,11 @@ public class Igreja extends AbstractDominio {
 		this.tipo = tipo;
 	}
 
-	public Igreja getIgreja() {
+	public Congregacao getIgreja() {
 		return igreja;
 	}
 
-	public void setIgreja(Igreja igreja) {
+	public void setIgreja(Congregacao igreja) {
 		this.igreja = igreja;
 	}
 

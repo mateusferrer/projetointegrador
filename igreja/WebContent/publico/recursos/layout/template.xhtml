@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:rich="http://richfaces.org/rich"
-	xmlns:a4j="http://richfaces.org/a4j">
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 	<title>Sistema de Gestão de Igreja</title>
 	<meta charset="ISO-8859-1" />
@@ -11,19 +11,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputScript name="cirrus.js" library="js" target="body" />
+	<h:outputScript name="bootstrap.min.js" library="js" target="body" />
+	<h:outputScript name="jquery-1.12.3.js" library="js" target="body" />
 	<h:outputStylesheet name="css/sistema.css" />
+	<h:outputStylesheet name="css/bootstrap.min.css" />
 </h:head>
 <h:body>
 	<a4j:status>
 		<f:facet name="start">
-			<div style="width: 35px; height: 35px; position: absolute; margin: 0px;">
+			<div class="form-group">
 				<h:graphicImage value="/resources/imagens/ajax-loader.gif" />
 			</div>
 		</f:facet>
 	</a4j:status>
-	<table align="center">
+	<table align="center" class="table">
 		<tr>
-			<td><rich:panel style="width:900px;height:850px;">
+			<td><rich:panel>
 					<ui:insert name="menu" />
 					<f:facet name="header">
 						<ui:insert name="titulo" />

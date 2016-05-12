@@ -37,6 +37,13 @@
 			<version>2.1.28</version>
 		</dependency>
 
+		<!-- BootsFaces -->
+		<dependency>
+			<groupId>net.bootsfaces</groupId>
+			<artifactId>bootsfaces</artifactId>
+			<version>0.8.5</version>
+		</dependency>
+
 		<!-- Richfaces -->
 		<dependency>
 			<groupId>org.richfaces.core</groupId>

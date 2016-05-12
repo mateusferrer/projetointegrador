@@ -1,0 +1,11 @@
+- O presidente de uma diretoria deve, obrigatoriamente, ser um pastor;
+- Uma diretoria deve possuir no máximo 2 tesoureiros (1º e 2º tesoureiro) e 2 secretários (1º e 2º secretário);
+- Uma campanha é iniciada quando chegar o dia do vencimento da primeira parcela;
+- Ao iniciar uma campanha, o sistema não pode permitir a exclusão de um contribuinte;
+- Um contribuinte só pode ser excluído de uma campanha se a mesma ainda não tiver iniciado;
+- Uma campanha em andamento deve permitir a troca do membro contribuinte. Nesta operação, todos os lançamentos ainda não vencidos devem ter o 		contribuinte alterado também;
+- Ao marcar um lançamento como pago, de uma campanha em andamento, o mesmo deve ser movido de lançamentos para receitas e identificado com o Tipo: 	Campanha.
+
+
+Tipo Receita: Campanha, etc...
+Trocar o nome de igreja para congregação

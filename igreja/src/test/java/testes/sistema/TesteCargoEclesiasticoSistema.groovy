@@ -15,7 +15,7 @@ import org.junit.Test
 import sistema.negocio.aplicacao.CargoEclesiasticoBean;
 import sistema.negocio.aplicacao.IgrejaBeanImp
 import sistema.negocio.dominio.CargoEclesiastico;
-import sistema.negocio.dominio.Igreja
+import sistema.negocio.dominio.Congregacao
 import testes.global.AbstractSistema
 import testes.unidade.TesteCargoEclesiasticoUnidade;
 import testes.unidade.TesteIgrejaUnidade

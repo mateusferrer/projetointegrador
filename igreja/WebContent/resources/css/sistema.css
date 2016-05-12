@@ -1,14 +1,13 @@
-.ui-widget { 
+.ui-widget {
 	font-size: 11px;
-	font-family: Arial, Verdana, sans-serif ;
+	font-family: Arial, Verdana, sans-serif;
 }
 
 .divTabela {
 	overflow: auto;
 	border: 1px solid #c0c0c0;
-	width: 100%; 
-	height: 400px; 
-	background-color: #FFFFFF ;
+	width: 100%;
+	background-color: #FFFFFF;
 }
 
 .tabela {
@@ -22,14 +21,14 @@
 .even-row {
 	background-color: #ECF3FE;
 }
- 
+
 .odd-row {
-    background-color: #FFFFFF;
+	background-color: #FFFFFF;
 }
- 
+
 .active-row {
-    background-color: #FFFF99 !important;
-    cursor: pointer;
+	background-color: #FFFF99 !important;
+	cursor: pointer;
 }
 
 .colunaOrdenacao {

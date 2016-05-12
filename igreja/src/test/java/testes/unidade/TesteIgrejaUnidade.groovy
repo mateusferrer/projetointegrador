@@ -4,7 +4,7 @@ import org.junit.Test
 
 import sistema.negocio.dominio.Cidade
 import sistema.negocio.dominio.Estado
-import sistema.negocio.dominio.Igreja
+import sistema.negocio.dominio.Congregacao
 import sistema.negocio.dominio.TipoIgreja
 import testes.global.AbstractUnidade
 
@@ -19,13 +19,13 @@ class TesteIgrejaUnidade extends AbstractUnidade {
 	/** Deve validar todos os campos obrigatório. **/
 	@Test
 	void deveValidarObrigatorios() {
-		validarObrigatorios(new Igreja())
+		validarObrigatorios(new Congregacao())
 	}
 
 	/** Deve validar igreja obrigatória. **/
 	@Test
 	void deveValidarFilial() {
-		Igreja igreja = fabricar()
+		Congregacao igreja = fabricar()
 		igreja.setTipo(TipoIgreja.FILIAL)
 		validarObrigatorios(igreja)
 	}
@@ -47,7 +47,7 @@ class TesteIgrejaUnidade extends AbstractUnidade {
 	 * @return log válido para teste.
 	 */
 	static def fabricar() {
-		new Igreja(razao: "Wagner Soares", fantasia: "Luz do Mundo", cnpj: gerarTexto(14), logradouro: gerarTexto(30),
+		new Congregacao(razao: "Wagner Soares", fantasia: "Luz do Mundo", cnpj: gerarTexto(14), logradouro: gerarTexto(30),
 		numLogradouro: gerarInteger(5), tipo: TipoIgreja.MATRIZ, cidade: new Cidade(id: 1), estado: new Estado(id: 1),
 		cep: gerarLong(8), telefone: gerarTexto(10))
 	}
@@ -57,7 +57,7 @@ class TesteIgrejaUnidade extends AbstractUnidade {
 	 * @return log inválido para teste.
 	 */
 	static def fabricarTamanhoInvalido() {
-		new Igreja(razao: gerarTexto(101), fantasia: gerarTexto(101), cnpj: gerarTexto(15), logradouro: gerarTexto(101),
+		new Congregacao(razao: gerarTexto(101), fantasia: gerarTexto(101), cnpj: gerarTexto(15), logradouro: gerarTexto(101),
 		numLogradouro: gerarInteger(6), tipo: TipoIgreja.MATRIZ, cidade: new Cidade(), estado: new Estado(),
 		cep: gerarLong(10), telefone: gerarTexto(12))
 	}

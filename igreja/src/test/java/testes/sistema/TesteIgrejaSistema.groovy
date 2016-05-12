@@ -13,7 +13,7 @@ import org.junit.Assert
 import org.junit.Test
 
 import sistema.negocio.aplicacao.IgrejaBeanImp
-import sistema.negocio.dominio.Igreja
+import sistema.negocio.dominio.Congregacao
 import testes.global.AbstractSistema
 import testes.unidade.TesteIgrejaUnidade
 
@@ -35,7 +35,7 @@ class TesteIgrejaSistema extends AbstractSistema {
      */
     @Test
     void naoDeveInserir() {
-        Igreja dominio = new Igreja()
+        Congregacao dominio = new Congregacao()
         naoDeveInserir(dominio)
         dominio
     }
@@ -45,7 +45,7 @@ class TesteIgrejaSistema extends AbstractSistema {
      */
     @Test
     void naoDeveAlterar() {
-        Igreja dominio = new Igreja()
+        Congregacao dominio = new Congregacao()
         naoDeveAlterar(dominio)
         dominio
     }
@@ -55,7 +55,7 @@ class TesteIgrejaSistema extends AbstractSistema {
      * @return dominio gravado no banco.
      */
     def inserir() {
-        Igreja dominio = TesteIgrejaUnidade.fabricar();
+        Congregacao dominio = TesteIgrejaUnidade.fabricar();
         dominio.id = null
         deveInserir(dominio)
         dominio
@@ -64,7 +64,7 @@ class TesteIgrejaSistema extends AbstractSistema {
     /**  Agrupador de testes: inserir, alterar e deletar.  */
     @Test
     void grupoCrud() {
-        Igreja dominio = inserir();
+        Congregacao dominio = inserir();
         dominio.fantasia += " alterado"
         deveAlterar(dominio)
         deveExcluir(dominio)

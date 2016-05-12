@@ -3,7 +3,7 @@ package sistema.negocio.aplicacao;
 import java.io.Serializable;
 import java.util.List;
 
-import sistema.negocio.dominio.Igreja;
+import sistema.negocio.dominio.Congregacao;
 
 import com.forj.cirrus.infra.exceptions.NegocioException;
 
@@ -21,13 +21,13 @@ public interface IgrejaBean extends Serializable {
 	 * @return listagem de todas as igrejas.
 	 * @throws NegocioException em caso de erros.
 	 */
-	public List<Igreja> get() throws NegocioException;
+	public List<Congregacao> get() throws NegocioException;
 
 	/**
 	 * Pesquisa a igreja pelo código.
 	 * @return igreja encontrada com o código informado.
 	 * @throws NegocioException em caso de erros.
 	 */
-	public Igreja getPorCodigo(Integer codigo) throws NegocioException;
+	public Congregacao getPorCodigo(Integer codigo) throws NegocioException;
 
 }

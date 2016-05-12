@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.inject.Named;
 
-import sistema.negocio.dominio.Igreja;
+import sistema.negocio.dominio.Congregacao;
 
 import com.forj.cirrus.infra.exceptions.NegocioException;
 import com.forj.cirrus.negocio.aplicativo.DominioBeanImp;
@@ -17,20 +17,20 @@ import com.forj.cirrus.negocio.aplicativo.DominioBeanImp;
  * @since 26/11/2015
  */
 @Named
-public class IgrejaBeanImp extends DominioBeanImp<Igreja> implements IgrejaBean {
+public class IgrejaBeanImp extends DominioBeanImp<Congregacao> implements IgrejaBean {
 
 	/** Armazena a versão da classe. **/
 	private static final long serialVersionUID = -1755569326302384160L;
 
 	/** {@inheritDoc} */
 	@Override
-	public List<Igreja> get() throws NegocioException {
-		return eao.get(Igreja.TODOS);
+	public List<Congregacao> get() throws NegocioException {
+		return eao.get(Congregacao.TODOS);
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public Igreja getPorCodigo(Integer codigo) throws NegocioException {
-		return eao.getPorId(Igreja.class, codigo);
+	public Congregacao getPorCodigo(Integer codigo) throws NegocioException {
+		return eao.getPorId(Congregacao.class, codigo);
 	}
 }

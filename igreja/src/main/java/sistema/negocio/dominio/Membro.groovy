@@ -108,7 +108,7 @@ class Membro extends AbstractDominio {
     @Obrigatorio(rotulo = "Igreja")
     @ManyToOne
     @JoinColumn(name = "cd_igreja")
-    Igreja igreja
+    Congregacao igreja
 
     /** Armazena a igreja matriz. **/
     @Obrigatorio(rotulo = "Cargo Eclesiástico")
@@ -171,7 +171,7 @@ class Membro extends AbstractDominio {
     @Override
     void limpar() {
         super.limpar()
-        igreja = new Igreja()
+        igreja = new Congregacao()
         cargo = new CargoEclesiastico()
         dataCadastro = new Date()
     }

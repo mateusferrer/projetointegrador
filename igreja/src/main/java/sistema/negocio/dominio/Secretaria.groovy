@@ -50,7 +50,7 @@ class Secretaria extends AbstractDominio {
     @Obrigatorio(rotulo="Igreja Responsável")
     @OneToOne
     @JoinColumn(name = "cd_igreja_responsavel")
-    Igreja igrejaResponsavel
+    Congregacao igrejaResponsavel
 
     /** Armazena o membro/pastor responsável. **/
     @Obrigatorio(rotulo="Pastor Responsável")
@@ -119,7 +119,7 @@ class Secretaria extends AbstractDominio {
     @Override
     public void limpar() {
         super.limpar();
-        igrejaResponsavel = new Igreja()
+        igrejaResponsavel = new Congregacao()
         pastorResponsavel = new Membro()
         membros.clear()
     }

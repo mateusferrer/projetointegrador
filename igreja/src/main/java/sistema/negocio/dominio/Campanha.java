@@ -72,7 +72,7 @@ public class Campanha extends AbstractDominio {
 	@Obrigatorio(rotulo = "Igreja")
 	@JoinColumn(name = "cd_igreja")
 	@OneToOne
-	private Igreja igreja;
+	private Congregacao igreja;
 
 	/** Armazena a data de cadastro. **/
 	@Obrigatorio(rotulo = "Data de Cadastro")

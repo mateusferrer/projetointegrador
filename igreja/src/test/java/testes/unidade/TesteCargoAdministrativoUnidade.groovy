@@ -6,7 +6,7 @@ import com.forj.cirrus.negocio.dominio.servicos.Dominio;
 
 import sistema.negocio.dominio.CargoAdministrativo
 import sistema.negocio.dominio.CargoEclesiastico
-import sistema.negocio.dominio.Igreja
+import sistema.negocio.dominio.Congregacao
 import sistema.negocio.dominio.Membro
 import testes.global.AbstractUnidade
 
