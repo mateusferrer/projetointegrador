@@ -1,11 +1,11 @@
-DROP TABLE IF EXISTS contribuinte_campanha;
-DROP TABLE IF EXISTS campanha;
+DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS lancamento;
+DROP TABLE IF EXISTS contribuinte;
+DROP TABLE IF EXISTS campanha;
 DROP TABLE IF EXISTS agenda;
 DROP TABLE IF EXISTS membro_administrativo;
 DROP TABLE IF EXISTS diretoria;
 DROP TABLE IF EXISTS membro;
-DROP TABLE IF EXISTS usuario;
 DROP TABLE IF EXISTS igreja;
 DROP TABLE IF EXISTS tipo_evento;
 DROP TABLE IF EXISTS funcao;
@@ -213,6 +213,7 @@ CREATE TABLE lancamento (
   in_status char(1) NOT NULL,
   in_pago char(1) NOT NULL, -- Será sempre 'S', exceto quando o tipo for campanha, que dessa forma, poderá ser alterado.
   cd_igreja int(10) NOT NULL,
+  cd_contribuinte int NULL,
   PRIMARY KEY (cd_lancamento),
   FOREIGN KEY (cd_membro) references membro (cd_membro),
   FOREIGN KEY (cd_igreja) references igreja (cd_igreja)
@@ -223,7 +224,5 @@ CREATE TABLE usuario (
   ds_senha varchar(50) NOT NULL,
   in_tipo_usuario char(2) NOT NULL,
   in_situacao char(1) NOT NULL,
-  cd_diretoria int(10) NOT NULL,
-  PRIMARY KEY (nm_usuario, ds_senha),
-  FOREIGN KEY (cd_diretoria) references diretoria (cd_diretoria)
+  PRIMARY KEY (nm_usuario, ds_senha)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

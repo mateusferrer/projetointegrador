@@ -50,7 +50,7 @@ insert into diretoria (cd_responsavel, cd_igreja, dt_inicio, dt_cadastro, dt_alt
 
 -- USUARIO
 insert into usuario 
-	values ('LFRANCIS', md5('1234'), 'MS', 'A', 1);
+	values ('LFRANCIS', md5('1234'), 'MS', 'A');
 
 -- MEMBRO ADMINISTRATIVO
 insert into membro_administrativo (cd_membro, cd_funcao, cd_diretoria, dt_ocupacao, dt_alteracao, nm_usuario_alteracao, dt_desocupacao) 
