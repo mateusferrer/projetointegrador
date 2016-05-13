@@ -18,7 +18,7 @@ import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio
 class UsuarioPk extends AbstractDominio {
 
 	/** Armazena o nome. **/
-	@Column(name = "nm_usuario")
+	@Column(name = "cd_usuario")
 	@Obrigatorio(rotulo = "Nome")
 	@TamanhoMaximo(rotulo = "Nome", maximo = 10)
 	String nome

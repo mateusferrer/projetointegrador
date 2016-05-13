@@ -1,71 +1,31 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:rich="http://richfaces.org/rich"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:b="http://bootsfaces.net/ui">
 <ui:composition>
 	<h:form styleClass="form">
+		<b:navBar
+			brand-img="/resources/imagens/glyphicons/png/glyphicons-1-glass.png">
+			<b:navbarLinks>
+				<b:dropMenu value="Cadastros">
+					<b:navLink value="Tipo Evento" action="#{menuFrm.navegar}"
+						outcome="/sistema/tipoevento/lista.faces"
+						onclick="#{tipoEventoFrm.entrar()}">
+						
+					</b:navLink>
+					<b:navLink value="Tipo Evento" href="#"></b:navLink>
+					<b:navLink value="Função" href="#"></b:navLink>
+				</b:dropMenu>
 
-		<h2>Sistema de Gestão de Igreja</h2>
+				<b:navLink value="Link" href="#" action="#{menuFrm.navegar}"></b:navLink>
+				<b:navLink value="Link" href="#" action="#{menuFrm.navegar}"></b:navLink>
+			</b:navbarLinks>
+		</b:navBar>
 
-		<rich:toolbar styleClass="navbar navbar-default">
-
-			<rich:dropDownMenu>
-				<f:facet name="label">
-					<h:panelGroup>
-						<h:outputText value="Cadastros" />
-					</h:panelGroup>
-				</f:facet>
-
-				<rich:menuItem label="Cargo Eclesiástico" action="#{menuFrm.navegar}">
-					<f:param name="bean" value="cargoEclesiasticoFrm.entrar" />
-					<f:param name="navegacao" value="/sistema/cargoeclesiastico/lista.faces" />
-				</rich:menuItem>
-				<rich:menuItem label="Cargo Administrativo" action="#{menuFrm.navegar}">
-					<f:param name="bean" value="cargoAdministrativoFrm.entrar" />
-					<f:param name="navegacao" value="/sistema/cargoadministrativo/lista.faces" />
-				</rich:menuItem>
-				<rich:menuItem label="Tipo Evento" action="#{menuFrm.navegar}">
-					<f:param name="bean" value="tipoEventoFrm.entrar" />
-					<f:param name="navegacao" value="/sistema/tipoevento/lista.faces" />
-				</rich:menuItem>
-				<rich:menuItem label="Igreja" action="#{menuFrm.navegar}">
-					<f:param name="bean" value="igrejaFrm.entrar" />
-					<f:param name="navegacao" value="/sistema/igreja/lista.faces" />
-				</rich:menuItem>
-				<rich:menuItem label="Membro" action="#{menuFrm.navegar}">
-					<f:param name="bean" value="membroFrm.entrar" />
-					<f:param name="navegacao" value="/sistema/membro/lista.faces" />
-				</rich:menuItem>
-			</rich:dropDownMenu>
-
-			<rich:menuItem label="Secretaria" action="#{menuFrm.navegar}">
-				<f:param name="bean" value="secretariaFrm.entrar" />
-				<f:param name="navegacao" value="/sistema/secretaria/lista.faces" />
-			</rich:menuItem>
-
-			<rich:menuItem label="Agenda" action="#{menuFrm.navegar}">
-				<f:param name="bean" value="agendaFrm.entrar" />
-				<f:param name="navegacao" value="/sistema/agenda/lista.faces" />
-			</rich:menuItem>
-
-			<rich:menuItem label="Tesouraria" action="#{menuFrm.navegar}">
-				<f:param name="bean" value="lancamentoFrm.entrar" />
-				<f:param name="navegacao" value="/sistema/lancamento/lista.faces" />
-			</rich:menuItem>
-
-			<rich:dropDownMenu>
-				<f:facet name="label">
-					<h:panelGroup>
-						<h:outputText value="Sistema" />
-					</h:panelGroup>
-				</f:facet>
-
-				<rich:menuItem label="Sair">
-				</rich:menuItem>
-			</rich:dropDownMenu>
-
-		</rich:toolbar>
 	</h:form>
 </ui:composition>
 </html>

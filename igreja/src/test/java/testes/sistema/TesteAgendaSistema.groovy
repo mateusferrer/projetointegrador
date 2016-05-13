@@ -25,7 +25,6 @@ import testes.unidade.TesteAgendaUnidade
  * @version 1.0 - 27/11/2015
  * @since 27/11/2015
  */
-@Named
 class TesteAgendaSistema extends AbstractSistema {
 
 	/** Armazena o objeto serviço a ser testado. **/
