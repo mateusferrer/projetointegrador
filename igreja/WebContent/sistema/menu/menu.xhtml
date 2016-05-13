@@ -1,31 +1,18 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:rich="http://richfaces.org/rich"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:b="http://bootsfaces.net/ui">
 <ui:composition>
-	<h:form styleClass="form">
-		<b:navBar
-			brand-img="/resources/imagens/glyphicons/png/glyphicons-1-glass.png">
+	<h:form style-class="form">
+		<b:navBar brand="SAIE">
 			<b:navbarLinks>
 				<b:dropMenu value="Cadastros">
-					<b:navLink value="Tipo Evento" action="#{menuFrm.navegar}"
-						outcome="/sistema/tipoevento/lista.faces"
-						onclick="#{tipoEventoFrm.entrar()}">
-						
-					</b:navLink>
-					<b:navLink value="Tipo Evento" href="#"></b:navLink>
-					<b:navLink value="Função" href="#"></b:navLink>
+					<b:navLink value="Tipo Evento" action="#{menuFrm.navegar}" outcome="/sistema/tipoevento/lista.faces"
+						onclick="#{tipoEventoFrm.entrar()}"></b:navLink>
 				</b:dropMenu>
-
-				<b:navLink value="Link" href="#" action="#{menuFrm.navegar}"></b:navLink>
-				<b:navLink value="Link" href="#" action="#{menuFrm.navegar}"></b:navLink>
 			</b:navbarLinks>
 		</b:navBar>
-
 	</h:form>
 </ui:composition>
 </html>
