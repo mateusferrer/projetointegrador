@@ -13,12 +13,12 @@ import org.junit.Assert
 import org.junit.Test
 
 import sistema.negocio.aplicacao.CargoEclesiasticoBean;
-import sistema.negocio.aplicacao.IgrejaBeanImp
+import sistema.negocio.aplicacao.entidade.EntidadeBeanImp;
 import sistema.negocio.dominio.CargoEclesiastico;
-import sistema.negocio.dominio.Congregacao
+import sistema.negocio.dominio.entidade.Entidade;
 import testes.global.AbstractSistema
 import testes.unidade.TesteCargoEclesiasticoUnidade;
-import testes.unidade.TesteIgrejaUnidade
+import testes.unidade.TesteEntidadeUnidade
 
 /**
  * Teste de sistema do serviço de <b>CargoEclesiastico</b>.

@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import sistema.negocio.dominio.entidade.Entidade;
+
 import com.forj.cirrus.negocio.dominio.beanvalidation.Obrigatorio;
 import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 
@@ -72,7 +74,7 @@ public class Campanha extends AbstractDominio {
 	@Obrigatorio(rotulo = "Igreja")
 	@JoinColumn(name = "cd_igreja")
 	@OneToOne
-	private Congregacao igreja;
+	private Entidade igreja;
 
 	/** Armazena a data de cadastro. **/
 	@Obrigatorio(rotulo = "Data de Cadastro")

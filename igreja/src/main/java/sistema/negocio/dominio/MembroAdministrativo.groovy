@@ -14,6 +14,8 @@ import javax.persistence.NamedQueries
 import javax.persistence.NamedQuery
 import javax.persistence.Table
 
+import sistema.negocio.dominio.membro.Membro;
+
 import com.forj.cirrus.negocio.dominio.beanvalidation.Obrigatorio
 import com.forj.cirrus.negocio.dominio.beanvalidation.TamanhoMaximo
 import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio

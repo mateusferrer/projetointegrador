@@ -4,7 +4,7 @@ import org.junit.Test
 
 import sistema.negocio.dominio.FiltroAgenda
 import sistema.negocio.dominio.FiltroLancamento
-import sistema.negocio.dominio.TipoEvento
+import sistema.negocio.dominio.evento.TipoEvento;
 import testes.global.AbstractUnidade
 
 /**

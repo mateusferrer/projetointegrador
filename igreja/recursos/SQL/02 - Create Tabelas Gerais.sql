@@ -48,29 +48,27 @@ CREATE TABLE tipo_evento (
 	UNIQUE KEY uq_descricao_tipo_evento (ds_tipo_evento)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE congregacao (
-	cd_congregacao INT(10) NOT NULL AUTO_INCREMENT,  
+CREATE TABLE entidade (
+	cd_entidade INT(10) NOT NULL AUTO_INCREMENT,  
 	tx_razao_social VARCHAR(100) NOT NULL,          
 	tx_nome_fantasia VARCHAR(100) NOT NULL,          
 	sq_cnpj VARCHAR(14) NOT NULL,          
 	sq_cep NUMERIC(8) NOT NULL,
-	tx_endereco VARCHAR(150) NOT NULL,          
+	tx_endereco VARCHAR(100) NOT NULL,
 	nr_endereco INT(5) NOT NULL,          
-	cd_estado int(10) NOT NULL,       
-	cd_cidade int(10) NOT NULL,       
+	in_estado char(2) NOT NULL,       
+	nm_cidade varchar(50) NOT NULL,       
 	tx_email VARCHAR(100) NULL,       
 	sq_telefone VARCHAR(11) NOT NULL,       
-	tp_congregacao CHAR(1) NOT NULL,       
-	cd_sede int(10) NULL,
+	tp_entidade CHAR(1) NOT NULL,
+	cd_matriz int(10) NULL,
     dt_inclusao datetime NOT NULL,
 	dt_alteracao datetime NOT NULL,
 	cd_usuario varchar(10) NOT NULL,
 	INDEX (tx_nome_fantasia),
-	PRIMARY KEY (cd_congregacao),
-    FOREIGN KEY (cd_sede) REFERENCES congregacao (cd_congregacao),
-    FOREIGN KEY (cd_estado) REFERENCES estado (cd_estado),
-    FOREIGN KEY (cd_cidade) REFERENCES cidade (cd_cidade),
-	UNIQUE KEY cd_congregacao (cd_congregacao)
+	PRIMARY KEY (cd_entidade),
+    FOREIGN KEY (cd_matriz) REFERENCES entidade (cd_entidade),
+	UNIQUE KEY sq_cnpj (sq_cnpj)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE membro (
@@ -84,8 +82,8 @@ CREATE TABLE membro (
     nr_endereco INT(5) NOT NULL,
     in_sexo CHAR(1) NOT NULL,
     tx_email VARCHAR(100) NULL,
-    cd_estado int(10) NOT NULL,
-    cd_cidade int(10) NOT NULL,
+    in_estado char(2) NOT NULL,
+    nm_cidade varchar(50) NOT NULL,
     sq_telefone VARCHAR(11) NOT NULL,
     sq_celular VARCHAR(11) NULL,
     in_status CHAR(1) NOT NULL,
@@ -93,30 +91,33 @@ CREATE TABLE membro (
     in_batizado CHAR(1) NOT NULL,
     dt_batismo DATE NULL,
     nr_registro_batismo INT(10) NULL,
-    cd_congregacao INT(10) NOT NULL,
+    cd_entidade INT(10) NOT NULL,
     cd_tipo INT(10) NOT NULL,
     dt_inclusao datetime NOT NULL,
     dt_alteracao datetime NOT NULL,
 	cd_usuario varchar(10) NOT NULL,
     INDEX (nm_membro),
     PRIMARY KEY (cd_membro),
-    FOREIGN KEY (cd_congregacao) REFERENCES congregacao (cd_congregacao),
+    FOREIGN KEY (cd_entidade) REFERENCES entidade (cd_entidade),
     FOREIGN KEY (cd_tipo) REFERENCES tipo_membro (cd_tipo),
     UNIQUE KEY uq_membro_rg (sq_rg),
     UNIQUE KEY uq_membro_cpf (sq_cpf),
     UNIQUE KEY uq_membro_nr_registro_batismo (nr_registro_batismo)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
+/*
 CREATE TABLE diretoria (
   cd_diretoria int(10) NOT NULL AUTO_INCREMENT,
   cd_presidente int(10) NOT NULL,
   cd_vice_presidente int(10) NOT NULL,
+  cd_entidade int(10) NOT NULL,
   dt_inicio_atividades datetime NOT NULL,
   dt_inclusao datetime NOT NULL,
   dt_alteracao datetime NOT NULL,
   cd_usuario varchar(10) NOT NULL,
   PRIMARY KEY (cd_diretoria),
   FOREIGN KEY (cd_presidente) references membro (cd_membro),
+  FOREIGN KEY (cd_entidade) references entidade (cd_entidade),
   FOREIGN KEY (cd_vice_presidente) references membro (cd_membro)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -139,3 +140,4 @@ CREATE TABLE usuario (
 	in_situacao char(1) not null,
 	PRIMARY KEY (nm_usuario, ds_senha)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+*/

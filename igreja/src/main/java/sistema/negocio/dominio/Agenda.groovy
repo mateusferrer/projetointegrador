@@ -16,6 +16,8 @@ import javax.persistence.Table
 import javax.persistence.Temporal
 import javax.persistence.TemporalType
 
+import sistema.negocio.dominio.evento.TipoEvento;
+
 import com.forj.cirrus.infra.exceptions.NegocioException
 import com.forj.cirrus.negocio.dominio.beanvalidation.Obrigatorio
 import com.forj.cirrus.negocio.dominio.beanvalidation.TamanhoMaximo

@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Scope
 
 import sistema.infra.formularios.GCapturaFrm
 import sistema.negocio.aplicacao.CargoEclesiasticoBean
-import sistema.negocio.aplicacao.TipoEventoBean;
+import sistema.negocio.aplicacao.evento.TipoEventoBeanImp;
 import sistema.negocio.dominio.CargoEclesiastico
-import sistema.negocio.dominio.TipoEvento;
+import sistema.negocio.dominio.evento.TipoEvento;
 import sistema.visao.agenda.AgendaFrm;
 import sistema.visao.membro.MembroFrm
 import sistema.visao.secretaria.SecretariaFrm;
@@ -32,7 +32,7 @@ class CapturaTipoEventoFrm extends GCapturaFrm<TipoEvento> {
 
     /** Armazena o serviço de negocio. **/
     @Inject
-    TipoEventoBean bean;
+    TipoEventoBeanImp bean;
 
     /** Armazena o formulario de secretaria. **/
     @Inject

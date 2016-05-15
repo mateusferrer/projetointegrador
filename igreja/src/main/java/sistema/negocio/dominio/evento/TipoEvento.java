@@ -1,4 +1,4 @@
-package sistema.negocio.dominio;
+package sistema.negocio.dominio.evento;
 
 import java.util.Date;
 

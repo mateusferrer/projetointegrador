@@ -1,16 +1,16 @@
-package sistema.negocio.dominio;
+package sistema.negocio.dominio.entidade;
 
 import com.forj.cirrus.infra.exceptions.NegocioException;
 
 /**
- * Gerenciador de flags para o dominio {@link TipoIgreja} do módulo
+ * Gerenciador de flags para o dominio {@link TipoEntidade} do módulo
  * <b>Igreja</b>.
  * 
  * @author Lucas Francisquini
  * @version 1.0 - 04/05/2016
  * @since 04/05/2016
  */
-public enum TipoIgreja {
+public enum TipoEntidade {
 	MATRIZ("M"), FILIAL("F");
 
 	/** Armazena a flag. **/
@@ -19,7 +19,7 @@ public enum TipoIgreja {
 	/**
 	 * Cria um novo objeto com valores padrões.
 	 */
-	private TipoIgreja(String value) {
+	private TipoEntidade(String value) {
 		this.flag = value;
 	}
 
@@ -39,7 +39,7 @@ public enum TipoIgreja {
 	 *            a ser convertida.
 	 * @return descricao da flag informada.
 	 */
-	public static String getInstance(TipoIgreja flag) {
+	public static String getInstance(TipoEntidade flag) {
 		String instance = "";
 		switch (flag) {
 		case MATRIZ:

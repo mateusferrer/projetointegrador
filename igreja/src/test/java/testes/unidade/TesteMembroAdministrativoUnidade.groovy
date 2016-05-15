@@ -2,8 +2,8 @@ package testes.unidade
 
 import org.junit.Test
 
-import sistema.negocio.dominio.Membro
 import sistema.negocio.dominio.MembroAdministrativo
+import sistema.negocio.dominio.membro.Membro;
 import testes.global.AbstractUnidade
 
 /**

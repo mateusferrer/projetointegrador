@@ -2,7 +2,7 @@ package testes.unidade
 
 import org.junit.Test
 
-import sistema.negocio.dominio.Membro
+import sistema.negocio.dominio.membro.Membro;
 import testes.global.AbstractUnidade
 
 /**
@@ -41,7 +41,7 @@ class TesteMembroUnidade extends AbstractUnidade {
         cidade: gerarTexto(50), email: gerarTexto(30), telefone: gerarTexto(10),
         celular: gerarTexto(10), sexo: "M", dataNascimento: new Date(), dataBatismo: new Date(),
         dataCadastro: new Date(), registroBatismo: gerarLong(5), status: "A",
-        cargo: TesteCargoEclesiasticoUnidade.fabricar(), igreja: TesteIgrejaUnidade.fabricar())
+        cargo: TesteCargoEclesiasticoUnidade.fabricar(), igreja: TesteEntidadeUnidade.fabricar())
     }
 
     /**
@@ -54,6 +54,6 @@ class TesteMembroUnidade extends AbstractUnidade {
         cidade: gerarTexto(60), email: gerarTexto(120), telefone: gerarTexto(20),
         celular: gerarTexto(20), sexo: "MM", dataNascimento: new Date(), dataBatismo: new Date(),
         dataCadastro: new Date(), registroBatismo: gerarLong(5), status: "AA",
-        cargo: TesteCargoEclesiasticoUnidade.fabricar(), igreja: TesteIgrejaUnidade.fabricar())
+        cargo: TesteCargoEclesiasticoUnidade.fabricar(), igreja: TesteEntidadeUnidade.fabricar())
     }
 }

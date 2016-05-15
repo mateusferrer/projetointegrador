@@ -4,8 +4,8 @@ import static com.forj.cirrus.util.validacao.Val.*
 
 import javax.inject.Named
 
-import sistema.negocio.dominio.Congregacao
-import sistema.negocio.dominio.Membro
+import sistema.negocio.dominio.entidade.Entidade;
+import sistema.negocio.dominio.membro.Membro;
 
 import com.forj.cirrus.infra.exceptions.NegocioException
 import com.forj.cirrus.negocio.aplicativo.DominioBeanImp

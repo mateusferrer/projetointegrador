@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import sistema.negocio.dominio.membro.Membro;
+
 import com.forj.cirrus.negocio.dominio.beanvalidation.Obrigatorio;
 import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 

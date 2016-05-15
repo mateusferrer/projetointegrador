@@ -9,7 +9,7 @@
 		initialSize="3" maxActive="5" maxIdle="1" maxWait="20000"
 		type="javax.sql.DataSource" 
 		driverClassName="com.mysql.jdbc.Driver" 
-		url="jdbc:mysql://localhost/igreja"
+		url="jdbc:mysql://localhost/sql-dev"
 		username="root" 
 		password="root" 
 		closeMethod="close" 

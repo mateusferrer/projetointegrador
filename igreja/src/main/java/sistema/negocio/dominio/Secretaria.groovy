@@ -19,6 +19,9 @@ import javax.persistence.Table
 import javax.persistence.Temporal
 import javax.persistence.TemporalType
 
+import sistema.negocio.dominio.entidade.Entidade;
+import sistema.negocio.dominio.membro.Membro;
+
 import com.forj.cirrus.infra.exceptions.NegocioException
 import com.forj.cirrus.negocio.dominio.beanvalidation.Obrigatorio
 import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio
@@ -50,7 +53,7 @@ class Secretaria extends AbstractDominio {
     @Obrigatorio(rotulo="Igreja Responsável")
     @OneToOne
     @JoinColumn(name = "cd_igreja_responsavel")
-    Congregacao igrejaResponsavel
+    Entidade igrejaResponsavel
 
     /** Armazena o membro/pastor responsável. **/
     @Obrigatorio(rotulo="Pastor Responsável")
@@ -119,7 +122,7 @@ class Secretaria extends AbstractDominio {
     @Override
     public void limpar() {
         super.limpar();
-        igrejaResponsavel = new Congregacao()
+        igrejaResponsavel = new Entidade()
         pastorResponsavel = new Membro()
         membros.clear()
     }

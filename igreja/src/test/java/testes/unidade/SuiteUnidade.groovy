@@ -11,7 +11,7 @@ import org.junit.runners.Suite.SuiteClasses
  * @since 27/11/2015
  */
 @RunWith(Suite.class)
-@SuiteClasses([TesteIgrejaUnidade, TesteCargoEclesiasticoUnidade, TesteMembroUnidade,
+@SuiteClasses([TesteEntidadeUnidade, TesteCargoEclesiasticoUnidade, TesteMembroUnidade,
 	TesteCargoAdministrativoUnidade, TesteTipoEventoUnidade, TesteMembroAdministrativoUnidade,
 	TesteSecretariaUnidade, TesteAgendaUnidade, TesteLancamentoUnidade, TesteFiltroLancamentoUnidade,
 	TesteFiltroAgendaUnidade])

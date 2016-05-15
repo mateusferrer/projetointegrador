@@ -32,7 +32,7 @@ class TesteSecretariaSistema extends AbstractSistema {
 
     /** Armazena o teste de membro. **/
     @Inject
-    TesteIgrejaSistema testeIgreja;
+    TesteEntidadeSistema testeIgreja;
 
     /**
      * Não deve inserir.

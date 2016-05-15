@@ -2,7 +2,7 @@ package testes.unidade
 
 import org.junit.Test
 
-import sistema.negocio.dominio.TipoEvento
+import sistema.negocio.dominio.evento.TipoEvento;
 import testes.global.AbstractUnidade
 
 /**

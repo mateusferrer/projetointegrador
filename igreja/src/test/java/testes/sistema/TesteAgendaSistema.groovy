@@ -15,7 +15,7 @@ import org.junit.Test
 import sistema.negocio.aplicacao.AgendaBean
 import sistema.negocio.dominio.Agenda
 import sistema.negocio.dominio.FiltroAgenda
-import sistema.negocio.dominio.TipoEvento
+import sistema.negocio.dominio.evento.TipoEvento;
 import testes.global.AbstractSistema
 import testes.unidade.TesteAgendaUnidade
 

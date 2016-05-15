@@ -6,8 +6,8 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 
-import sistema.negocio.aplicacao.IgrejaBean;
-import sistema.negocio.dominio.Congregacao;
+import sistema.negocio.aplicacao.entidade.EntidadeBean;
+import sistema.negocio.dominio.entidade.Entidade;
 
 import com.forj.cirrus.infra.exceptions.NegocioException;
 
@@ -21,12 +21,12 @@ import com.forj.cirrus.infra.exceptions.NegocioException;
 public class IgrejaConverter implements Converter {
 
 	@Inject
-	protected IgrejaBean bean;
+	protected EntidadeBean bean;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
 			String value) {
-		Congregacao retorno = null;
+		Entidade retorno = null;
 		if (value != null) {
 			try {
 				retorno = bean.getPorCodigo(new Integer(value));
@@ -41,7 +41,7 @@ public class IgrejaConverter implements Converter {
 	public String getAsString(FacesContext context, UIComponent component,
 			Object value) {
 		if (value != null) {
-			Integer codigo = ((Congregacao) value).getId();
+			Integer codigo = ((Entidade) value).getId();
 			String retorno = (codigo == null ? null : codigo.toString());
 			return retorno;
 		}

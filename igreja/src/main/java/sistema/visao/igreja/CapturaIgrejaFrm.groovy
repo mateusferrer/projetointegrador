@@ -6,8 +6,8 @@ import javax.inject.Named
 import org.springframework.context.annotation.Scope
 
 import sistema.infra.formularios.GCapturaFrm
-import sistema.negocio.aplicacao.IgrejaBeanImp
-import sistema.negocio.dominio.Congregacao
+import sistema.negocio.aplicacao.entidade.EntidadeBeanImp;
+import sistema.negocio.dominio.entidade.Entidade;
 import sistema.visao.membro.MembroFrm
 import sistema.visao.secretaria.SecretariaFrm
 
@@ -22,7 +22,7 @@ import com.forj.cirrus.util.Bean
  */
 @Named
 @Scope(Escopo.SESSION)
-class CapturaIgrejaFrm extends GCapturaFrm<Congregacao> {
+class CapturaIgrejaFrm extends GCapturaFrm<Entidade> {
 
     /** Armazena a flag de formulario de carro **/
     static final int MEMBRO = 1;
@@ -32,7 +32,7 @@ class CapturaIgrejaFrm extends GCapturaFrm<Congregacao> {
 
     /** Armazena o serviço de negocio. **/
     @Inject
-    IgrejaBeanImp bean;
+    EntidadeBeanImp bean;
 
     /** Armazena o formulario de membro. **/
     @Inject
@@ -61,7 +61,7 @@ class CapturaIgrejaFrm extends GCapturaFrm<Congregacao> {
 
     /** {@inheritDoc} */
     @Override
-    void capturar(Congregacao objeto) {
+    void capturar(Entidade objeto) {
         if (processo == MEMBRO) {
             Bean.copiarPropriedades(membroFrm.dominio.igreja, objeto)
         } else if (processo == IGREJA_RESPONSAVEL) {

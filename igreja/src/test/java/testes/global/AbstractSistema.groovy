@@ -40,7 +40,6 @@ abstract class AbstractSistema extends Tdd {
 	protected FacadeJdbc facadeJdbc;
 
 	/** Recria a base a ciclo de testes. */
-	@Before
 	void zeraBase() {
 		if (zeraBase) {
 			String script = new File(getClass().getResource(PATH_SCRIPT).getFile()).text

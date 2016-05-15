@@ -7,7 +7,7 @@ import javax.inject.Named
 import org.junit.Assert
 import org.junit.Test
 
-import sistema.negocio.dominio.Membro
+import sistema.negocio.dominio.membro.Membro;
 import testes.global.AbstractSistema
 import testes.unidade.TesteMembroUnidade
 
@@ -33,7 +33,7 @@ class TesteMembroSistema extends AbstractSistema {
 
     /** Armazena o teste de cargo eclesiástico. **/
     @Inject
-    TesteIgrejaSistema testeIgreja;
+    TesteEntidadeSistema testeIgreja;
 
     /**
      * Não deve inserir.

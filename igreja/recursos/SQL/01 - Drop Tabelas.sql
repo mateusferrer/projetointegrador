@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS agendamento;
 DROP TABLE IF EXISTS membro_administrativo;
 DROP TABLE IF EXISTS diretoria;
 DROP TABLE IF EXISTS membro;
-DROP TABLE IF EXISTS igreja;
+DROP TABLE IF EXISTS entidade;
 DROP TABLE IF EXISTS tipo_evento;
 DROP TABLE IF EXISTS funcao;
 DROP TABLE IF EXISTS tipo_membro;

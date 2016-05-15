@@ -1,4 +1,4 @@
-package sistema.negocio.dominio;
+package sistema.negocio.dominio.entidade;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,72 +24,71 @@ import com.forj.cirrus.util.validacao.Val;
  * @since 26/11/2015
  */
 @Entity
-@Table(name = "congregacao")
+@Table(name = "entidade")
 @NamedQueries({
-		@NamedQuery(name = Congregacao.TODOS, query = "select c from Congregacao c"),
-		@NamedQuery(name = Congregacao.POR_CODIGO, query = "select c from Congregacao c where c.id = ?") })
-public class Congregacao extends AbstractDominio {
-
-	/** Versão da classe. **/
-	private static final long serialVersionUID = -7179268262691485857L;
+		@NamedQuery(name = Entidade.TODOS, query = "select c from Entidade c"),
+		@NamedQuery(name = Entidade.POR_CODIGO, query = "select c from Entidade c where c.id = ?") })
+public class Entidade extends AbstractDominio {
 
 	/** Armazena o oql que busca todos. **/
-	public static final String TODOS = "igreja.todos";
+	public static final String TODOS = "entidade.todos";
 
 	/** Armazena o oql que busca todos. **/
-	public static final String POR_CODIGO = "igreja.porCodigo";
+	public static final String POR_CODIGO = "entidade.porCodigo";
 
 	/** Armazena o id do banco de dados. **/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cd_congregacao")
+	@Column(name = "cd_entidade")
 	private Integer id;
 
 	/** Armazena a razão social. **/
 	@Obrigatorio(rotulo = "Razão Social")
 	@TamanhoMaximo(rotulo = "Razão Social", maximo = 100)
-	@Column(name = "tx_razao")
+	@Column(name = "tx_razao_social")
 	private String razao;
 
 	/** Armazena o nome fantasia. **/
 	@Obrigatorio(rotulo = "Nome Fantasia")
 	@TamanhoMaximo(rotulo = "Nome Fantasia", maximo = 100)
-	@Column(name = "tx_fantasia")
+	@Column(name = "tx_nome_fantasia")
 	private String fantasia;
 
 	/** Armazena o cnpj. **/
 	@Obrigatorio(rotulo = "Cnpj")
 	@TamanhoMaximo(rotulo = "Cnpj", maximo = 14)
-	@Column(name = "tx_cnpj")
+	@Column(name = "sq_cnpj")
 	private String cnpj;
 
 	/** Armazena o cep. **/
 	@Obrigatorio(rotulo = "Cep")
 	@TamanhoMaximo(rotulo = "Cep", maximo = 8)
-	@Column(name = "tx_cep")
+	@Column(name = "sq_cep")
 	private Long cep;
 
 	/** Armazena o endereço. **/
 	@Obrigatorio(rotulo = "Endereço")
 	@TamanhoMaximo(rotulo = "Endereço", maximo = 100)
-	@Column(name = "tx_logradouro")
-	private String logradouro;
+	@Column(name = "tx_endereco")
+	private String endereco;
 
 	/** Armazena o número do logradouro. **/
 	@Obrigatorio(rotulo = "Nº Endereço")
 	@TamanhoMaximo(rotulo = "Nº Endereço", maximo = 5)
-	@Column(name = "nr_logradouro")
-	private Integer numLogradouro;
+	@Column(name = "nr_endereco")
+	private Integer numero;
 
 	/** Armazena o estado. **/
 	@Obrigatorio(rotulo = "Estado")
-	@Column(name = "tx_estado")
-	private Estado estado;
+	@Column(name = "in_estado")
+	@TamanhoMaximo(rotulo = "Estado", maximo = 2)
+	private String estado;
 
 	/** Armazena a cidade. **/
 	@Obrigatorio(rotulo = "Cidade")
-	@Column(name = "tx_cidade")
-	private Cidade cidade;
+	@Column(name = "nm_cidade")
+	@TamanhoMaximo(rotulo = "Cidade", maximo = 50)
+	private String cidade;
 
 	/** Armazena o email. **/
 	@TamanhoMaximo(rotulo = "Email", maximo = 100)
@@ -99,53 +98,39 @@ public class Congregacao extends AbstractDominio {
 	/** Armazena o telefone. **/
 	@Obrigatorio(rotulo = "Telefone")
 	@TamanhoMaximo(rotulo = "Telefone", maximo = 11)
-	@Column(name = "tx_telefone")
+	@Column(name = "sq_telefone")
 	private String telefone;
 
 	/** Armazena o tipo da igreja (Filial ou Matriz). **/
-	@Obrigatorio(rotulo = "Tipo Igreja")
-	@Column(name = "tx_tipo")
-	private TipoIgreja tipo;
+	@Obrigatorio(rotulo = "Tipo Congregação")
+	@Column(name = "tp_entidade")
+	private TipoEntidade tipo;
 
 	/** Armazena a igreja matriz. **/
-	@Column(name = "cd_igreja_matriz")
-	private Congregacao igreja;
+	@Column(name = "cd_matriz")
+	private Entidade matriz;
 
 	/** Cria um novo objeto com valores padrões. */
-	public Congregacao() {
+	public Entidade() {
 	}
 
-	/**
-	 * Cria um novo objeto com valores padrões.
-	 * @param razao a ser informada.
-	 * @param fantasia a ser informada.
-	 * @param cnpj a ser informado.
-	 * @param cep a ser informado.
-	 * @param logradouro a ser informado.
-	 * @param numLogradouro a ser informado.
-	 * @param estado a ser informado.
-	 * @param cidade a ser informada.
-	 * @param email a ser informado.
-	 * @param telefone a ser informado.
-	 * @param tipo a ser informado.
-	 * @param igreja a ser informada.
-	 */
-	public Congregacao(String razao, String fantasia, String cnpj, Long cep,
-			String logradouro, Integer numLogradouro, Estado estado,
-			Cidade cidade, String email, String telefone, TipoIgreja tipo,
-			Congregacao igreja) {
+	/** Cria um novo objeto com valores definidos. */
+	public Entidade(String razao, String fantasia, String cnpj, Long cep,
+			String endereco, Integer numero, String estado, String cidade,
+			String email, String telefone, TipoEntidade tipo, Entidade matriz) {
+		super();
 		this.razao = razao;
 		this.fantasia = fantasia;
 		this.cnpj = cnpj;
 		this.cep = cep;
-		this.logradouro = logradouro;
-		this.numLogradouro = numLogradouro;
+		this.endereco = endereco;
+		this.numero = numero;
 		this.estado = estado;
 		this.cidade = cidade;
 		this.email = email;
 		this.telefone = telefone;
 		this.tipo = tipo;
-		this.igreja = igreja;
+		this.matriz = matriz;
 	}
 
 	/**
@@ -154,7 +139,7 @@ public class Congregacao extends AbstractDominio {
 	 * @return descrição do tipo da igreja.
 	 */
 	public String getDescricaoTipoIgreja() {
-		return TipoIgreja.getInstance(tipo);
+		return TipoEntidade.getInstance(this.tipo);
 	}
 
 	/** {@inheritDoc} */
@@ -162,9 +147,9 @@ public class Congregacao extends AbstractDominio {
 	public void validar() throws NegocioException {
 		super.validar();
 		MsgErro erros = new MsgErro();
-		if (tipo.equals(TipoIgreja.FILIAL)) {
-			if (Val.vazio(igreja)) {
-				erros.campoObrigatorio("Igreja Matriz");
+		if (tipo.equals(TipoEntidade.FILIAL)) {
+			if (Val.vazio(this.matriz)) {
+				erros.campoObrigatorio("Entidade Matriz");
 			}
 		}
 		erros.gerarErrosNegocio();
@@ -174,6 +159,14 @@ public class Congregacao extends AbstractDominio {
 	@Override
 	public void limpar() {
 		super.limpar();
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getRazao() {
@@ -208,20 +201,36 @@ public class Congregacao extends AbstractDominio {
 		this.cep = cep;
 	}
 
-	public String getLogradouro() {
-		return logradouro;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
-	public Integer getNumLogradouro() {
-		return numLogradouro;
+	public Integer getNumero() {
+		return numero;
 	}
 
-	public void setNumLogradouro(Integer numLogradouro) {
-		this.numLogradouro = numLogradouro;
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
 	public String getEmail() {
@@ -240,40 +249,29 @@ public class Congregacao extends AbstractDominio {
 		this.telefone = telefone;
 	}
 
-	public TipoIgreja getTipo() {
+	public TipoEntidade getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(TipoIgreja tipo) {
+	public void setTipo(TipoEntidade tipo) {
 		this.tipo = tipo;
 	}
 
-	public Congregacao getIgreja() {
-		return igreja;
+	public Entidade getMatriz() {
+		return matriz;
 	}
 
-	public void setIgreja(Congregacao igreja) {
-		this.igreja = igreja;
+	public void setMatriz(Entidade matriz) {
+		this.matriz = matriz;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public Estado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	public Cidade getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
+	@Override
+	public String toString() {
+		return "Entidade [id=" + id + ", razao=" + razao + ", fantasia="
+				+ fantasia + ", cnpj=" + cnpj + ", cep=" + cep + ", endereco="
+				+ endereco + ", numero=" + numero + ", estado=" + estado
+				+ ", cidade=" + cidade + ", email=" + email + ", telefone="
+				+ telefone + ", tipo=" + tipo + ", matriz=" + matriz + "]";
 	}
 
 }
