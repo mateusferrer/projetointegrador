@@ -3,6 +3,7 @@ package testes.unidade
 import org.junit.Test
 
 import sistema.negocio.dominio.membro.Membro;
+import sistema.negocio.enums.Status;
 import testes.global.AbstractUnidade
 
 /**
@@ -13,47 +14,43 @@ import testes.global.AbstractUnidade
  */
 class TesteMembroUnidade extends AbstractUnidade {
 
-    /** Deve validar todos os campos obrigatório. **/
-    @Test
-    void deveValidarObrigatorios() {
-        validarObrigatorios(new Membro())
-    }
+	/** Deve validar todos os campos obrigatório. **/
+	@Test
+	void deveValidarObrigatorios() {
+		validarObrigatorios(new Membro())
+	}
 
-    /** Deve validar todos os campos com tamanho máximo. **/
-    @Test
-    void deveValidarTamanhoMaximo() {
-        validarInvalidos(fabricarTamanhoInvalido())
-    }
+	/** Deve validar todos os campos com tamanho máximo. **/
+	@Test
+	void deveValidarTamanhoMaximo() {
+		validarInvalidos(fabricarTamanhoInvalido())
+	}
 
-    /** Deve validar todos os campos com sucesso. **/
-    @Test
-    void deveValidarSucesso() {
-        validarSucesso(fabricar())
-    }
+	/** Deve validar todos os campos com sucesso. **/
+	@Test
+	void deveValidarSucesso() {
+		validarSucesso(fabricar())
+	}
 
-    /**
-     * Fabrica um membro válido para teste.
-     * @return membro válido para teste.
-     */
-    static def fabricar() {
-        new Membro(id: 1, nome: "Wagner Soares", cpf: gerarLong(11).toString(), cep: gerarLong(8),
-        logradouro: gerarTexto(30), numLogradouro: gerarInteger(2), estado: gerarTexto(50),
-        cidade: gerarTexto(50), email: gerarTexto(30), telefone: gerarTexto(10),
-        celular: gerarTexto(10), sexo: "M", dataNascimento: new Date(), dataBatismo: new Date(),
-        dataCadastro: new Date(), registroBatismo: gerarLong(5), status: "A",
-        cargo: TesteCargoEclesiasticoUnidade.fabricar(), igreja: TesteEntidadeUnidade.fabricar())
-    }
+	/**
+	 * Fabrica um membro válido para teste.
+	 * @return membro válido para teste.
+	 */
+	static def fabricar() {
+		//        new Membro(nome: gerarTexto(50), rg: gerarTexto(9), cpf: gerarTexto(11), cep: gerarLong(8),
+		//			endereco: gerarTexto(100), gerarInteger(5), estado: , cidade, email, telefone, celular, status, motivo, entidade, tipo, sexo, dataInclusao, dataAlteracao, usuario)
+	}
 
-    /**
-     * Fabrica um membro inválido para teste.
-     * @return membro inválido para teste.
-     */
-    static def fabricarTamanhoInvalido() {
-        new Membro(nome: gerarTexto(120), cpf: gerarLong(12).toString(), cep: gerarLong(10),
-        logradouro: gerarTexto(120), numLogradouro: gerarInteger(8), estado: gerarTexto(60),
-        cidade: gerarTexto(60), email: gerarTexto(120), telefone: gerarTexto(20),
-        celular: gerarTexto(20), sexo: "MM", dataNascimento: new Date(), dataBatismo: new Date(),
-        dataCadastro: new Date(), registroBatismo: gerarLong(5), status: "AA",
-        cargo: TesteCargoEclesiasticoUnidade.fabricar(), igreja: TesteEntidadeUnidade.fabricar())
-    }
+	/**
+	 * Fabrica um membro inválido para teste.
+	 * @return membro inválido para teste.
+	 */
+	static def fabricarTamanhoInvalido() {
+		new Membro(nome: gerarTexto(120), cpf: gerarLong(12).toString(), cep: gerarLong(10),
+		logradouro: gerarTexto(120), numLogradouro: gerarInteger(8), estado: gerarTexto(60),
+		cidade: gerarTexto(60), email: gerarTexto(120), telefone: gerarTexto(20),
+		celular: gerarTexto(20), sexo: "MM", dataNascimento: new Date(), dataBatismo: new Date(),
+		dataCadastro: new Date(), registroBatismo: gerarLong(5), status: Status.A,
+		cargo: TesteCargoEclesiasticoUnidade.fabricar(), igreja: TesteEntidadeUnidade.fabricar())
+	}
 }

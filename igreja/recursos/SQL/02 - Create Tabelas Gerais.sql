@@ -90,7 +90,6 @@ CREATE TABLE membro (
     tx_motivo VARCHAR(100) NULL,
     in_batizado CHAR(1) NOT NULL,
     dt_batismo DATE NULL,
-    nr_registro_batismo INT(10) NULL,
     cd_entidade INT(10) NOT NULL,
     cd_tipo INT(10) NOT NULL,
     dt_inclusao datetime NOT NULL,

@@ -3,7 +3,7 @@ package testes.unidade;
 import org.junit.Test
 
 import sistema.negocio.dominio.entidade.Entidade;
-import sistema.negocio.dominio.entidade.TipoEntidade;
+import sistema.negocio.enums.TipoEntidade;
 import testes.global.AbstractUnidade
 
 /**
@@ -40,7 +40,7 @@ class TesteEntidadeUnidade extends AbstractUnidade {
 		cnpj: gerarLong(14).toString(), cep: gerarLong(8),
 		endereco: "R. da Entidade", numero: gerarLong(3), estado: "PR", cidade: "Londrina",
 		email: "entidade@crista.com.br", telefone: gerarLong(11).toString(),
-		tipo: TipoEntidade.MATRIZ, matriz: null)
+		tipo: TipoEntidade.M, matriz: null)
 	}
 
 	/**
@@ -52,6 +52,6 @@ class TesteEntidadeUnidade extends AbstractUnidade {
 		cnpj: gerarLong(15).toString(), cep: gerarLong(9),
 		endereco: gerarTexto(101), numero: gerarLong(6), estado: gerarTexto(3), cidade: gerarTexto(51),
 		email: gerarTexto(101), telefone: gerarLong(12).toString(),
-		tipo: TipoEntidade.MATRIZ, matriz: null)
+		tipo: TipoEntidade.M, matriz: null)
 	}
 }
