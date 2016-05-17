@@ -12,11 +12,35 @@
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
 
-	<!-- Autenticação e Autorização Cirrus JSF Facelets 
-	<lifecycle>
-		<phase-listener>com.forj.cirrus.infra.autenticacao.servico.autenticador.FaseAutorizacao</phase-listener>
-	</lifecycle>
-	-->
+	<!-- Autenticação e Autorização Cirrus JSF Facelets <lifecycle> <phase-listener>com.forj.cirrus.infra.autenticacao.servico.autenticador.FaseAutorizacao</phase-listener> 
+		</lifecycle> -->
+
+	<navigation-rule>
+
+		<navigation-case>
+			<from-outcome>Principal</from-outcome>
+			<to-view-id>index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>ConsultaEntidade</from-outcome>
+			<to-view-id>sistema/entidade/lista.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>CadastraEntidade</from-outcome>
+			<to-view-id>sistema/entidade/detalhe.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>ConsultaMembro</from-outcome>
+			<to-view-id>sistema/membro/lista.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>CadastraMembro</from-outcome>
+			<to-view-id>sistema/membro/detalhe.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
 
 </faces-config>
  

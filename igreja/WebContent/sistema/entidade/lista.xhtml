@@ -1,58 +1,28 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
-	xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
 	xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
 	<ui:define name="titulo">#{entidadeFrm.titulo}</ui:define>
 	<ui:define name="processo">
-
-		<h:form styleClass="navbar-form navbar-left">
-			<table align="center" class="table">
-				<tr>
-					<b:panelGrid colSpans="2,10">
-						<b:inputText placeholder="Nome Entidade"
-							value="#{entidadeFrm.nomeEntidade}" size="40" maxlength="50" />
-						<b:button outcome="/sistema/entidade/detahe.xhtml"
-							value="Pesquisar »" />
-					</b:panelGrid>
-				</tr>
-				<tr>
-					<b:dataTable value="#{entidadeFrm.colecao}" var="car"
-						id="bcarPool2" styleClass="table table-striped table-bordered"
-						style="width:100%" fixedHeader="true" responsive="true" lang="it">
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Brand" />
-							</f:facet>
-							<h:outputText value="#{car.brand}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Type" />
-							</f:facet>
-							<h:inputText value="#{car.type}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Color" />
-							</f:facet>
-							<h:outputText value="#{car.color}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Year" />
-							</f:facet>
-							<h:outputText value="#{car.year}" />
-						</h:column>
-					</b:dataTable>
-				</tr>
-			</table>
+		<h:form styleClass="navbar-form">
+			<b:dataTable value="#{carPool.carPool}" var="car" id="bcarPool"
+				styleClass="table table-striped table-bordered" style="width:100%; heigth: 20%; background-color: ">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Brand" />
+					</f:facet>
+					<h:outputText value="#{car.brand}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Type" />
+					</f:facet>
+					<h:inputText value="#{car.type}" />
+				</h:column>
+			</b:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

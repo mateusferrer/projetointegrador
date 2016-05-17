@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14376519070430" configfile="/igreja/WebContent/WEB-INF/config/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14376519070430" configfile="/igreja/WebContent/WEB-INF/config/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf14635094274135" outlinks="pf146350945466812 pf146350949985114 pf146350951437917 pf146350953422919 pf146350953422920" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf146350945466813" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf146350945466812" path="index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="sistema/entidade/lista.xhtml" id="pf146350949985115" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf146350949985114" path="sistema/entidade/lista.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="sistema/entidade/detalhe.xhtml" id="pf146350951437918" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf146350951437917" path="sistema/entidade/detalhe.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="sistema/membro/lista.xhtml" id="pf146350953422921" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf146350953422919" path="sistema/membro/lista.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="sistema/membro/detalhe.xhtml" id="pf146350953422922" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf146350953422920" path="sistema/membro/detalhe.xhtml"/>
+  <links id="pf146350945466812" target="pf146350945466813" source="pf14635094274135" outcome="Principal"/>
+  <links id="pf146350949985114" target="pf146350949985115" source="pf14635094274135" outcome="ConsultaEntidade"/>
+  <links id="pf146350951437917" target="pf146350951437918" source="pf14635094274135" outcome="CadastraEntidade"/>
+  <links id="pf146350953422919" target="pf146350953422921" source="pf14635094274135" outcome="ConsultaMembro"/>
+  <links id="pf146350953422920" target="pf146350953422922" source="pf14635094274135" outcome="CadastraMembro"/>
+</pageflow:Pageflow>
