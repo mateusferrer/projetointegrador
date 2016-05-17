@@ -45,7 +45,7 @@ public class TipoMembro extends AbstractDominio {
 	/** Armazena a descrição. **/
 	@Obrigatorio(rotulo = "Descrição")
 	@TamanhoMaximo(rotulo = "Descrição", maximo = 50)
-	@Column(name = "ds_tipo_evento")
+	@Column(name = "ds_tipo_membro")
 	public String descricao;
 
 	/** Armazena a data de inclusão do registro. **/

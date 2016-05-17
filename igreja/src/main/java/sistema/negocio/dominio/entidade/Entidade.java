@@ -48,13 +48,13 @@ public class Entidade extends AbstractDominio {
 
 	/** Armazena a razão social. **/
 	@Obrigatorio(rotulo = "Razão Social")
-	@TamanhoMaximo(rotulo = "Razão Social", maximo = 100)
+	@TamanhoMaximo(rotulo = "Razão Social", maximo = 50)
 	@Column(name = "tx_razao_social")
 	private String razao;
 
 	/** Armazena o nome fantasia. **/
 	@Obrigatorio(rotulo = "Nome Fantasia")
-	@TamanhoMaximo(rotulo = "Nome Fantasia", maximo = 100)
+	@TamanhoMaximo(rotulo = "Nome Fantasia", maximo = 50)
 	@Column(name = "tx_nome_fantasia")
 	private String fantasia;
 
@@ -72,7 +72,7 @@ public class Entidade extends AbstractDominio {
 
 	/** Armazena o endereço. **/
 	@Obrigatorio(rotulo = "Endereço")
-	@TamanhoMaximo(rotulo = "Endereço", maximo = 100)
+	@TamanhoMaximo(rotulo = "Endereço", maximo = 50)
 	@Column(name = "tx_endereco")
 	private String endereco;
 

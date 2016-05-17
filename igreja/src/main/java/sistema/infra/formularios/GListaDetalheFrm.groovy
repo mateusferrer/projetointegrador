@@ -13,10 +13,10 @@ import com.forj.cirrus.util.Bean
  */class GListaDetalheFrm<T extends Dominio> extends AbstractListaDetalheFrm<T> {
 
     /** Armazena a navegação JSF . **/
-    static String LISTA = "lista.xhtml"
+    protected static String LISTA = "lista.xhtml"
 
     /** Armazena a navegação JSF . **/
-    static String DETALHE = "detalhe.xhtml"
+    protected static String DETALHE = "detalhe.xhtml"
 
     protected Object dominio;
 

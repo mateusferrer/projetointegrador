@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import sistema.negocio.dominio.entidade.Entidade;
+import sistema.negocio.enums.Sexo;
 import sistema.negocio.enums.Status;
 
 import com.forj.cirrus.negocio.dominio.beanvalidation.Obrigatorio;
@@ -25,15 +26,15 @@ import com.forj.cirrus.negocio.dominio.beanvalidation.TamanhoMaximo;
 import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 
 /**
- * Gerenciador das regras de negócio para o domínio <b>Membro</b>.
- * @version 1.0 - 26/11/2015
- * @since 26/11/2015
+ * Gerenciador das regras de negócio para o domínio <b>Membro</b>
+ * @version 1.0 - 16/05/2016
+ * @since 16/05/2016
  */
 @Entity
 @Table(name = "membro")
 @NamedQueries({
 		@NamedQuery(name = Membro.TODOS, query = "select c from Membro c"),
-		@NamedQuery(name = Membro.TODOS, query = "select c from Membro c") })
+		@NamedQuery(name = Membro.POR_NOME, query = "select c from Membro c where c.nome like ?") })
 public class Membro extends AbstractDominio {
 
 	/** Armazena o oql que busca todos. **/
@@ -135,10 +136,10 @@ public class Membro extends AbstractDominio {
 	private TipoMembro tipo;
 
 	/** Armazena o sexo. **/
-	@TamanhoMaximo(rotulo = "Sexo", maximo = 1)
 	@Obrigatorio(rotulo = "Sexo")
 	@Column(name = "in_sexo")
-	private String sexo;
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
 
 	/** Armazena o registro de batismo. **/
 	// @TamanhoMaximo(rotulo = "Registro Batismo", maximo = 10)
@@ -178,9 +179,8 @@ public class Membro extends AbstractDominio {
 	public Membro(String nome, String rg, String cpf, Long cep,
 			String endereco, Integer numero, String estado, String cidade,
 			String email, String telefone, String celular, Status status,
-			String motivo, Entidade entidade, TipoMembro tipo, String sexo,
+			String motivo, Entidade entidade, TipoMembro tipo, Sexo sexo,
 			Date dataInclusao, Date dataAlteracao, String usuario) {
-		super();
 		this.nome = nome;
 		this.rg = rg;
 		this.cpf = cpf;
@@ -204,6 +204,7 @@ public class Membro extends AbstractDominio {
 
 	/**
 	 * Recupera a descrição do status do membro..
+	 * 
 	 * @return descricao do status.
 	 */
 	public String getDescricaoStatus() {
@@ -339,11 +340,11 @@ public class Membro extends AbstractDominio {
 		this.tipo = tipo;
 	}
 
-	public String getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 
@@ -411,5 +412,5 @@ public class Membro extends AbstractDominio {
 				+ sexo + ", dataInclusao=" + dataInclusao + ", dataAlteracao="
 				+ dataAlteracao + ", usuario=" + usuario + "]";
 	}
-	
+
 }

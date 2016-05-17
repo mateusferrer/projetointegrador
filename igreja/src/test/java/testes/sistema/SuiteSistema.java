@@ -12,6 +12,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 27/11/2015
  */
 @RunWith(Suite.class)
-@SuiteClasses({ TesteTipoEventoSistema.class })
+@SuiteClasses({ TesteTipoEventoSistema.class, TesteTipoMembroSistema.class,
+		TesteEntidadeSistema.class, TesteMembroSistema.class })
 public class SuiteSistema {
 }

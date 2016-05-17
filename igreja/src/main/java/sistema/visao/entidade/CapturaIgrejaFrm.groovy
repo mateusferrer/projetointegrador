@@ -1,4 +1,4 @@
-package sistema.visao.igreja
+package sistema.visao.entidade
 
 import javax.inject.Inject
 import javax.inject.Named

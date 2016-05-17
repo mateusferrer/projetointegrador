@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:rich="http://richfaces.org/rich"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:b="http://bootsfaces.net/ui">
 <ui:composition>
-	<h:form style-class="form">
-		<b:navBar brand="SAIE">
+	<h:form>
+		<b:navBar brand="SAECE" brandhref="/index.xhtml" fixed="top">
 			<b:navbarLinks>
 				<b:dropMenu value="Cadastros">
-					<b:navLink value="Tipo Evento" action="#{menuFrm.navegar}" outcome="/sistema/tipoevento/lista.faces"
+					<b:navLink value="Entidade" outcome="sistema/entidade/lista.xhtml"
+						action="entidadeFrm.entrar" />
+					<b:navLink value="Tipo Membro" action="#{menuFrm.navegar}"
+						outcome="/sistema/tipomembro/lista.faces"
+						onclick="#{tipoMembroFrm.entrar()}"></b:navLink>
+					<b:navLink value="Membro" action="#{menuFrm.navegar}"
+						outcome="/sistema/membro/lista.faces"
+						onclick="#{membroFrm.entrar()}"></b:navLink>
+					<b:navLink value="Tipo Evento" action="#{menuFrm.navegar}"
+						outcome="/sistema/tipoevento/lista.faces"
 						onclick="#{tipoEventoFrm.entrar()}"></b:navLink>
 				</b:dropMenu>
 			</b:navbarLinks>

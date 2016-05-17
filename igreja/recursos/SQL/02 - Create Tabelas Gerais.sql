@@ -100,8 +100,7 @@ CREATE TABLE membro (
     FOREIGN KEY (cd_entidade) REFERENCES entidade (cd_entidade),
     FOREIGN KEY (cd_tipo) REFERENCES tipo_membro (cd_tipo),
     UNIQUE KEY uq_membro_rg (sq_rg),
-    UNIQUE KEY uq_membro_cpf (sq_cpf),
-    UNIQUE KEY uq_membro_nr_registro_batismo (nr_registro_batismo)
+    UNIQUE KEY uq_membro_cpf (sq_cpf)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 /*
