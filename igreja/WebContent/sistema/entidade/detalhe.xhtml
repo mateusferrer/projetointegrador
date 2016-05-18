@@ -9,31 +9,31 @@
 	<ui:define name="processo">
 		<h:form id="frmDetalhe">
 			<fieldset>
-				<table align="center">
+				<table align="center" class="table">
 					<tr>
 						<td><h:panelGroup id="areaDadosDetalhe" layout="block">
 								<table>
 									<tr>
 										<td class="rotulo">Razão Social:</td>
-										<td><h:inputText value="#{igrejaFrm.dominio.razao}" /></td>
+										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.razao}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Nome Fantasia:</td>
-										<td><h:inputText value="#{igrejaFrm.dominio.fantasia}" /></td>
+										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.fantasia}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cnpj:</td>
-										<td><h:inputText value="#{igrejaFrm.dominio.cnpj}" maxlength="14" /></td>
+										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.cnpj}" maxlength="14" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cep:</td>
-										<td><h:inputText value="#{igrejaFrm.dominio.cep}" maxlength="8" /></td>
+										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.cep}" maxlength="8" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Endereço:</td>
-										<td><h:inputText value="#{igrejaFrm.dominio.logradouro}" /></td>
+										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.logradouro}" /></td>
 										<td class="rotulo">N°:</td>
-										<td><h:inputText value="#{igrejaFrm.dominio.numLogradouro}" /></td>
+										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.numLogradouro}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Estado:</td>
@@ -57,11 +57,11 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Email:</td>
-										<td><h:inputText value="#{igrejaFrm.dominio.email}" /></td>
+										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.email}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Telefone:</td>
-										<td><h:inputText value="#{igrejaFrm.dominio.telefone}" /></td>
+										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.telefone}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Tipo Igreja:</td>
@@ -79,10 +79,9 @@
 							</h:panelGroup></td>
 					</tr>
 					<tr>
-						<td align="center"><cirrus:botaoGravarCancelar id="bts" actionGravar="#{igrejaFrm.gravar}"
-								data="#{igrejaFrm.erros}" alterar="#{igrejaFrm.alterar}" actionCancelar="#{igrejaFrm.cancelar}"
-								container="frmDetalhe:bts">
-							</cirrus:botaoGravarCancelar></td>
+						<td align="center"><b:commandButton value="Salvar" styleClass="btn btn-default"
+								action="#{entidadeFrm.salvar}" /> <b:commandButton value="Cancelar" styleClass="btn btn-default"
+								action="#{entidadeFrm.cancelar}" /></td>
 					</tr>
 				</table>
 			</fieldset>
