@@ -7,21 +7,16 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j" xmlns:b="http://bootsfaces.net/ui">
 <ui:composition>
-	<h:form>
+	<h:form method="post">
 		<b:navBar brand="SAECE" inverse="true" fixed="top">
 			<b:navbarLinks>
 				<b:dropMenu value="Cadastros">
-					<b:navLink value="Entidade" outcome="sistema/entidade/lista.xhtml"
-						action="entidadeFrm.entrar" />
-					<b:navLink value="Tipo Membro" action="#{menuFrm.navegar}"
-						outcome="/sistema/tipomembro/lista.faces"
-						onclick="#{tipoMembroFrm.entrar()}"></b:navLink>
-					<b:navLink value="Membro" action="#{menuFrm.navegar}"
-						outcome="/sistema/membro/lista.faces"
-						onclick="#{membroFrm.entrar()}"></b:navLink>
-					<b:navLink value="Tipo Evento" action="#{menuFrm.navegar}"
-						outcome="/sistema/tipoevento/lista.faces"
-						onclick="#{tipoEventoFrm.entrar()}"></b:navLink>
+					<b:navCommandLink value="Entidade"
+						action="#{menuFrm.navegarEntidade}" />
+				</b:dropMenu>
+				<b:dropMenu value="Tesouraria">
+					<b:navCommandLink value="Campanha"
+						action="#{menuFrm.navegarCampanha}" />
 				</b:dropMenu>
 			</b:navbarLinks>
 		</b:navBar>

@@ -41,7 +41,7 @@ public class Campanha extends AbstractDominio {
     public static final String TODOS = "campanha.todos";
 
     /** Armazena o oql que busca todos. **/
-    public static final String POR_DESCRICAO = "campanha.todos";
+    public static final String POR_DESCRICAO = "campanha.porDescricao";
 
     /** Armazena o código da campanha. **/
     @Id

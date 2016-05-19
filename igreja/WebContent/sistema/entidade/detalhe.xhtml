@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
 	xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
-	<ui:define name="titulo">#{igrejaFrm.titulo}</ui:define>
+	<ui:define name="titulo">#{entidadeFrm.titulo}</ui:define>
 	<ui:define name="processo">
 		<h:form id="frmDetalhe">
 			<fieldset>
@@ -15,72 +19,64 @@
 								<table>
 									<tr>
 										<td class="rotulo">Razão Social:</td>
-										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.razao}" /></td>
+										<td><h:inputText styleClass="form-control"
+												value="#{entidadeFrm.dominio.razao}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Nome Fantasia:</td>
-										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.fantasia}" /></td>
+										<td><h:inputText styleClass="form-control"
+												value="#{entidadeFrm.dominio.fantasia}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cnpj:</td>
-										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.cnpj}" maxlength="14" /></td>
+										<td><h:inputText styleClass="form-control"
+												value="#{entidadeFrm.dominio.cnpj}" maxlength="14" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cep:</td>
-										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.cep}" maxlength="8" /></td>
+										<td><h:inputText styleClass="form-control"
+												value="#{entidadeFrm.dominio.cep}" maxlength="8" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Endereço:</td>
-										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.logradouro}" /></td>
+										<td><h:inputText styleClass="form-control"
+												value="#{entidadeFrm.dominio.endereco}" /></td>
 										<td class="rotulo">N°:</td>
-										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.numLogradouro}" /></td>
-									</tr>
-									<tr>
-										<td class="rotulo">Estado:</td>
-										<td><rich:autocomplete mode="cachedAjax" minChars="1" autofill="false" selectFirst="false"
-												var="estado" converter="estadoConverter" autocompleteMethod="#{igrejaFrm.pesquisarPorNome}">
-											</rich:autocomplete></td>
-
-										<td><h:selectOneMenu value="#{igrejaFrm.estadoSelecionado}" converter="estadoConverter">
-												<f:selectItems value="#{igrejaFrm.estados}" var="estado" itemValue="#{estado.id}" />
-												<f:ajax event="change" render="cmboCidades" listener="#{igrejaFrm.buscarCidades()}" />
-											</h:selectOneMenu></td>
-									</tr>
-									<tr>
-										<td class="rotulo">Cidade:</td>
-										<td><rich:autocomplete mode="cachedAjax" minChars="1" autofill="false" selectFirst="false"
-												autocompleteMethod="#{igrejaFrm.buscarCidades()}">
-											</rich:autocomplete></td>
-										<td><h:selectOneMenu id="cmboCidades" value="#{igrejaFrm.cidadeSelecionada}">
-												<f:selectItems value="#{igrejaFrm.cidades}" />
-											</h:selectOneMenu></td>
+										<td><h:inputText styleClass="form-control"
+												value="#{entidadeFrm.dominio.numero}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Email:</td>
-										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.email}" /></td>
+										<td><h:inputText styleClass="form-control"
+												value="#{entidadeFrm.dominio.email}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Telefone:</td>
-										<td><h:inputText styleClass="form-control" value="#{igrejaFrm.dominio.telefone}" /></td>
+										<td><h:inputText styleClass="form-control"
+												value="#{entidadeFrm.dominio.telefone}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Tipo Igreja:</td>
-										<td><h:selectOneRadio value="#{igrejaFrm.dominio.tipo}">
-												<f:selectItems value="#{igrejaFrm.cmboTipoIgreja}" />
+										<td><h:selectOneRadio styleClass="form-control"
+												value="#{entidadeFrm.dominio.tipo}">
+												<f:selectItems value="#{entidadeFrm.cmboTipoIgreja}" />
 											</h:selectOneRadio></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Igreja:</td>
-										<td><rich:autocomplete mode="cachedAjax" tokens="," converter="igrejaConverter" minChars="0"
-												autofill="false" selectFirst="false" autocompleteMethod="#{suggestionboxBean.complemento}">
+										<td><rich:autocomplete styleClass="form-control"
+												mode="cachedAjax" tokens="," converter="igrejaConverter"
+												minChars="0" autofill="false" selectFirst="false"
+												autocompleteMethod="#{suggestionboxBean.complemento}">
 											</rich:autocomplete></td>
 									</tr>
 								</table>
 							</h:panelGroup></td>
 					</tr>
 					<tr>
-						<td align="center"><b:commandButton value="Salvar" styleClass="btn btn-default"
-								action="#{entidadeFrm.salvar}" /> <b:commandButton value="Cancelar" styleClass="btn btn-default"
+						<td align="center"><b:commandButton value="Salvar"
+								styleClass="btn btn-default" action="#{entidadeFrm.salvar}" />
+							<b:commandButton value="Cancelar" styleClass="btn btn-default"
 								action="#{entidadeFrm.cancelar}" /></td>
 					</tr>
 				</table>

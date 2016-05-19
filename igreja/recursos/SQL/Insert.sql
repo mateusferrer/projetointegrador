@@ -46,19 +46,19 @@ insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_e
 
 -- CAMPANHA
 insert into campanha (ds_campanha, vl_campanha, nr_parcelas, cd_usuario, dt_inicial, dt_final, in_status, cd_entidade)
-	values ('Aquisição Ar Condicionado', 1400.00, 10, 'LFRANCISQU', '20160520', '20160220', 'AB', 1);
+	values ('Aquisição Ar Condicionado', 1400.00, 10, 'LFRANCISQU', '20160520', '20170220', 'AB', 1);
 
 -- CONTRIBUINTE
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 1, 140.00, '20160520', '20160220');
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 2, 140.00, '20160520', '20160220');
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 3, 140.00, '20160520', '20160220');
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 4, 140.00, '20160520', '20160220');
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 5, 140.00, '20160520', '20160220');
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 6, 140.00, '20160520', '20160220');
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 7, 140.00, '20160520', '20160220');
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 8, 140.00, '20160520', '20160220');
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 9, 140.00, '20160520', '20160220');
-insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 10, 140.00, '20160520', '20160220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 1, 140.00, '20160520', '20170220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 2, 140.00, '20160520', '20170220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 3, 140.00, '20160520', '20170220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 4, 140.00, '20160520', '20170220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 5, 140.00, '20160520', '20170220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 6, 140.00, '20160520', '20170220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 7, 140.00, '20160520', '20170220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 8, 140.00, '20160520', '20170220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 9, 140.00, '20160520', '20170220');
+insert into contribuinte (cd_campanha, cd_membro, vl_contribuido, dt_inicial, dt_final) VALUES (1, 10, 140.00, '20160520', '20170220');
 
 /* LANCAMENTOS CAMPANHA PARA CADA CONTRIBUINTE */
 
