@@ -7,8 +7,14 @@
 	<ui:define name="titulo">
 		Login
 	</ui:define>
-	<ui:define name="processo">
-		Seja bem vindo!
-	</ui:define>
-</ui:composition>
+	<body>
+		<h2>Página de Login das Tarefas</h2>
+		<form method="post">
+			User:
+			<h:inputText value="#{loginFrm.user}" />
+			<br /> Password:
+			<h:inputText styleClass="password" value="#{loginFrm.pass}" />
+			<br /> <h:commandButton value="Entrar" />
+		</form>
+	</body>
 </html>
