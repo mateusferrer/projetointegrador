@@ -25,11 +25,15 @@ import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio
 @EqualsAndHashCode(includes = "pk")
 @Entity
 @Table(name = "usuario")
-@NamedQueries([@NamedQuery(name = Usuario.TODOS, query = "select u from Usuario u")])
+@NamedQueries([@NamedQuery(name = Usuario.TODOS, query = "select u from Usuario u"),
+	@NamedQuery(name = Usuario.POR_LOGIN, query = "select u from Usuario u where u.pk = ?")])
 class Usuario extends AbstractDominio {
 
 	/** Armazena o oql que busca todos. **/
-	static final String TODOS = "usuario.todos"
+	public static final String TODOS = "usuario.todos"
+
+	/** Armazena o oql que busca todos. **/
+	public static final String POR_LOGIN = "usuario.porLogin"
 
 	/** Armazena o id do banco de dados. **/
 	@Id
