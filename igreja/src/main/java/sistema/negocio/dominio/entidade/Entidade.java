@@ -151,7 +151,8 @@ public class Entidade extends AbstractDominio {
      */
     public Entidade(
             Long id, String nome, String cnpj, Long cep, String rua, Integer numero, String bairro,
-            String estado, String cidade, String email, String telefone, TipoEntidade tipo, Entidade matriz) {
+            String estado, String cidade, String email, String telefone, TipoEntidade tipo, Entidade matriz,
+            String usuario) {
         this.id = id;
         this.nome = nome;
         this.cnpj = cnpj;
@@ -165,6 +166,7 @@ public class Entidade extends AbstractDominio {
         this.telefone = telefone;
         this.tipo = tipo;
         this.matriz = matriz;
+        this.usuario = usuario;
     }
 
     /**

@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.inject.Named;
 
+import org.springframework.context.annotation.Scope;
+
 import sistema.negocio.dominio.Usuario;
 
 import com.forj.cirrus.infra.exceptions.NegocioException;
+import com.forj.cirrus.infra.spring.Escopo;
 import com.forj.cirrus.negocio.aplicativo.DominioBeanImp;
 import com.forj.cirrus.util.WebUtils;
 import com.forj.cirrus.util.validacao.Param;
@@ -18,23 +21,23 @@ import com.forj.cirrus.util.validacao.Val;
  * @since 16/05/2016
  */
 @Named
+@Scope(Escopo.SESSION)
 public class LoginBean extends DominioBeanImp<Usuario> implements Serializable {
 
-	/**
-	 * Verifica se efetuou login no sistema.
-	 * @return verdadeiro se sim, senão falso;
-	 * @throws NegocioException
-	 *             em caso de erros.
-	 */
-	public boolean logar(String user, String pass) throws NegocioException {
-		Param.validar(user, "Usuário", pass, "Senha");
-		Usuario usuario = eao.getPrimeiro(Usuario.POR_LOGIN, user, pass);
-		if (!Val.vazio(usuario)) {
-			WebUtils.getSession().setAttribute("usuarioLogado", usuario);
-			return true;
-		} else {
-			return false;
-		}
-	}
+    /**
+     * Verifica se efetuou login no sistema.
+     * @return verdadeiro se sim, senão falso;
+     * @throws NegocioException em caso de erros.
+     */
+    public boolean logar(String user, String pass) throws NegocioException {
+        Param.validar(user, "Usuário", pass, "Senha");
+        Usuario usuario = eao.getPrimeiro(Usuario.POR_LOGIN, user, pass);
+        if (!Val.vazio(usuario)) {
+            WebUtils.getSession().setAttribute("usuarioLogado", usuario);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

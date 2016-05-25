@@ -7,6 +7,7 @@ import org.junit.Test;
 import sistema.negocio.dominio.entidade.Entidade;
 import sistema.negocio.enums.TipoEntidade;
 import testes.global.AbstractUnidade;
+import testes.util.DadosSistema;
 
 /**
  * Gerenciador de teste de unidade de {@link Entidade}.
@@ -47,7 +48,7 @@ public class TesteEntidadeUnidade extends AbstractUnidade {
         return new Entidade(
                 gerarLong(1), gerarTexto(30), gerarLong(14).toString(), gerarLong(8), gerarTexto(50),
                 gerarInteger(5), gerarTexto(50), gerarTexto(2), gerarTexto(50), null, gerarLong(11)
-                        .toString(), TipoEntidade.M, null);
+                        .toString(), TipoEntidade.M, null, DadosSistema.USUARIO);
     }
 
     /**
@@ -58,7 +59,7 @@ public class TesteEntidadeUnidade extends AbstractUnidade {
         return new Entidade(
                 gerarLong(1), gerarTexto(51), gerarLong(15).toString(), gerarLong(9), gerarTexto(51),
                 gerarInteger(6), gerarTexto(51), gerarTexto(3), gerarTexto(51), null, gerarLong(12)
-                        .toString(), TipoEntidade.M, null);
+                        .toString(), TipoEntidade.M, null, DadosSistema.USUARIO + gerarTexto(1));
     }
 
 }

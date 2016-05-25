@@ -9,6 +9,7 @@ import sistema.negocio.dominio.Campanha;
 import sistema.negocio.dominio.membro.Membro;
 import sistema.negocio.enums.Status;
 import testes.global.AbstractUnidade;
+import testes.util.DadosSistema;
 
 import com.forj.cirrus.util.facades.FacadeData;
 
@@ -48,8 +49,9 @@ public class TesteCampanhaUnidade extends AbstractUnidade {
      * @return membro válido para teste.
      */
     public static Campanha fabricar() {
-        return new Campanha(gerarLong(1), gerarTexto(30), new BigDecimal("1400.00"), 10, FacadeData
-                .adicionarMeses(new Date(), 1), Status.A, TesteEntidadeUnidade.fabricar());
+        return new Campanha(
+                gerarLong(1), gerarTexto(30), new BigDecimal("1400.00"), 10, FacadeData.adicionarMeses(
+                        new Date(), 1), Status.A, TesteEntidadeUnidade.fabricar(), DadosSistema.USUARIO);
     }
 
     /**
@@ -57,8 +59,10 @@ public class TesteCampanhaUnidade extends AbstractUnidade {
      * @return membro válido para teste.
      */
     public static Campanha fabricarInvalido() {
-        return new Campanha(gerarLong(1), gerarTexto(51), gerarValor(13), gerarInteger(3), FacadeData
-                .adicionarMeses(new Date(), 1), Status.A, TesteEntidadeUnidade.fabricar());
+        return new Campanha(
+                gerarLong(1), gerarTexto(51), gerarValor(13), gerarInteger(3), FacadeData.adicionarMeses(
+                        new Date(), 1), Status.A, TesteEntidadeUnidade.fabricar(), DadosSistema.USUARIO
+                    + gerarTexto(1));
     }
 
 }
