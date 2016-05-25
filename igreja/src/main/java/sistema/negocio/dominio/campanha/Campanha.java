@@ -1,4 +1,4 @@
-package sistema.negocio.dominio;
+package sistema.negocio.dominio.campanha;
 
 import java.math.BigDecimal;
 import java.util.Date;

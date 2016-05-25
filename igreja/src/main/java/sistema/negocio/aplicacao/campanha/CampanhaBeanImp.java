@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.inject.Named;
 
-import sistema.negocio.dominio.Campanha;
+import sistema.negocio.dominio.campanha.Campanha;
 
 import com.forj.cirrus.infra.exceptions.NegocioException;
 import com.forj.cirrus.negocio.aplicativo.DominioBeanImp;

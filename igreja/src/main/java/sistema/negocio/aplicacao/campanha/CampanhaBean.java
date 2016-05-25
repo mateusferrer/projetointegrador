@@ -3,7 +3,7 @@ package sistema.negocio.aplicacao.campanha;
 import java.io.Serializable;
 import java.util.List;
 
-import sistema.negocio.dominio.Campanha;
+import sistema.negocio.dominio.campanha.Campanha;
 
 import com.forj.cirrus.infra.exceptions.NegocioException;
 

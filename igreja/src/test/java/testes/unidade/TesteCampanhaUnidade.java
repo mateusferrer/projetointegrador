@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import sistema.negocio.dominio.Campanha;
+import sistema.negocio.dominio.campanha.Campanha;
 import sistema.negocio.dominio.membro.Membro;
 import sistema.negocio.enums.Status;
 import testes.global.AbstractUnidade;

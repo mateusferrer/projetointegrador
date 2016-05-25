@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import sistema.negocio.dominio.membro.TipoMembro;
 import testes.global.AbstractUnidade;
+import testes.util.DadosSistema;
 
 /**
  * Gerenciador de teste de unidade de {@link TipoMembro}.
@@ -44,6 +45,6 @@ public class TesteTipoMembroUnidade extends AbstractUnidade {
      * @return tipo membro válido para teste.
      */
     public static TipoMembro fabricar() {
-        return new TipoMembro(gerarLong(1), "Pastor");
+        return new TipoMembro(gerarLong(1), "Pastor", DadosSistema.USUARIO);
     }
 }

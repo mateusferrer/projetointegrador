@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import sistema.negocio.aplicacao.campanha.CampanhaBean;
 import sistema.negocio.aplicacao.entidade.EntidadeBean;
-import sistema.negocio.dominio.Campanha;
+import sistema.negocio.dominio.campanha.Campanha;
 import sistema.negocio.dominio.entidade.Entidade;
 import testes.global.AbstractSistema;
 import testes.unidade.TesteCampanhaUnidade;

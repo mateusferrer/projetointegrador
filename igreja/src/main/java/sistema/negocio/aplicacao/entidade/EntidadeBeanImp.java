@@ -34,7 +34,7 @@ public class EntidadeBeanImp extends DominioBeanImp<Entidade> implements Entidad
     @Override
     public Entidade getPorCodigo(Long codigo) throws NegocioException {
         Param.validar(codigo, "Código Entidade");
-        return eao.getPrimeiro(Entidade.POR_CODIGO, codigo);
+        return eao.getPorId(Entidade.class, codigo);
     }
 
     /** {@inheritDoc} */

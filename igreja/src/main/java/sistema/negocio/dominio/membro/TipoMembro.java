@@ -71,9 +71,11 @@ public class TipoMembro extends AbstractDominio {
     }
 
     /** Cria um novo objeto com valores definidos. */
-    public TipoMembro(Long id, String descricao) {
+    public TipoMembro(
+            Long id, String descricao, String usuario) {
         this.id = id;
         this.descricao = descricao;
+        this.usuario = usuario;
     }
 
     /**

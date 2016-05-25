@@ -14,11 +14,41 @@ import com.forj.cirrus.infra.exceptions.NegocioException;
  */
 public interface TipoMembroBean extends Serializable {
 
-	/**
-	 * Pesquisa o todos os tipos de membro.
-	 * @return listagem de tipos de membro.
-	 * @throws NegocioException em caso de erros.
-	 */
-	public List<TipoMembro> get() throws NegocioException;
+    /**
+     * Pesquisa o todos os tipos de membro.
+     * @param descricao a ser iformada para pesquisa do tipo de membro.
+     * @return listagem de tipos de membro.
+     * @throws NegocioException em caso de erros.
+     */
+    public List<TipoMembro> get(String descricao) throws NegocioException;
+
+    /**
+     * Pesquisa um tipo de membro específico pelo código informado.
+     * @return tipo de membro encontrado com o código.
+     * @param codigo a ser informado para pesuisa de uma entidade específica.
+     * @throws NegocioException em caso de erros.
+     */
+    public TipoMembro getPorCodigo(Long codigo) throws NegocioException;
+
+    /**
+     * Insere um Tipo de Membro no banco de dados.
+     * @param tipoMembro a ser inserido.
+     * @throws NegocioException em caso de erros.
+     */
+    public void inserir(TipoMembro tipoMembro) throws NegocioException;
+
+    /**
+     * Altera um Tipo de Membro no banco de dados.
+     * @param entidade a ser alterada.
+     * @throws NegocioException em caso de erros.
+     */
+    public void alterar(TipoMembro tipoMembro) throws NegocioException;
+
+    /**
+     * Exclui um Tipo de Membro do banco de dados.
+     * @param tipoMembro a ser excluido.
+     * @throws NegocioException em caso de erros.
+     */
+    public void excluir(TipoMembro tipoMembro) throws NegocioException;
 
 }

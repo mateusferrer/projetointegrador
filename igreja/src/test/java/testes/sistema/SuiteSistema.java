@@ -6,13 +6,11 @@ import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * Suite de testes de sistema da solução.
- * 
  * @author Lucas Francisquini
  * @version 1.0 - 27/11/2015
  * @since 27/11/2015
  */
 @RunWith(Suite.class)
-@SuiteClasses({ TesteTipoEventoSistema.class, TesteTipoMembroSistema.class,
-		TesteEntidadeSistema.class, TesteMembroSistema.class })
+@SuiteClasses({ TesteEntidadeSistema.class, TesteCampanhaSistema.class })
 public class SuiteSistema {
 }

@@ -33,7 +33,8 @@ import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 @Entity
 @Table(name = "membro")
 @NamedQueries({ @NamedQuery(name = Membro.TODOS, query = "select c from Membro c"),
-        @NamedQuery(name = Membro.POR_NOME, query = "select c from Membro c where c.nome like ?") })
+        @NamedQuery(name = Membro.POR_NOME, query = "select c from Membro c where c.nome like ?"),
+        @NamedQuery(name = Membro.POR_CODIGO, query = "select c from Membro c where c.id = ?") })
 public class Membro extends AbstractDominio {
 
     /** Armazena o oql que busca todos. **/
@@ -41,6 +42,9 @@ public class Membro extends AbstractDominio {
 
     /** Armazena o oql que busca por nome. **/
     public static final String POR_NOME = "membro.porNome";
+
+    /** Armazena o oql que busca por código. **/
+    public static final String POR_CODIGO = "membro.porCodigo";
 
     /** Armazena o id do banco de dados. **/
     @Id

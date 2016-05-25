@@ -12,24 +12,33 @@ import com.forj.cirrus.infra.exceptions.NegocioException;
 
 /**
  * Teste de sistema do serviço de <b>TipoMembro</b>.
- * 
  * @version 1.0 - 15/05/2016
  * @since 15/05/2016
  */
 public class TesteTipoMembroSistema extends AbstractSistema {
 
-	/** Armazena o objeto serviço a ser testado. **/
-	@Inject
-	private TipoMembroBeanImp tipoBean;
+    /** Armazena o objeto serviço a ser testado. **/
+    @Inject
+    private TipoMembroBeanImp tipoBean;
 
-	/** Pesquisa todos os registros. */
-	@Test
-	public void devePesquisarTodos() {
-		try {
-			tipoBean.get();
-		} catch (NegocioException e) {
-			Assert.fail("Deveria pesquisar todos: " + e.getErrosString());
-		}
-	}
+    /** Pesquisa todos os registros. */
+    @Test
+    public void devePesquisarTodos() {
+        try {
+            tipoBean.get(null);
+        } catch (NegocioException e) {
+            Assert.fail("Deveria pesquisar todos: " + e.getErrosString());
+        }
+    }
+
+    /** Pesquisa todos os registros. */
+    @Test
+    public void devePesquisarComDescricao() {
+        try {
+            tipoBean.get("Tipo");
+        } catch (NegocioException e) {
+            Assert.fail("Deveria pesquisar todos: " + e.getErrosString());
+        }
+    }
 
 }
