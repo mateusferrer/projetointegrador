@@ -1,6 +1,7 @@
 package testes.global;
 
 import javax.annotation.Resource
+import javax.inject.Inject;
 
 import org.junit.Assert
 import org.junit.Before
@@ -8,6 +9,9 @@ import org.junit.runner.RunWith
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.test.context.transaction.TransactionConfiguration
+
+import sistema.negocio.aplicacao.LoginBean;
+import sistema.negocio.dominio.Usuario;
 
 import com.forj.cirrus.infra.autenticacao.exception.CredencialException
 import com.forj.cirrus.infra.exceptions.NegocioException
@@ -39,6 +43,10 @@ abstract class AbstractSistema extends Tdd {
 	@Resource(name = Cirrus.JDBC)
 	protected FacadeJdbc facadeJdbc;
 
+	/** Armazena o gerenciador dos processos de negócio. **/
+	@Inject
+	private LoginBean loginBean;
+
 	/** Recria a base a ciclo de testes. */
 	void zeraBase() {
 		if (zeraBase) {
@@ -49,6 +57,11 @@ abstract class AbstractSistema extends Tdd {
 			zeraBase = false
 			mockErrosJSF()
 		}
+	}
+
+	@Before
+	void inicializarTestes() {
+		loginBean.logar("LFRANCISQU", "123")
 	}
 
 	/**

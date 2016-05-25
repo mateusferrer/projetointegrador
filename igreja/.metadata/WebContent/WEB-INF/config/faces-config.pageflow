@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14376519070430" configfile="/igreja/WebContent/WEB-INF/config/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" id="pf14636785929478" outlinks="pf14636785929479" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="gst" id="pf146367859294710" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14636785929479" path="/gst"/>
-  <nodes xsi:type="pageflow:PFPage" name="gst/sistema/entidade/detalhe.xhtml" id="pf146368009485915" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf146368009485916" path="/gst/sistema/entidade/detalhe.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="gst/sistema/entidade/lista.xhtml" id="pf146368009485917" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf146368009485916" path="/gst/sistema/entidade/lista.xhtml"/>
-  <links id="pf14636785929479" target="pf146367859294710" source="pf14636785929478" outcome="/"/>
-  <links id="pf146368009485916" target="pf146368009485917" source="pf146368009485915" outcome="ListaEntidade"/>
+  <nodes xsi:type="pageflow:PFPage" name="gst" x="122" y="562" id="pf146367859294710" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="/gst"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf14641451983290" outlinks="pf14641451983301" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="sistema/menu/menu.xhtml" id="pf14641451983302" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14641451983301" path="/sistema/menu/menu.xhtml"/>
+  <links id="pf14641451983301" target="pf14641451983302" source="pf14641451983290" outcome="Menu"/>
 </pageflow:Pageflow>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<faces-config xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
 	version="2.1">
 
@@ -15,20 +16,12 @@
 	<!-- Autenticação e Autorização Cirrus JSF Facelets <lifecycle> <phase-listener>com.forj.cirrus.infra.autenticacao.servico.autenticador.FaseAutorizacao</phase-listener> 
 		</lifecycle> -->
 	<navigation-rule>
-		<from-view-id>/gst/sistema/entidade/detalhe.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>ListaEntidade</from-outcome>
-			<to-view-id>/gst/sistema/entidade/lista.xhtml</to-view-id>
+			<from-outcome>Menu</from-outcome>
+			<to-view-id>/sistema/menu/menu.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
-	<navigation-rule>
-		<from-view-id>/gst/sistema/entidade/lista.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>DetalheEntidade</from-outcome>
-			<to-view-id>/gst/sistema/entidade/detalhe.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
 
 </faces-config>
  

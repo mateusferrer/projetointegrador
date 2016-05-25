@@ -16,7 +16,6 @@ import com.forj.cirrus.util.validacao.Val;
 
 /**
  * Gerenciador de processos de negócio para o domínio <b>Campanha</b>.
- * 
  * @version 1.0 - 18/05/2016
  * @since 18/05/2016
  */
@@ -63,13 +62,12 @@ public class CampanhaBeanImp extends DominioBeanImp<Campanha> implements
 
 	/**
 	 * Recupera o usuário da sessão.
-	 * 
 	 * @return usuario da sessão.
 	 */
 	private String getUsuarioSessao() {
-		Usuario usuario = (Usuario) WebUtils.getSessionAttribute("usuario");
-		return usuario.getPk().getNome();
-
+		Usuario usuario = (Usuario) WebUtils
+				.getSessionAttribute("usuarioLogado");
+		return usuario.getNome();
 	}
 
 }
