@@ -1,25 +1,28 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
 	xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
-	<ui:define name="titulo">#{cargoAdministrativoFrm.titulo}</ui:define>
+	<ui:define name="titulo">#{entidadeFrm.titulo}</ui:define>
 	<ui:define name="processo">
-		<fieldset>
-			<h:form id="frmLista">
+		<h:form styleClass="navbar-form">
+			<h3>Consulta de Entidade</h3>
+			<b:navBar style="text-align: right;">
+				<div class="form-group" style="padding-top: 8px;">
+					<b:inputText value="#{entidadeFrm.nomeEntidade}" styleClass="form-control" placeholder="Nome Entidade" />
+
+					<b:commandButton value="Pesquisar" styleClass="btn btn-default" action="#{entidadeFrm.pesquisar}" />
+					<b:commandButton value="Novo" styleClass="btn btn-default" action="#{entidadeFrm.novo}" />
+				</div>
+			</b:navBar>
+			<b:jumbotron>
 				<table align="center" width="100%">
 					<tr>
-						<td><a4j:commandButton id="btPesquisa" value="Pesquisa" execute="nome"
-								action="#{cargoAdministrativoFrm.pesquisar()}" render="@form" data="#{cargoAdministrativoFrm.erros}"
-								oncomplete="tratarErros(event.data);" /> <h:commandButton value="Novo"
-								action="#{cargoAdministrativoFrm.novo}" /></td>
-					</tr>
-					<tr>
 						<td><h:panelGroup id="lista" styleClass="divTabela" layout="block">
-								<rich:dataTable id="listaDados" rowClasses="odd-row, even-row"
-									value="#{cargoAdministrativoFrm.colecao}" var="cargo" rows="#{cargoAdministrativoFrm.paginacao}"
-									styleClass="tabela">
+								<rich:dataTable id="listaDados" rowClasses="odd-row, even-row" value="#{cargoEclesiasticoFrm.colecao}"
+									var="cargo" rows="#{cargoEclesiasticoFrm.paginacao}" styleClass="tabela">
 									<rich:column style="width:30%">
 										<f:facet name="header">
 											<h:outputText value="Descrição" />
@@ -30,9 +33,9 @@
 										<f:facet name="header">
 											<h:outputText value="AÇÃO" />
 										</f:facet>
-										<cirrus:botaoAlterarDeletar actionAlterar="#{cargoAdministrativoFrm.alterar(cargo)}"
-											actionDeletar="#{cargoAdministrativoFrm.deletar(cargo)}" renderDeletar="frmLista"
-											dataDeletar="#{cargoAdministrativoFrm.erros}">
+										<cirrus:botaoAlterarDeletar actionAlterar="#{cargoEclesiasticoFrm.alterar(cargo)}"
+											actionDeletar="#{cargoEclesiasticoFrm.deletar(cargo)}" renderDeletar="frmLista"
+											dataDeletar="#{cargoEclesiasticoFrm.erros}">
 										</cirrus:botaoAlterarDeletar>
 									</rich:column>
 								</rich:dataTable>
@@ -43,8 +46,8 @@
 						<td align="center"><rich:dataScroller id="scroller" for="listaDados" render="lista" /></td>
 					</tr>
 				</table>
-			</h:form>
-		</fieldset>
+			</b:jumbotron>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

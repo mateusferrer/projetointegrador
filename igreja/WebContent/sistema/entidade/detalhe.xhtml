@@ -14,59 +14,59 @@
 						<td><h:panelGroup id="areaDadosDetalhe" layout="block">
 								<table>
 									<tr>
-										<td class="rotulo">Razão Social:</td>
-										<td><h:inputText styleClass="form-control" value="#{entidadeFrm.dominio.razao}" /></td>
-									</tr>
-									<tr>
-										<td class="rotulo">Nome Fantasia:</td>
-										<td><h:inputText styleClass="form-control" value="#{entidadeFrm.dominio.fantasia}" /></td>
+										<td class="rotulo">Nome:</td>
+										<td><h:inputText value="#{entidadeFrm.dominio.nome}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cnpj:</td>
-										<td><h:inputText styleClass="form-control" value="#{entidadeFrm.dominio.cnpj}" maxlength="14" /></td>
+										<td><h:inputText value="#{entidadeFrm.dominio.cnpj}" maxlength="14" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cep:</td>
-										<td><h:inputText id="cep" styleClass="form-control" value="#{entidadeFrm.dominio.cep}"
-												maxlength="8" onblur="pesquisacep(this.value);" /></td>
+										<td><input type="text" id="cep" name="cep" onblur="pesquisacep(this.value);"
+											value="#{entidadeFrm.dominio.cep}" maxlength="14" /></td>
 									</tr>
 									<tr>
-										<td class="rotulo">Rua:</td>
-										<td><h:inputText id="rua" styleClass="form-control" value="#{entidadeFrm.dominio.rua}" /></td>
+										<td class="rotulo">Endereço:</td>
+										<td><input type="text" id="rua" name="rua" value="#{entidadeFrm.dominio.rua}"
+											disabled="#{!entidadeFrm.dominio.temCep}" /></td>
 										<td class="rotulo">Número:</td>
-										<td><h:inputText styleClass="form-control" value="#{entidadeFrm.dominio.numero}" /></td>
+										<td><input type="text" id="rua" name="rua" value="#{entidadeFrm.dominio.rua}"
+											disabled="#{!entidadeFrm.dominio.temCep}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Bairro:</td>
-										<td><h:inputText id="bairro" styleClass="form-control" value="#{entidadeFrm.dominio.bairro}" /></td>
+										<td><input type="text" id="bairro" name="bairro" value="#{entidadeFrm.dominio.bairro}"
+											disabled="#{!entidadeFrm.dominio.temCep}" /></td>
+									</tr>
+									<tr>
+										<td class="rotulo">UF:</td>
+										<td><input type="text" id="uf" name="uf" value="#{entidadeFrm.dominio.estado}"
+											disabled="#{!entidadeFrm.dominio.temCep}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cidade:</td>
-										<td><h:inputText id="cidade" styleClass="form-control" value="#{entidadeFrm.dominio.cidade}" /></td>
-									</tr>
-									<tr>
-										<td class="rotulo">Estado:</td>
-										<td><h:inputText id="estado" styleClass="form-control" value="#{entidadeFrm.dominio.estado}" /></td>
+										<td><input type="text" id="cidade" name="cidade" value="#{entidadeFrm.dominio.cidade}"
+											disabled="#{!entidadeFrm.dominio.temCep}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Email:</td>
-										<td><h:inputText styleClass="form-control" value="#{entidadeFrm.dominio.email}" /></td>
+										<td><h:inputText value="#{entidadeFrm.dominio.email}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Telefone:</td>
-										<td><h:inputText styleClass="form-control" value="#{entidadeFrm.dominio.telefone}" /></td>
+										<td><h:inputText value="#{entidadeFrm.dominio.telefone}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Tipo Igreja:</td>
-										<td><h:selectOneRadio styleClass="form-control" value="#{entidadeFrm.dominio.tipo}">
+										<td><h:selectOneRadio value="#{entidadeFrm.dominio.tipo}">
 												<f:selectItems value="#{entidadeFrm.cmboTipoIgreja}" />
 											</h:selectOneRadio></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Igreja:</td>
-										<td><rich:autocomplete styleClass="form-control" mode="cachedAjax" tokens=","
-												converter="igrejaConverter" minChars="0" autofill="false" selectFirst="false"
-												autocompleteMethod="#{suggestionboxBean.complemento}">
+										<td><rich:autocomplete mode="cachedAjax" tokens="," converter="igrejaConverter" minChars="0"
+												autofill="false" selectFirst="false" autocompleteMethod="#{suggestionboxBean.complemento}">
 											</rich:autocomplete></td>
 									</tr>
 								</table>
