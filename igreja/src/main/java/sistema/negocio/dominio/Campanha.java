@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -34,17 +36,22 @@ import com.forj.cirrus.util.facades.FacadeData;
 @NamedQueries({
         @NamedQuery(name = Campanha.TODOS, query = "select c from Campanha c"),
         @NamedQuery(name = Campanha.POR_DESCRICAO,
-                query = "select c from Campanha c where c.descricao like ?") })
+                query = "select c from Campanha c where c.descricao like ?"),
+        @NamedQuery(name = Campanha.POR_CODIGO, query = "select c from Campanha c where c.id = ?") })
 public class Campanha extends AbstractDominio {
 
     /** Armazena o oql que busca todos. **/
     public static final String TODOS = "campanha.todos";
 
-    /** Armazena o oql que busca todos. **/
+    /** Armazena o oql que busca por descrição. **/
     public static final String POR_DESCRICAO = "campanha.porDescricao";
+
+    /** Armazena o oql que busca por código. **/
+    public static final String POR_CODIGO = "campanha.porCodigo";
 
     /** Armazena o código da campanha. **/
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cd_campanha")
     private Long id;
 
@@ -93,16 +100,19 @@ public class Campanha extends AbstractDominio {
     /** Armazena a data de cadastro. **/
     @Column(name = "dt_inclusao")
     @Temporal(TemporalType.TIMESTAMP)
+    @Obrigatorio(rotulo = "Data Inclusão")
     private Date dataInclusao;
 
     /** Armazena a data de alteração. **/
     @Column(name = "dt_alteracao")
+    @Obrigatorio(rotulo = "Data Alteração")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataAlteracao;
 
     /** Armazena o nome usuário de alteração/inclusão. **/
     @Column(name = "cd_usuario")
     @TamanhoMaximo(rotulo = "Usuário", maximo = 10)
+    @Obrigatorio(rotulo = "Usuário")
     private String usuario;
 
     /**
@@ -115,8 +125,9 @@ public class Campanha extends AbstractDominio {
      * Cria um novo objeto com valores padrões.
      */
     public Campanha(
-            String descricao, BigDecimal valor, Integer numParcelas, Date dataInicial, Status status,
-            Entidade entidade) {
+            Long id, String descricao, BigDecimal valor, Integer numParcelas, Date dataInicial,
+            Status status, Entidade entidade) {
+        this.id = id;
         this.descricao = descricao;
         this.valor = valor;
         this.numParcelas = numParcelas;

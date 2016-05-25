@@ -24,42 +24,6 @@ CREATE TABLE usuario (
 	PRIMARY KEY (cd_usuario)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE tipo_membro (
-	cd_tipo int(10) not null auto_increment,
-	ds_tipo_membro varchar(50) NOT NULL,
-	dt_inclusao datetime NOT NULL DEFAULT NOW(),
-	dt_alteracao datetime NOT NULL DEFAULT NOW(),
-	cd_usuario varchar(10) NOT NULL,
-	INDEX (ds_tipo_membro),
-	PRIMARY KEY (cd_tipo),
-    FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
-	UNIQUE KEY uq_descricao_tipo_membro (ds_tipo_membro)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE funcao (
-	cd_funcao int(10) not null auto_increment,
-	ds_funcao varchar(50) NOT NULL,
-	dt_inclusao datetime NOT NULL DEFAULT NOW(),
-	dt_alteracao datetime NOT NULL DEFAULT NOW(),
-	cd_usuario varchar(10) NOT NULL,
-	INDEX (ds_funcao),
-	PRIMARY KEY (cd_funcao),
-    FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
-	UNIQUE KEY uq_descricao_cargo_administrativo (ds_funcao)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE tipo_evento (
-	cd_tipo int(10) not null auto_increment,
-	ds_tipo_evento varchar(50) NOT NULL,
-	dt_inclusao datetime NOT NULL DEFAULT NOW(),
-	dt_alteracao datetime NOT NULL DEFAULT NOW(),
-	cd_usuario varchar(10) NOT NULL,
-    INDEX (ds_tipo_evento),
-	PRIMARY KEY (cd_tipo),
-    FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
-	UNIQUE KEY uq_descricao_tipo_evento (ds_tipo_evento)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE entidade (
 	cd_entidade INT(10) NOT NULL AUTO_INCREMENT,  
 	nm_entidade VARCHAR(100) NOT NULL,          
@@ -77,12 +41,24 @@ CREATE TABLE entidade (
     dt_inclusao datetime NOT NULL DEFAULT NOW(),
 	dt_alteracao datetime NOT NULL DEFAULT NOW(),
 	cd_usuario varchar(10) NOT NULL,
-	INDEX (tx_nome_fantasia),
+	INDEX (nm_entidade),
 	PRIMARY KEY (cd_entidade),
     FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
     FOREIGN KEY (cd_matriz) REFERENCES entidade (cd_entidade),
 	UNIQUE KEY sq_cnpj (sq_cnpj)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE tipo_membro (
+	cd_tipo int(10) not null auto_increment,
+	ds_tipo_membro varchar(50) NOT NULL,
+	dt_inclusao datetime NOT NULL DEFAULT NOW(),
+	dt_alteracao datetime NOT NULL DEFAULT NOW(),
+	cd_usuario varchar(10) NOT NULL,
+	INDEX (ds_tipo_membro),
+	PRIMARY KEY (cd_tipo),
+    FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
+	UNIQUE KEY uq_descricao_tipo_membro (ds_tipo_membro)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE membro (
     cd_membro INT(10) NOT NULL AUTO_INCREMENT,
@@ -156,6 +132,30 @@ CREATE TABLE lancamento_campanha (
 	in_pago char(1) not null,
 	PRIMARY KEY (cd_lancamento),
 	FOREIGN KEY (cd_contribuinte) references contribuinte (cd_contribuinte)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE tipo_evento (
+	cd_tipo int(10) not null auto_increment,
+	ds_tipo_evento varchar(50) NOT NULL,
+	dt_inclusao datetime NOT NULL DEFAULT NOW(),
+	dt_alteracao datetime NOT NULL DEFAULT NOW(),
+	cd_usuario varchar(10) NOT NULL,
+    INDEX (ds_tipo_evento),
+	PRIMARY KEY (cd_tipo),
+    FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
+	UNIQUE KEY uq_descricao_tipo_evento (ds_tipo_evento)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE funcao (
+	cd_funcao int(10) not null auto_increment,
+	ds_funcao varchar(50) NOT NULL,
+	dt_inclusao datetime NOT NULL DEFAULT NOW(),
+	dt_alteracao datetime NOT NULL DEFAULT NOW(),
+	cd_usuario varchar(10) NOT NULL,
+	INDEX (ds_funcao),
+	PRIMARY KEY (cd_funcao),
+    FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
+	UNIQUE KEY uq_descricao_cargo_administrativo (ds_funcao)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*

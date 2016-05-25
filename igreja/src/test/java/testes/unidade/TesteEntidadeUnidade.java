@@ -45,7 +45,7 @@ public class TesteEntidadeUnidade extends AbstractUnidade {
      */
     public static Entidade fabricar() {
         return new Entidade(
-                gerarLong(1), gerarTexto(50), gerarLong(14).toString(), gerarLong(8), gerarTexto(50),
+                gerarLong(1), gerarTexto(30), gerarLong(14).toString(), gerarLong(8), gerarTexto(50),
                 gerarInteger(5), gerarTexto(50), gerarTexto(2), gerarTexto(50), null, gerarLong(11)
                         .toString(), TipoEntidade.M, null);
     }

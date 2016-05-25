@@ -35,7 +35,8 @@ import com.forj.cirrus.util.validacao.Val;
 @Entity
 @Table(name = "entidade")
 @NamedQueries({ @NamedQuery(name = Entidade.TODOS, query = "select c from Entidade c"),
-        @NamedQuery(name = Entidade.POR_NOME, query = "select c from Entidade c where c.id = ?") })
+        @NamedQuery(name = Entidade.POR_NOME, query = "select c from Entidade c where c.nome like ?"),
+        @NamedQuery(name = Entidade.POR_CODIGO, query = "select c from Entidade c where c.id = ?") })
 public class Entidade extends AbstractDominio {
 
     /** Armazena o oql que busca todos. **/
@@ -44,11 +45,13 @@ public class Entidade extends AbstractDominio {
     /** Armazena o oql que busca todos. **/
     public static final String POR_NOME = "entidade.porNome";
 
+    /** Armazena o oql que busca todos. **/
+    public static final String POR_CODIGO = "entidade.porCodigo";
+
     /** Armazena o id do banco de dados. **/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cd_entidade")
-    @Obrigatorio(rotulo = "Id")
     private Long id;
 
     /** Armazena o nome fantasia. **/
@@ -170,6 +173,14 @@ public class Entidade extends AbstractDominio {
      */
     public String getDescricaoTipoEntidade() {
         return TipoEntidade.getInstance(this.tipo);
+    }
+
+    /**
+     * Verifica de tem cep.
+     * @return verdadeiro se sim, senão falso.
+     */
+    public boolean isTemCep() {
+        return !Val.vazio(cep);
     }
 
     /** {@inheritDoc} */

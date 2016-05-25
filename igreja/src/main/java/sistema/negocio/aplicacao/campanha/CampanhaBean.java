@@ -15,28 +15,40 @@ import com.forj.cirrus.infra.exceptions.NegocioException;
 public interface CampanhaBean extends Serializable {
 
     /**
-     * Pesquisa a campanha pela descrição.
-     * @return campanhas com os parâmetros informados.
+     * Pesquisa todas as entidades.
+     * @return listagem de todas as entidades.
+     * @param nome a ser informado para pesuisa de entidades.
      * @throws NegocioException em caso de erros.
      */
-    public List<Campanha> get(String descricao) throws NegocioException;
+    public List<Campanha> get(String nome) throws NegocioException;
 
     /**
-     * Insere uma campanha no DB.
+     * Pesquisa uma Campanha específica pelo código informado.
+     * @return listagem de todas as entidades.
+     * @param codigo a ser informado para pesuisa de uma Campanha específica.
      * @throws NegocioException em caso de erros.
      */
-    public void inserir(Campanha campanha) throws NegocioException;
+    public Campanha getPorCodigo(Long codigo) throws NegocioException;
 
     /**
-     * Altera uma campanha no DB.
+     * Insere uma Campanha no banco de dados.
+     * @param Campanha a ser inserida.
      * @throws NegocioException em caso de erros.
      */
-    public void alterar(Campanha campanha) throws NegocioException;
+    public void inserir(Campanha Campanha) throws NegocioException;
 
     /**
-     * Exclui uma campanha no DB.
+     * Altera uma Campanha no banco de dados.
+     * @param Campanha a ser alterada.
      * @throws NegocioException em caso de erros.
      */
-    public void excluir(Campanha campanha) throws NegocioException;
+    public void alterar(Campanha Campanha) throws NegocioException;
+
+    /**
+     * Exlui uma Campanha do banco de dados.
+     * @param Campanha a ser excluida.
+     * @throws NegocioException em caso de erros.
+     */
+    public void excluir(Campanha Campanha) throws NegocioException;
 
 }

@@ -6,7 +6,6 @@ import java.util.Date;
 import org.junit.Test;
 
 import sistema.negocio.dominio.Campanha;
-import sistema.negocio.dominio.entidade.Entidade;
 import sistema.negocio.dominio.membro.Membro;
 import sistema.negocio.enums.Status;
 import testes.global.AbstractUnidade;
@@ -29,9 +28,7 @@ public class TesteCampanhaUnidade extends AbstractUnidade {
     /** Deve validar todos os campos com tamanho máximo. **/
     @Test
     public void deveValidarTamanhoMaximo() {
-        Campanha campanha = fabricar();
-        campanha.setDescricao(gerarTexto(51));
-        campanha.setNumParcelas(gerarInteger(3));
+        Campanha campanha = fabricarInvalido();
         campanha.setUsuario(gerarTexto(11));
         validarInvalidos(campanha);
     }
@@ -39,7 +36,11 @@ public class TesteCampanhaUnidade extends AbstractUnidade {
     /** Deve validar todos os campos com sucesso. **/
     @Test
     public void deveValidarSucesso() {
-        validarSucesso(fabricar());
+        Campanha campanha = fabricar();
+        campanha.setDataInclusao(new Date());
+        campanha.setDataAlteracao(new Date());
+        campanha.setUsuario(gerarTexto(10));
+        validarSucesso(campanha);
     }
 
     /**
@@ -47,7 +48,17 @@ public class TesteCampanhaUnidade extends AbstractUnidade {
      * @return membro válido para teste.
      */
     public static Campanha fabricar() {
-        return new Campanha("Aquisição Ar Condicionado", new BigDecimal("1400.00"), 10, FacadeData
-                .adicionarMeses(new Date(), 1), Status.A, new Entidade());
+        return new Campanha(gerarLong(1), gerarTexto(30), new BigDecimal("1400.00"), 10, FacadeData
+                .adicionarMeses(new Date(), 1), Status.A, TesteEntidadeUnidade.fabricar());
     }
+
+    /**
+     * Fabrica um membro válido para teste.
+     * @return membro válido para teste.
+     */
+    public static Campanha fabricarInvalido() {
+        return new Campanha(gerarLong(1), gerarTexto(51), gerarValor(13), gerarInteger(3), FacadeData
+                .adicionarMeses(new Date(), 1), Status.A, TesteEntidadeUnidade.fabricar());
+    }
+
 }

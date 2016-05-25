@@ -19,30 +19,30 @@ insert into tipo_evento (ds_tipo_evento , cd_usuario)
 	values ('Culto', 'LFRANCISQU');
 
 -- IGREJA
-insert into entidade (tx_razao_social, tx_nome_fantasia, sq_cnpj, sq_cep, tx_endereco, nr_endereco, in_estado, nm_cidade, sq_telefone, tp_entidade, dt_alteracao, cd_usuario) 
-	values ('Lucas Costa Francisquini', 'Igreja Evangélica Batista', '86212661000104', '86010150', 'Av. Rio de Janeiro', 1558, 'PR', 'Londrina', '4332941866', 'M', '20160518', 'LFRANCISQU');
+insert into entidade (nm_entidade, sq_cnpj, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, tp_entidade, dt_alteracao, cd_usuario) 
+	values ('Igreja Evangélica Batista', '86212661000104', '86010150', 'Av. Rio de Janeiro', 1558, 'Vila Ipiranga', 'PR', 'Londrina', '4332941866', 'M', '20160518', 'LFRANCISQU');
 
 -- MEMBRO
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Lucas Costa Francisquini', '06459478902', '19940525', 'M', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 1);
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Rosely Macedo Francisquini', '44981012861', '19940525', 'F', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 1);
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Luiz Marcos Francisquini', '28933974849', '19940525', 'M', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Matheus Costa Francisquini', '42449735593', '19940525', 'M', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Ana Carolina dos Santos Lopes', '68771195416', '19940525', 'M', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Wagner Soares', '80739102761', '19940525', 'M', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Thiago dos Santos de Jesus', '76941895926', '19940525', 'M', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Marina dos Santos Rocha', '35536160168', '19940525', 'M', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Mateus Ferrer Corso', '89675112727', '19940525', 'M', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
-insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, tx_endereco, nr_endereco, sq_cep, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
-	values ('Thiago Constante de Souza', '84453590709', '19940525', 'M', 'R. Capitão Ferreira Gomes', 87, '86070030', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Lucas Costa Francisquini', '06459478902', '19940525', 'M', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 1);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Rosely Macedo Francisquini', '44981012861', '19940525', 'F', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 1);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Luiz Marcos Francisquini', '28933974849', '19940525', 'M', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Matheus Costa Francisquini', '42449735593', '19940525', 'M', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Ana Carolina dos Santos Lopes', '68771195416', '19940525', 'M', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Wagner Soares', '80739102761', '19940525', 'M', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Thiago dos Santos de Jesus', '76941895926', '19940525', 'M', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Marina dos Santos Rocha', '35536160168', '19940525', 'M', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Mateus Ferrer Corso', '89675112727', '19940525', 'M', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
+insert into membro (nm_membro, sq_cpf, dt_nascimento, in_sexo, sq_cep, ds_rua, nr_rua, ds_bairro, in_estado, nm_cidade, sq_telefone, in_status, dt_alteracao, cd_usuario, in_batizado, cd_entidade, cd_tipo) 
+	values ('Thiago Constante de Souza', '84453590709', '19940525', 'M', '86070030', 'R. Capitão Ferreira Gomes', 87, 'Shangrilá', 'PR', 'Londrina', '4333510548', 'A', '20160518', 'LFRANCISQU', 'N', 1, 2);
 
 -- CAMPANHA
 insert into campanha (ds_campanha, vl_campanha, nr_parcelas, cd_usuario, dt_inicial, dt_final, in_status, cd_entidade)
