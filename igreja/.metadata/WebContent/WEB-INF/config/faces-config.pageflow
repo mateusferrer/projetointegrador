@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14376519070430" configfile="/igreja/WebContent/WEB-INF/config/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="gst" x="122" y="562" id="pf146367859294710" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="/gst"/>
-  <nodes xsi:type="pageflow:PFPage" name="*" id="pf14641451983290" outlinks="pf14641451983301" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="sistema/menu/menu.xhtml" id="pf14641451983302" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14641451983301" path="/sistema/menu/menu.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="gst" x="122" y="178" id="pf146367859294710" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="/gst"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="562" id="pf14641451983290" outlinks="pf14641451983301 pf14642904834881 pf14642918247883" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="sistema/menu/menu.xhtml" x="338" y="178" id="pf14641451983302" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14641451983301" path="/sistema/menu/menu.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="sistema/entidade/lista.faces" x="338" y="562" id="pf14642904834882" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14642904834881" path="/sistema/entidade/lista.faces"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.faces" x="338" y="946" id="pf14642918247884" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14642918247883" path="index.faces"/>
   <links id="pf14641451983301" target="pf14641451983302" source="pf14641451983290" outcome="Menu"/>
+  <links id="pf14642904834881" target="pf14642904834882" source="pf14641451983290" outcome="ListaEntidade"/>
+  <links id="pf14642918247883" target="pf14642918247884" source="pf14641451983290" outcome="Home"/>
 </pageflow:Pageflow>

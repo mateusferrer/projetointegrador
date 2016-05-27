@@ -1,13 +1,12 @@
 package sistema.negocio.enums;
 
-import com.forj.cirrus.infra.exceptions.NegocioException;
 
 /**
  * Gerenciador de flags para estado.
  * @version 1.0 - 16/05/2016
  * @since 16/05/2016
  */
-public enum Estado {
+public enum UF {
 	AC,	AL,	AP,	AM,	BA,	CE,	DF,	ES,	GO,	MA,	MT,	MS,	MG,	PA,	PB,	PR,
 	PE,	PI,	RJ,	RN,	RS,	RO,	RR,	SC,	SP,	SE,	TO;
 
@@ -16,7 +15,7 @@ public enum Estado {
 	 * @param flag a ser convertida.
 	 * @return descricao da flag informada.
 	 */
-	public static String getInstance(Estado flag) {
+	public static String getInstance(UF flag) {
 		String instance = "";
 		switch (flag) {
 		case AC: instance = "Acre";
@@ -46,9 +45,7 @@ public enum Estado {
 		case SP: instance = "São Paulo";
 		case SE: instance = "Sergipe";
 		case TO: instance = "Tocantins";
-		default:
-			new NegocioException("Valor inválido!");
-			break;
+		default: instance = "";
 		}
 		return instance;
 	}

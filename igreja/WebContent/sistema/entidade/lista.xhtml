@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
 	xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
 	<ui:define name="titulo">#{entidadeFrm.titulo}</ui:define>
@@ -11,14 +15,18 @@
 			<h:form id="frmLista">
 				<table align="center" width="100%">
 					<tr>
-						<td><a4j:commandButton id="btPesquisa" value="Pesquisa" execute="nome"
-								action="#{entidadeFrm.pesquisar()}" render="@form" data="#{entidadeFrm.erros}"
-								oncomplete="tratarErros(event.data);" /> <h:commandButton value="Novo" action="#{entidadeFrm.novo}" /></td>
+						<td><a4j:commandButton id="btPesquisa" value="Pesquisa"
+								execute="nome" action="#{entidadeFrm.pesquisar}" render="@form"
+								data="#{entidadeFrm.erros}"
+								oncomplete="tratarErros(event.data);" /> <h:commandButton
+								value="Novo" action="#{entidadeFrm.novo}" /></td>
 					</tr>
 					<tr>
-						<td><h:panelGroup id="lista" styleClass="divTabela" layout="block">
-								<rich:dataTable id="listaDados" rowClasses="odd-row, even-row" value="#{entidadeFrm.colecao}"
-									var="entidade" rows="#{entidadeFrm.paginacao}" styleClass="tabela">
+						<td><h:panelGroup id="lista" styleClass="divTabela"
+								layout="block">
+								<rich:dataTable id="listaDados" rowClasses="odd-row, even-row"
+									value="#{entidadeFrm.colecao}" var="entidade"
+									rows="#{entidadeFrm.paginacao}" styleClass="tabela">
 									<rich:column style="width:30%">
 										<f:facet name="header">
 											<h:outputText value="Nome" />
@@ -47,9 +55,10 @@
 										<f:facet name="header">
 											<h:outputText value="AÇÃO" />
 										</f:facet>
-										<cirrus:botaoAlterarDeletar actionAlterar="#{entidadeFrm.alterar(entidade)}"
-											actionDeletar="#{entidadeFrm.deletar(entidade)}" renderDeletar="frmLista"
-											dataDeletar="#{entidadeFrm.erros}">
+										<cirrus:botaoAlterarDeletar
+											actionAlterar="#{entidadeFrm.alterar(entidade)}"
+											actionDeletar="#{entidadeFrm.deletar(entidade)}"
+											renderDeletar="frmLista" dataDeletar="#{entidadeFrm.erros}">
 										</cirrus:botaoAlterarDeletar>
 									</rich:column>
 								</rich:dataTable>
@@ -57,7 +66,8 @@
 							</h:panelGroup></td>
 					</tr>
 					<tr>
-						<td align="center"><rich:dataScroller id="scroller" for="listaDados" render="lista" /></td>
+						<td align="center"><rich:dataScroller id="scroller"
+								for="listaDados" render="lista" /></td>
 					</tr>
 				</table>
 			</h:form>

@@ -1,6 +1,5 @@
 package sistema.negocio.enums;
 
-import com.forj.cirrus.infra.exceptions.NegocioException;
 
 /**
  * Gerenciador de flags para status Ativo e Inativo.
@@ -21,10 +20,9 @@ public enum Status {
 		case A:
 			instance = "Ativo";
 		case I:
-			return instance = "Inativo";
+			instance = "Inativo";
 		default:
-			new NegocioException("Valor inválido!");
-			break;
+			instance = "";
 		}
 		return instance;
 	}

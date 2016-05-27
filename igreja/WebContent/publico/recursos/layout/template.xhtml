@@ -6,33 +6,29 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:a4j="http://richfaces.org/a4j" xmlns:b="http://bootsfaces.net/ui"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:a4j="http://richfaces.org/a4j">
 <h:head>
-	<title>SAECE</title>
+	<title>SAIE</title>
 	<meta charset="ISO-8859-1" />
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputScript name="cirrus.js" library="js" target="body" />
-	<h:outputScript name="bootstrap.min.js" library="js" target="body" />
-	<h:outputScript name="jquery-1.12.3.js" library="js" target="body" />
 	<h:outputStylesheet name="css/sistema.css" />
-	<h:outputStylesheet name="css/bootstrap.min.css" />
 </h:head>
-<h:body style="padding-top: 52px; padding-bottom: 20px;">
+<h:body>
 	<a4j:status>
 		<f:facet name="start">
-			<div>
+			<div
+				style="width: 35px; height: 35px; position: absolute; margin: 0px;">
 				<h:graphicImage value="/resources/imagens/ajax-loader.gif" />
 			</div>
 		</f:facet>
 	</a4j:status>
-	<b:messages styleClass="alert alert-danger" />
-	<table class="table">
+	<table align="center">
 		<tr>
-			<td><b:panel>
+			<td><rich:panel style="width:900px;height:850px;">
 					<ui:insert name="menu" />
 					<f:facet name="header">
 						<ui:insert name="titulo" />
@@ -45,7 +41,7 @@
 							<td><ui:insert name="modal" /></td>
 						</tr>
 					</table>
-				</b:panel></td>
+				</rich:panel></td>
 		</tr>
 	</table>
 </h:body>

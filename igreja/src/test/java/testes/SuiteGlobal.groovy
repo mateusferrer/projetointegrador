@@ -15,6 +15,6 @@ import testes.visao.SuiteVisao
  * @since 27/11/2015
  */
 @RunWith(Suite)
-@SuiteClasses([SuiteUnidade, SuiteSistema, SuiteVisao])
+@SuiteClasses([SuiteUnidade, SuiteSistema])
 class SuiteGlobal {
 }

@@ -14,45 +14,45 @@ import com.forj.cirrus.util.validacao.Val;
 
 /**
  * Gerenciador de processos de negócio para o domínio <b>Campanha</b>.
+ * 
  * @version 1.0 - 18/05/2016
  * @since 18/05/2016
  */
 @Named
-public class CampanhaBeanImp extends DominioBeanImp<Campanha> implements CampanhaBean {
+public class CampanhaBeanImp extends DominioBeanImp<Campanha> implements
+		CampanhaBean {
 
-    /** {@inheritDoc} */
-    @Override
-    public List<Campanha> get(String descricao) throws NegocioException {
-        if (Val.vazio(descricao)) {
-            return eao.get(Campanha.TODOS);
-        } else {
-            return eao.get(Campanha.POR_DESCRICAO, descricao);
-        }
+	/** {@inheritDoc} */
+	@Override
+	public List<Campanha> get(String descricao) throws NegocioException {
+		if (!Val.vazio(descricao)) {
+			return eao.get(Campanha.POR_DESCRICAO, descricao);
+		}
+		return eao.get(Campanha.TODOS);
+	}
 
-    }
+	/** {@inheritDoc} */
+	@Override
+	public Campanha getPorCodigo(Long codigo) throws NegocioException {
+		Param.validar(codigo, "Código Campanha");
+		return eao.getPrimeiro(Campanha.POR_CODIGO, codigo);
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public Campanha getPorCodigo(Long codigo) throws NegocioException {
-        Param.validar(codigo, "Código Campanha");
-        return eao.getPrimeiro(Campanha.POR_CODIGO, codigo);
-    }
+	/** {@inheritDoc} */
+	@Override
+	public void inserir(Campanha campanha) throws NegocioException {
+		Param.validar(campanha, "Campanha");
+		campanha.setDataInclusao(new Date());
+		campanha.setDataAlteracao(new Date());
+		super.inserir(campanha);
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public void inserir(Campanha campanha) throws NegocioException {
-        Param.validar(campanha, "Campanha");
-        campanha.setDataInclusao(new Date());
-        campanha.setDataAlteracao(new Date());
-        super.inserir(campanha);
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void alterar(Campanha campanha) throws NegocioException {
-        Param.validar(campanha, "Campanha");
-        campanha.setDataAlteracao(new Date());
-        super.alterar(campanha);
-    }
+	/** {@inheritDoc} */
+	@Override
+	public void alterar(Campanha campanha) throws NegocioException {
+		Param.validar(campanha, "Campanha");
+		campanha.setDataAlteracao(new Date());
+		super.alterar(campanha);
+	}
 
 }

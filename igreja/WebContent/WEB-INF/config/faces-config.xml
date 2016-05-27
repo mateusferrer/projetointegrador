@@ -22,6 +22,12 @@
 		</navigation-case>
 	</navigation-rule>
 
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>ListaEntidade</from-outcome>
+			<to-view-id>/sistema/entidade/lista.faces</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
  

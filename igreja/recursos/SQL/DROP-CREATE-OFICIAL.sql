@@ -21,7 +21,8 @@ CREATE TABLE usuario (
 	ds_senha varchar(50) not null,
 	in_tipo_usuario char(2) not null,
 	in_situacao char(1) not null,
-	PRIMARY KEY (cd_usuario)
+	PRIMARY KEY (cd_usuario),
+    UNIQUE (cd_usuario)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE entidade (

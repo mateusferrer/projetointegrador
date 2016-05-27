@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -5,14 +6,31 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:a4j="http://richfaces.org/a4j" xmlns:b="http://bootsfaces.net/ui">
-<ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
-	<ui:define name="titulo">
-		Menu
-	</ui:define>
-	<ui:define name="processo">
-		Seja bem vindo ao <i>SAECE</i> - <b>Sistema de Administração de Entidades
-			Cristãs Evangélicas</b>
-	</ui:define>
-</ui:composition>
+	xmlns:a4j="http://richfaces.org/a4j" xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>SAIE - Login</title>
+	<meta charset="ISO-8859-1" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputScript name="cirrus.js" library="js" target="body" />
+	<h:outputStylesheet name="css/sistema.css" />
+</h:head>
+<h:body>
+	<h:form id="formLogin">
+		<div align="center">
+			<p:panelGrid columns="1" layout="grid"
+				style="border-style: none !important">
+				<p:outputLabel value="Usu�rio:" />
+				<p:inputText value="#{loginFrm.user}" size="25"
+					style="text-transform:uppercase;" maxlength="10" />
+				<p:outputLabel value="Senha:" />
+				<p:password value="#{loginFrm.pass}" size="25" />
+				<h:commandButton value="Entrar" action="#{loginFrm.acessar}" />
+			</p:panelGrid>
+		</div>
+	</h:form>
+</h:body>
 </html>

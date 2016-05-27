@@ -1,7 +1,6 @@
 package testes.sistema;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,7 +20,6 @@ import com.forj.cirrus.infra.exceptions.NegocioException;
  * @version 1.0 - 15/05/2016
  * @since 15/05/2016
  */
-@Named
 public class TesteCampanhaSistema extends AbstractSistema {
 
     /** Armazena o objeto serviço a ser testado. **/
@@ -179,7 +177,7 @@ public class TesteCampanhaSistema extends AbstractSistema {
     /** Pesquisa todos os registros. */
     private void devePesquisarTodosSucesso() {
         try {
-            bean.get(null);
+            bean.get("");
         } catch (NegocioException e) {
             Assert.fail("Deveria pesquisar todos: " + e.getErrosString());
         }
