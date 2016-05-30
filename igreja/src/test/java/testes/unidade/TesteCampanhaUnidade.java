@@ -17,86 +17,100 @@ import com.forj.cirrus.util.facades.FacadeData;
 
 /**
  * Gerenciador de teste de unidade de {@link Membro}.
- * 
  * @version 1.0 - 16/05/2016
  * @since 16/05/2016
  */
 public class TesteCampanhaUnidade extends AbstractUnidade {
 
-	/** Deve validar todos os campos obrigatório. **/
-	@Test
-	public void deveValidarObrigatorios() {
-		validarObrigatorios(new Campanha());
-	}
+    /** Deve validar todos os campos obrigatório. **/
+    @Test
+    public void deveValidarObrigatorios() {
+        validarObrigatorios(new Campanha());
+    }
 
-	/** Deve validar membro contribuinte obrigatório. **/
-	@Test
-	public void deveValidarContribuinteObrigatorio() {
-		Campanha campanha = new Campanha();
-		try {
-			campanha.addContribuinte(null);
-			Assert.fail("Deve validar membro contribuinte obrigatório.");
-		} catch (NegocioException e) {
-			System.out.println(e.getErrosString());
-		}
-	}
+    /** Deve validar todos os campos obrigatório. **/
+    @Test
+    public void deveValidarContribuintesObrigatorios() {
+        Campanha campanha = fabricar();
+        campanha.setContribuintes(null);
+        campanha.setDataInclusao(new Date());
+        campanha.setDataAlteracao(new Date());
+        validarObrigatorios(campanha);
+    }
 
-	/** Deve validar o valor unitário de cada membro contribuinte. **/
-	@Test
-	public void deveValidarValorUnitario() {
-		Campanha campanha = fabricar();
-		campanha.getContribuintes().stream()
-				.forEach(c -> c.getValor().equals(new BigDecimal("140.00")));
-	}
+    /** Deve validar membro contribuinte obrigatório. **/
+    @Test
+    public void naoDeveAdicionarContribuintesSemMembro() {
+        Campanha campanha = new Campanha();
+        try {
+            campanha.addContribuintes(null);
+            Assert.fail("Deve validar membro contribuinte obrigatório.");
+        } catch (NegocioException e) {
+            System.out.println(e.getErrosString());
+        }
+    }
 
-	/** Deve validar todos os campos com tamanho máximo. **/
-	@Test
-	public void deveValidarTamanhoMaximo() {
-		Campanha campanha = fabricarInvalido();
-		campanha.setUsuario(gerarTexto(11));
-		validarInvalidos(campanha);
-	}
+    /** Deve validar o valor unitário de cada membro contribuinte. **/
+    @Test
+    public void deveValidarContribuintesSucesso() {
+        Campanha campanha = fabricar();
+        campanha.getContribuintes().stream().forEach(
+                c -> Assert.assertEquals(10, campanha.getContribuintes().size()));
+        try {
+            campanha.gerarContribuintes();
+            campanha.getContribuintes().stream().forEach(
+                    c -> Assert.assertEquals(new BigDecimal("140.00"), c.getValor()));
+            campanha.getContribuintes().stream().forEach(c -> System.out.println(c));
+        } catch (NegocioException e) {
+            Assert.fail("Deveria ter validado os contribuintes com sucesso - " + e.getErrosString());
+        }
+    }
 
-	/** Deve validar todos os campos com sucesso. **/
-	@Test
-	public void deveValidarSucesso() {
-		Campanha campanha = fabricar();
-		campanha.setDataInclusao(new Date());
-		campanha.setDataAlteracao(new Date());
-		campanha.setUsuario(gerarTexto(10));
-		validarSucesso(campanha);
-	}
+    /** Deve validar todos os campos com tamanho máximo. **/
+    @Test
+    public void deveValidarTamanhoMaximo() {
+        Campanha campanha = fabricarInvalido();
+        campanha.setUsuario(gerarTexto(11));
+        validarInvalidos(campanha);
+    }
 
-	/**
-	 * Fabrica um membro válido para teste.
-	 * 
-	 * @return membro válido para teste.
-	 */
-	public static Campanha fabricar() {
-		Campanha campanha = new Campanha(gerarLong(1), gerarTexto(30),
-				new BigDecimal("1400.00"), 10, FacadeData.adicionarMeses(
-						new Date(), 1), StatusCampanha.AB,
-				TesteEntidadeUnidade.fabricar(), DadosSistema.USUARIO);
-		for (Membro membro : TesteMembroUnidade.fabricarMembros()) {
-			try {
-				campanha.addContribuinte(membro);
-			} catch (NegocioException e) {
-				System.out.println(e.getErrosString());
-			}
-		}
-		return campanha;
-	}
+    /** Deve validar todos os campos com sucesso. **/
+    @Test
+    public void deveValidarSucesso() {
+        Campanha campanha = fabricar();
+        campanha.setDataInclusao(new Date());
+        campanha.setDataAlteracao(new Date());
+        campanha.setUsuario(gerarTexto(10));
+        validarSucesso(campanha);
+    }
 
-	/**
-	 * Fabrica um membro válido para teste.
-	 * 
-	 * @return membro válido para teste.
-	 */
-	public static Campanha fabricarInvalido() {
-		return new Campanha(gerarLong(1), gerarTexto(51), gerarValor(13),
-				gerarInteger(3), FacadeData.adicionarMeses(new Date(), 1),
-				StatusCampanha.AB, TesteEntidadeUnidade.fabricar(),
-				DadosSistema.USUARIO + gerarTexto(1));
-	}
+    /**
+     * Fabrica um membro válido para teste.
+     * @return membro válido para teste.
+     */
+    public static Campanha fabricar() {
+        Campanha campanha =
+                new Campanha(
+                        gerarLong(1), gerarTexto(30), new BigDecimal("1400.00"), 10, FacadeData
+                                .adicionarMeses(new Date(), 1), StatusCampanha.AB, TesteEntidadeUnidade
+                                .fabricar(), DadosSistema.USUARIO);
+        try {
+            campanha.addContribuintes(TesteMembroUnidade.fabricarMembros());
+        } catch (NegocioException e) {
+            System.out.println(e.getErrosString());
+        }
+        return campanha;
+    }
+
+    /**
+     * Fabrica um membro válido para teste.
+     * @return membro válido para teste.
+     */
+    public static Campanha fabricarInvalido() {
+        return new Campanha(
+                gerarLong(1), gerarTexto(51), gerarValor(13), gerarInteger(3), FacadeData.adicionarMeses(
+                        new Date(), 1), StatusCampanha.AB, TesteEntidadeUnidade.fabricar(),
+                DadosSistema.USUARIO + gerarTexto(1));
+    }
 
 }
