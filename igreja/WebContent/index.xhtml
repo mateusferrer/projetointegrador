@@ -17,17 +17,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputScript name="cirrus.js" library="js" target="body" />
 	<h:outputStylesheet name="css/sistema.css" />
+	<h:outputStylesheet name="css/bootstrap.css" />
 </h:head>
 <h:body>
 	<h:form id="formLogin">
-		<div align="center">
+		<div align="center" class="container-fluid">
 			<p:panelGrid columns="1" layout="grid"
 				style="border-style: none !important">
 				<p:outputLabel value="Usuário:" />
-				<p:inputText value="#{loginFrm.user}" size="25"
+				<p:inputText value="LFRANCISQU" size="25"
 					style="text-transform:uppercase;" maxlength="10" />
 				<p:outputLabel value="Senha:" />
-				<p:password value="#{loginFrm.pass}" size="25" />
+				<p:password value="123" size="25" />
 				<h:commandButton value="Entrar" action="#{loginFrm.acessar}" />
 			</p:panelGrid>
 		</div>

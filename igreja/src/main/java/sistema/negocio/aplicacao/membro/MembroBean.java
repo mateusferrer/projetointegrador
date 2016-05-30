@@ -15,12 +15,41 @@ import com.forj.cirrus.infra.exceptions.NegocioException;
  */
 public interface MembroBean extends Serializable {
 
-	/**
-	 * Pesquisa o membro pelo nome.
-	 * @return membro encontrado com o nome informado.
-	 * @throws NegocioException
-	 *             em caso de erros.
-	 */
-	public List<Membro> get(String nome) throws NegocioException;
+    /**
+     * Pesquisa todas os membros ou um membro específico indicado pelo nome.
+     * @return listagem de todos os membros ou um membro específico.
+     * @param nome a ser informado para pesuisa de um membro específico.
+     * @throws NegocioException em caso de erros.
+     */
+    public List<Membro> get(String nome) throws NegocioException;
+
+    /**
+     * Pesquisa um membo específico pelo código informado.
+     * @return membro relacionado ao código informado.
+     * @param codigo a ser informado para pesuisa de um membro específico.
+     * @throws NegocioException em caso de erros.
+     */
+    public Membro getPorCodigo(Long codigo) throws NegocioException;
+
+    /**
+     * Insere um Membro no banco de dados.
+     * @param membro a ser inserido.
+     * @throws NegocioException em caso de erros.
+     */
+    public void inserir(Membro membro) throws NegocioException;
+
+    /**
+     * Altera um Membro no banco de dados.
+     * @param membro a ser alterado.
+     * @throws NegocioException em caso de erros.
+     */
+    public void alterar(Membro membro) throws NegocioException;
+
+    /**
+     * Exlui um Membro do banco de dados.
+     * @param membro a ser excluido.
+     * @throws NegocioException em caso de erros.
+     */
+    public void excluir(Membro membro) throws NegocioException;
 
 }

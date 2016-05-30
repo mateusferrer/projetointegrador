@@ -94,4 +94,5 @@
 
 	<!-- Carga dos objetos de sistema. -->
 	<context:component-scan base-package="sistema" />
+	<context:component-scan base-package="testes" />
 </beans>

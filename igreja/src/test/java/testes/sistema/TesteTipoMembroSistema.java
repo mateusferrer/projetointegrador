@@ -1,6 +1,7 @@
 package testes.sistema;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,17 +19,18 @@ import com.forj.cirrus.infra.exceptions.NegocioException;
  * @version 1.0 - 15/05/2016
  * @since 15/05/2016
  */
+@Named
 public class TesteTipoMembroSistema extends AbstractSistema {
 
 	/** Armazena o objeto serviço a ser testado. **/
 	@Inject
-	private TipoMembroBean bean;
+	private TipoMembroBean tipoMembroBean;
 
 	/** Não deve pesquisar com código nulo. */
 	@Test
 	public void naoDevePesquisarComCodigoNulo() {
 		try {
-			bean.getPorCodigo(null);
+			tipoMembroBean.getPorCodigo(null);
 			Assert.fail("Não deve pesquisar com código nulo");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -39,7 +41,8 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	@Test
 	public void naoDeveInserirNulo() {
 		try {
-			bean.inserir(null);
+			TipoMembro tipoMembro = null;
+			tipoMembroBean.inserir(tipoMembro);
 			Assert.fail("Não deve inserir com objeto nulo");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -50,7 +53,8 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	@Test
 	public void naoDeveInserirVazio() {
 		try {
-			bean.inserir(new TipoMembro());
+			TipoMembro tipoMembro = new TipoMembro();
+			tipoMembroBean.inserir(tipoMembro);
 			Assert.fail("Não deve inserir com objeto vazio");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -62,7 +66,7 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	public void naoDeveAlterarNulo() {
 		try {
 			TipoMembro tipoMembro = null;
-			bean.alterar(tipoMembro);
+			tipoMembroBean.alterar(tipoMembro);
 			Assert.fail("Não deve alterar com objeto nulo");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -73,7 +77,8 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	@Test
 	public void naoDeveAlterarVazio() {
 		try {
-			bean.alterar(new TipoMembro());
+			TipoMembro tipoMembro = new TipoMembro();
+			tipoMembroBean.alterar(tipoMembro);
 			Assert.fail("Não deve alterar com objeto vazio");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -84,7 +89,8 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	@Test
 	public void naoDeveExcluirNulo() {
 		try {
-			bean.excluir(null);
+			TipoMembro tipoMembro = new TipoMembro();
+			tipoMembroBean.excluir(tipoMembro);
 			Assert.fail("Não deve excluir com objeto nulo");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -95,7 +101,8 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	@Test
 	public void naoDeveExcluirVazio() {
 		try {
-			bean.excluir(new TipoMembro());
+			TipoMembro tipoMembro = new TipoMembro();
+			tipoMembroBean.excluir(tipoMembro);
 			Assert.fail("Não deve excluir com objeto vazio");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -117,19 +124,20 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	}
 
 	/** Deve inserir com sucesso. */
-	private void deveInserirSucesso(TipoMembro tipoMembro) {
+	public TipoMembro deveInserirSucesso(TipoMembro tipoMembro) {
 		try {
-			bean.inserir(tipoMembro);
+			tipoMembroBean.inserir(tipoMembro);
 		} catch (NegocioException e) {
 			Assert.fail("Deveria ter inserido com sucesso - "
 					+ e.getErrosString());
 		}
+		return tipoMembro;
 	}
 
 	/** Deve alterar com sucesso. */
 	private void deveAlterarSucesso(TipoMembro tipoMembro) {
 		try {
-			bean.alterar(tipoMembro);
+			tipoMembroBean.alterar(tipoMembro);
 		} catch (NegocioException e) {
 			Assert.fail("Deveria ter alterado com sucesso - "
 					+ e.getErrosString());
@@ -139,7 +147,7 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	/** Deve excluir com sucesso. */
 	private void deveExcluirSucesso(TipoMembro tipoMembro) {
 		try {
-			bean.excluir(tipoMembro);
+			tipoMembroBean.excluir(tipoMembro);
 		} catch (NegocioException e) {
 			Assert.fail("Deveria ter excluido com sucesso - "
 					+ e.getErrosString());
@@ -149,7 +157,7 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	/** Pesquisa todos os registros. */
 	private void devePesquisarPorCodigoSucesso(Long codigo) {
 		try {
-			bean.getPorCodigo(codigo);
+			tipoMembroBean.getPorCodigo(codigo);
 		} catch (NegocioException e) {
 			Assert.fail("Deveria pesquisar por código: " + e.getErrosString());
 		}
@@ -158,7 +166,7 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	/** Pesquisa todos os registros. */
 	private void devePesquisarTodosSucesso() {
 		try {
-			bean.get(null);
+			tipoMembroBean.get(null);
 		} catch (NegocioException e) {
 			Assert.fail("Deveria pesquisar todos: " + e.getErrosString());
 		}
@@ -167,7 +175,7 @@ public class TesteTipoMembroSistema extends AbstractSistema {
 	/** Deve pesquisar por código. */
 	private void devePesquisarPorDescricaoSucesso(String descricao) {
 		try {
-			bean.get(descricao);
+			tipoMembroBean.get(descricao);
 		} catch (NegocioException e) {
 			Assert.fail("Deveria pesquisar por código: " + e.getErrosString());
 		}

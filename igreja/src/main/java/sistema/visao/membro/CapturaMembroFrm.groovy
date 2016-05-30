@@ -6,8 +6,8 @@ import javax.inject.Named
 import org.springframework.context.annotation.Scope
 
 import sistema.infra.formularios.GCapturaFrm
-import sistema.negocio.aplicacao.MembroBean
-import sistema.negocio.dominio.membro.Membro;
+import sistema.negocio.aplicacao.membro.MembroBean
+import sistema.negocio.dominio.membro.Membro
 import sistema.visao.lancamento.LancamentoFrm
 import sistema.visao.secretaria.SecretariaFrm
 

@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich" xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:cirrus="http://java.sun.com/jsf/composite/cirrus"
 	xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/publico/recursos/layout/templateMenu.xhtml">
 	<ui:define name="titulo">#{entidadeFrm.titulo}</ui:define>
@@ -19,30 +23,36 @@
 									</tr>
 									<tr>
 										<td class="rotulo">Cnpj:</td>
-										<td><h:inputText value="#{entidadeFrm.dominio.cnpj}" maxlength="14" /></td>
+										<td><h:inputText value="#{entidadeFrm.dominio.cnpj}"
+												maxlength="14" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cep:</td>
-										<td><input type="text" id="cep" name="cep" onblur="pesquisacep(this.value);"
+										<td><input type="text" id="cep" name="cep"
+											onblur="pesquisacep(this.value);"
 											value="#{entidadeFrm.dominio.cep}" maxlength="8" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Endereço:</td>
-										<td><h:inputText id="rua" value="#{entidadeFrm.dominio.rua}" /></td>
+										<td><h:inputText id="rua"
+												value="#{entidadeFrm.dominio.rua}" /></td>
 										<td class="rotulo">Número:</td>
 										<td><h:inputText value="#{entidadeFrm.dominio.numero}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Bairro:</td>
-										<td><h:inputText id="bairro" value="#{entidadeFrm.dominio.bairro}" /></td>
+										<td><h:inputText id="bairro"
+												value="#{entidadeFrm.dominio.bairro}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">UF:</td>
-										<td><h:inputText id="uf" value="#{entidadeFrm.dominio.estado}" /></td>
+										<td><h:inputText id="uf"
+												value="#{entidadeFrm.dominio.estado}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Cidade:</td>
-										<td><h:inputText id="cidade" value="#{entidadeFrm.dominio.cidade}" /></td>
+										<td><h:inputText id="cidade"
+												value="#{entidadeFrm.dominio.cidade}" /></td>
 									</tr>
 									<tr>
 										<td class="rotulo">Email:</td>
@@ -62,8 +72,12 @@
 							</h:panelGroup></td>
 					</tr>
 					<tr>
-						<td align="center"><h:commandButton value="Salvar" action="#{entidadeFrm.salvar}" /> <h:commandButton
-								value="Cancelar" action="#{entidadeFrm.cancelar}" /></td>
+						<td align="center"><cirrus:botaoGravarCancelar id="bts"
+								actionGravar="#{entidadeFrm.gravar}" data="#{entidadeFrm.erros}"
+								alterar="#{entidadeFrm.alterar}"
+								actionCancelar="#{entidadeFrm.cancelar}"
+								container="frmDetalhe:bts">
+							</cirrus:botaoGravarCancelar></td>
 					</tr>
 				</table>
 			</fieldset>

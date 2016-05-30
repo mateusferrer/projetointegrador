@@ -121,7 +121,7 @@ CREATE TABLE contribuinte (
 	dt_inicial date not null,
 	dt_final date not null,
 	PRIMARY KEY (cd_contribuinte),
-	FOREIGN KEY (cd_campanha) references campanha (cd_campanha),
+	FOREIGN KEY (cd_campanha) references campanha (cd_campanha) on delete cascade,
 	FOREIGN KEY (cd_membro) references membro (cd_membro)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -132,19 +132,7 @@ CREATE TABLE lancamento_campanha (
 	dt_pagamento date null,
 	in_pago char(1) not null,
 	PRIMARY KEY (cd_lancamento),
-	FOREIGN KEY (cd_contribuinte) references contribuinte (cd_contribuinte)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE tipo_evento (
-	cd_tipo int(10) not null auto_increment,
-	ds_tipo_evento varchar(50) NOT NULL,
-	dt_inclusao datetime NOT NULL DEFAULT NOW(),
-	dt_alteracao datetime NOT NULL DEFAULT NOW(),
-	cd_usuario varchar(10) NOT NULL,
-    INDEX (ds_tipo_evento),
-	PRIMARY KEY (cd_tipo),
-    FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
-	UNIQUE KEY uq_descricao_tipo_evento (ds_tipo_evento)
+	FOREIGN KEY (cd_contribuinte) references contribuinte (cd_contribuinte) on delete cascade
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE funcao (
@@ -157,6 +145,18 @@ CREATE TABLE funcao (
 	PRIMARY KEY (cd_funcao),
     FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
 	UNIQUE KEY uq_descricao_cargo_administrativo (ds_funcao)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE tipo_evento (
+	cd_tipo int(10) not null auto_increment,
+	ds_tipo_evento varchar(50) NOT NULL,
+	dt_inclusao datetime NOT NULL DEFAULT NOW(),
+	dt_alteracao datetime NOT NULL DEFAULT NOW(),
+	cd_usuario varchar(10) NOT NULL,
+    INDEX (ds_tipo_evento),
+	PRIMARY KEY (cd_tipo),
+    FOREIGN KEY (cd_usuario) REFERENCES usuario (cd_usuario),
+	UNIQUE KEY uq_descricao_tipo_evento (ds_tipo_evento)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*

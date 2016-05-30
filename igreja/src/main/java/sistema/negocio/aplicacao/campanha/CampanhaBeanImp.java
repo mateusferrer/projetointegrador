@@ -44,6 +44,7 @@ public class CampanhaBeanImp extends DominioBeanImp<Campanha> implements
 		Param.validar(campanha, "Campanha");
 		campanha.setDataInclusao(new Date());
 		campanha.setDataAlteracao(new Date());
+		campanha.validar();
 		super.inserir(campanha);
 	}
 
@@ -52,7 +53,15 @@ public class CampanhaBeanImp extends DominioBeanImp<Campanha> implements
 	public void alterar(Campanha campanha) throws NegocioException {
 		Param.validar(campanha, "Campanha");
 		campanha.setDataAlteracao(new Date());
+		campanha.validar();
 		super.alterar(campanha);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public void excluir(Campanha campanha) throws NegocioException {
+		Param.validar(campanha, "Campanha");
+		campanha.validar();
+		super.excluir(campanha);
+	}
 }

@@ -18,7 +18,7 @@ import com.forj.cirrus.util.Bean
     /** Armazena a navegação JSF . **/
     protected static String DETALHE = "detalhe.xhtml"
 
-    protected Object dominio;
+    protected def dominio;
 
     /** {@inheritDoc} */
     @Override

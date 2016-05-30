@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import sistema.negocio.dominio.campanha.Campanha.Contribuinte;
+
 import com.forj.cirrus.infra.exceptions.NegocioException;
 import com.forj.cirrus.negocio.dominio.beanvalidation.Obrigatorio;
 import com.forj.cirrus.negocio.dominio.beanvalidation.TamanhoMaximo;

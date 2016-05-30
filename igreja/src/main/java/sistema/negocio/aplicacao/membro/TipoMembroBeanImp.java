@@ -55,4 +55,10 @@ public class TipoMembroBeanImp extends DominioBeanImp<TipoMembro> implements
 		super.alterar(tipoMembro);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public void excluir(TipoMembro tipoMembro) throws NegocioException {
+		Param.validar(tipoMembro, "Tipo Membro");
+		super.excluir(tipoMembro);
+	}
 }
