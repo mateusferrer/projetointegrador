@@ -135,14 +135,13 @@ public class TesteMembroSistema extends AbstractSistema {
 	}
 
 	/** Deve inserir com sucesso. */
-	public Membro deveInserirSucesso(Membro membro) {
+	private void deveInserirSucesso(Membro membro) {
 		try {
 			membroBean.inserir(membro);
 		} catch (NegocioException e) {
 			Assert.fail("Deveria ter inserido com sucesso - "
 					+ e.getErrosString());
 		}
-		return membro;
 	}
 
 	/** Deve alterar com sucesso. */

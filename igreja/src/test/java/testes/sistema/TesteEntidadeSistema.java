@@ -164,12 +164,14 @@ public class TesteEntidadeSistema extends AbstractSistema {
 	}
 
 	/** Pesquisa todos os registros. */
-	private void devePesquisarTodosSucesso() {
+	public Entidade devePesquisarTodosSucesso() {
+		Entidade entidade = new Entidade();
 		try {
-			entidadeBean.get(null);
+			entidade = entidadeBean.get(null).get(0);
 		} catch (NegocioException e) {
 			Assert.fail("Deveria pesquisar todos: " + e.getErrosString());
 		}
+		return entidade;
 	}
 
 	/** Deve pesquisar por código. */

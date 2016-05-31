@@ -3,13 +3,10 @@ package testes.sistema;
 import javax.inject.Inject;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import sistema.negocio.aplicacao.campanha.CampanhaBean;
-import sistema.negocio.aplicacao.entidade.EntidadeBean;
 import sistema.negocio.dominio.campanha.Campanha;
-import sistema.negocio.dominio.entidade.Entidade;
 import testes.global.AbstractSistema;
 import testes.unidade.TesteCampanhaUnidade;
 
@@ -17,32 +14,14 @@ import com.forj.cirrus.infra.exceptions.NegocioException;
 
 /**
  * Teste de sistema do serviço de <b>Campanha</b>.
- * 
  * @version 1.0 - 29/05/2016
  * @since 15/05/2016
  */
 public class TesteCampanhaSistema extends AbstractSistema {
 
-	/** Armazena o objeto serviço a ser testado. **/
+	/** Armazena o gerenciador dos processos de negócio. **/
 	@Inject
 	private CampanhaBean campanhaBean;
-
-	/** Armazena o objeto serviço a ser testado. **/
-	@Inject
-	private EntidadeBean entidadeBean;
-
-	/** Armazena uma entidade. **/
-	private Entidade entidade;
-
-	/** {Descrita resumida do método}. */
-	@Before
-	public void inicializarTeste() {
-		try {
-			entidade = entidadeBean.get(null).get(0);
-		} catch (NegocioException e) {
-			System.out.println(e.getErrosString());
-		}
-	}
 
 	/** Não deve pesquisar com código nulo. */
 	@Test
@@ -83,8 +62,8 @@ public class TesteCampanhaSistema extends AbstractSistema {
 	@Test
 	public void naoDeveAlterarNulo() {
 		try {
-			Campanha entidade = null;
-			campanhaBean.alterar(entidade);
+			Campanha campanha = null;
+			campanhaBean.alterar(campanha);
 			Assert.fail("Não deve alterar com objeto nulo");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -94,8 +73,9 @@ public class TesteCampanhaSistema extends AbstractSistema {
 	/** Não deve alterar objeto vazio. */
 	@Test
 	public void naoDeveAlterarVazio() {
+		Campanha campanha = new Campanha();
 		try {
-			campanhaBean.alterar(new Campanha());
+			campanhaBean.alterar(campanha);
 			Assert.fail("Não deve alterar com objeto vazio");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -105,8 +85,9 @@ public class TesteCampanhaSistema extends AbstractSistema {
 	/** Não deve excluir objeto nulo. */
 	@Test
 	public void naoDeveExcluirNulo() {
+		Campanha campanha = new Campanha();
 		try {
-			campanhaBean.excluir(null);
+			campanhaBean.excluir(campanha);
 			Assert.fail("Não deve excluir com objeto nulo");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -116,8 +97,9 @@ public class TesteCampanhaSistema extends AbstractSistema {
 	/** Não deve excluir objeto vazio. */
 	@Test
 	public void naoDeveExcluirVazio() {
+		Campanha campanha = new Campanha();
 		try {
-			campanhaBean.excluir(new Campanha());
+			campanhaBean.excluir(campanha);
 			Assert.fail("Não deve excluir com objeto vazio");
 		} catch (NegocioException e) {
 			System.out.println(e.getErrosString());
@@ -125,11 +107,10 @@ public class TesteCampanhaSistema extends AbstractSistema {
 	}
 
 	/** Deve executar os testes em questão com sucesso. */
-	// @Test
+	@Test
 	public void grupoCrudCampanha() {
 		Campanha campanha = TesteCampanhaUnidade.fabricar();
 		campanha.setId(null);
-		campanha.setEntidade(entidade);
 		deveInserirSucesso(campanha);
 		devePesquisarPorCodigoSucesso(campanha.getId());
 		devePesquisarPorDescricaoSucesso(campanha.getDescricao());
