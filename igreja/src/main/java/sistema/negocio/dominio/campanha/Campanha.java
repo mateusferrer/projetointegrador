@@ -37,308 +37,327 @@ import com.forj.cirrus.util.validacao.Val;
 
 /**
  * Gerenciador das regras de negócio para o domínio <b>Campanha</b>.
- * 
  * @version 1.0 - 11/05/2016
  * @since 11/05/2016
  */
 @Entity
 @Table(name = "campanha")
 @NamedQueries({
-		@NamedQuery(name = Campanha.TODOS, query = "select c from Campanha c"),
-		@NamedQuery(name = Campanha.POR_DESCRICAO, query = "select c from Campanha c where c.descricao like ?"),
-		@NamedQuery(name = Campanha.POR_CODIGO, query = "select c from Campanha c where c.id = ?") })
+        @NamedQuery(name = Campanha.TODOS, query = "select c from Campanha c"),
+        @NamedQuery(name = Campanha.POR_DESCRICAO,
+                query = "select c from Campanha c where c.descricao like ?"),
+        @NamedQuery(name = Campanha.POR_CODIGO, query = "select c from Campanha c where c.id = ?") })
 public class Campanha extends AbstractDominio {
 
-	/** Armazena o oql que busca todos. **/
-	public static final String TODOS = "campanha.todos";
+    /** Armazena o oql que busca todos. **/
+    public static final String TODOS = "campanha.todos";
 
-	/** Armazena o oql que busca por descrição. **/
-	public static final String POR_DESCRICAO = "campanha.porDescricao";
+    /** Armazena o oql que busca por descrição. **/
+    public static final String POR_DESCRICAO = "campanha.porDescricao";
 
-	/** Armazena o oql que busca por código. **/
-	public static final String POR_CODIGO = "campanha.porCodigo";
+    /** Armazena o oql que busca por código. **/
+    public static final String POR_CODIGO = "campanha.porCodigo";
 
-	/** Armazena o código da campanha. **/
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cd_campanha")
-	private Long id;
+    /** Armazena o código da campanha. **/
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cd_campanha")
+    private Long id;
 
-	/** Armazena o código da campanha. **/
-	@Column(name = "ds_campanha")
-	@Obrigatorio(rotulo = "Descrição")
-	@TamanhoMaximo(rotulo = "Descrição", maximo = 50)
-	private String descricao;
+    /** Armazena o código da campanha. **/
+    @Column(name = "ds_campanha")
+    @Obrigatorio(rotulo = "Descrição")
+    @TamanhoMaximo(rotulo = "Descrição", maximo = 50)
+    private String descricao;
 
-	/** Armazena o valor da campanha. **/
-	@Obrigatorio(rotulo = "Valor")
-	@Column(name = "vl_campanha")
-	@TamanhoMaximo(rotulo = "Valor", maximo = 12)
-	private BigDecimal valor;
+    /** Armazena o valor da campanha. **/
+    @Obrigatorio(rotulo = "Valor")
+    @Column(name = "vl_campanha")
+    @TamanhoMaximo(rotulo = "Valor", maximo = 12)
+    private BigDecimal valor;
 
-	/** Armazena a quantidade de parcelas. **/
-	@Obrigatorio(rotulo = "Qtde Parcelas")
-	@TamanhoMaximo(rotulo = "Qtde Parcelas", maximo = 2)
-	@Column(name = "nr_parcelas")
-	private Integer numParcelas;
+    /** Armazena a quantidade de parcelas. **/
+    @Obrigatorio(rotulo = "Qtde Parcelas")
+    @TamanhoMaximo(rotulo = "Qtde Parcelas", maximo = 2)
+    @Column(name = "nr_parcelas")
+    private Integer numParcelas;
 
-	/** Armazena a data inicial da campanha. **/
-	@Obrigatorio(rotulo = "Data Inicial")
-	@Column(name = "dt_inicial")
-	@Temporal(TemporalType.DATE)
-	private Date dataInicial;
+    /** Armazena a data inicial da campanha. **/
+    @Obrigatorio(rotulo = "Data Inicial")
+    @Column(name = "dt_inicial")
+    @Temporal(TemporalType.DATE)
+    private Date dataInicial;
 
-	/** Armazena a data final da campanha. **/
-	@Obrigatorio(rotulo = "Data Final")
-	@Column(name = "dt_final")
-	@Temporal(TemporalType.DATE)
-	private Date dataFinal;
+    /** Armazena a data final da campanha. **/
+    @Obrigatorio(rotulo = "Data Final")
+    @Column(name = "dt_final")
+    @Temporal(TemporalType.DATE)
+    private Date dataFinal;
 
-	/** Armazena o status da campanha. **/
-	@Obrigatorio(rotulo = "Status")
-	@Column(name = "in_status")
-	@Enumerated(EnumType.STRING)
-	private StatusCampanha status;
+    /** Armazena o status da campanha. **/
+    @Obrigatorio(rotulo = "Status")
+    @Column(name = "in_status")
+    @Enumerated(EnumType.STRING)
+    private StatusCampanha status;
 
-	/** Armazena a entidade que realiza a campanha. **/
-	@Obrigatorio(rotulo = "Entidade")
-	@JoinColumn(name = "cd_entidade")
-	@ManyToOne
-	private Entidade entidade;
+    /** Armazena a entidade que realiza a campanha. **/
+    @Obrigatorio(rotulo = "Entidade")
+    @JoinColumn(name = "cd_entidade")
+    @ManyToOne
+    private Entidade entidade;
 
-	/** Armazena a data de cadastro. **/
-	@Column(name = "dt_inclusao")
-	@Temporal(TemporalType.TIMESTAMP)
-	@Obrigatorio(rotulo = "Data Inclusão")
-	private Date dataInclusao;
+    /** Armazena a data de cadastro. **/
+    @Column(name = "dt_inclusao")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Obrigatorio(rotulo = "Data Inclusão")
+    private Date dataInclusao;
 
-	/** Armazena a data de alteração. **/
-	@Column(name = "dt_alteracao")
-	@Obrigatorio(rotulo = "Data Alteração")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAlteracao;
+    /** Armazena a data de alteração. **/
+    @Column(name = "dt_alteracao")
+    @Obrigatorio(rotulo = "Data Alteração")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataAlteracao;
 
-	/** Armazena o nome usuário de alteração/inclusão. **/
-	@Column(name = "cd_usuario")
-	@TamanhoMaximo(rotulo = "Usuário", maximo = 10)
-	@Obrigatorio(rotulo = "Usuário")
-	private String usuario;
+    /** Armazena o nome usuário de alteração/inclusão. **/
+    @Column(name = "cd_usuario")
+    @TamanhoMaximo(rotulo = "Usuário", maximo = 10)
+    @Obrigatorio(rotulo = "Usuário")
+    private String usuario;
 
-	/** Armazena a listagem de contribuintes. **/
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "cd_contribuinte")
-	private List<Contribuinte> contribuintes;
+    /** Armazena a listagem de contribuintes. **/
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cd_contribuinte")
+    private List<Contribuinte> contribuintes;
 
-	/** Cria um novo objeto com valores padrões. */
-	public Campanha() {
-		limpar();
-	}
+    /** Cria um novo objeto com valores padrões. */
+    public Campanha() {
+        limpar();
+    }
 
-	/** Cria um novo objeto com valores padrões. */
-	public Campanha(Long id, String descricao, BigDecimal valor,
-			Integer numParcelas, Date dataInicial, StatusCampanha status,
-			Entidade entidade, Date dataInclusao, Date dataAlteracao,
-			String usuario) {
-		limpar();
-		this.id = id;
-		this.descricao = descricao;
-		this.valor = valor;
-		this.numParcelas = numParcelas;
-		this.dataInicial = dataInicial;
-		this.dataFinal = FacadeData.adicionarMeses(this.dataInicial,
-				this.numParcelas - 1);
-		this.status = status;
-		this.entidade = entidade;
-		this.usuario = usuario;
-		this.dataInclusao = dataInclusao;
-		this.dataAlteracao = dataAlteracao;
-	}
+    /** Cria um novo objeto com valores padrões. */
+    public Campanha(
+            Long id, String descricao, BigDecimal valor, Integer numParcelas, Date dataInicial,
+            StatusCampanha status, Entidade entidade, Date dataInclusao, Date dataAlteracao, String usuario) {
+        limpar();
+        this.id = id;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.numParcelas = numParcelas;
+        this.dataInicial = dataInicial;
+        this.dataFinal = FacadeData.adicionarMeses(this.dataInicial, this.numParcelas - 1);
+        this.status = status;
+        this.entidade = entidade;
+        this.usuario = usuario;
+        this.dataInclusao = dataInclusao;
+        this.dataAlteracao = dataAlteracao;
+    }
 
-	/**
-	 * Valida atributos básicos, apenas para inclusão dos contribuintes.
-	 * @throws NegocioException em caso de erros.
-	 */
-	public void validarBasico() throws NegocioException {
-		MsgErro erros = new MsgErro();
-		if (Val.vazio(this.dataInicial)) {
-			erros.campoObrigatorio("Data Inicial");
-		}
-		if (Val.vazio(this.dataFinal)) {
-			erros.campoObrigatorio("Data Final");
-		}
-		if (Val.vazio(this.valor)) {
-			erros.campoObrigatorio("Valor");
-		}
-		if (Val.vazio(this.descricao)) {
-			erros.campoObrigatorio("Descrição");
-		}
-		if (Val.vazio(this.numParcelas)) {
-			erros.campoObrigatorio("Número de Parcelas");
-		}
-		if (Val.vazio(this.entidade)) {
-			erros.campoObrigatorio("Entidade");
-		}
-		erros.gerarErrosNegocio();
-	}
-	
-	/**
-	 * Adiciona um contribuinte à campanha.
-	 * @param contribuinte a ser incluído.
-	 * @throws NegocioException em caso de erros.
-	 */
-	public void addContribuinte(Membro membro) throws NegocioException {
-			Contribuinte contribuinte = new Contribuinte();
-			contribuinte.setMembro(membro);
-			contribuinte.setDataInicial(this.dataInicial);
-			contribuinte.setDataFinal(this.dataFinal);
-			contribuintes.add(contribuinte);
-	}
+    /**
+     * Valida atributos básicos, apenas para inclusão dos contribuintes.
+     * @throws NegocioException em caso de erros.
+     */
+    public void validarBasico() throws NegocioException {
+        MsgErro erros = new MsgErro();
+        if (Val.vazio(this.dataInicial)) {
+            erros.campoObrigatorio("Data Inicial");
+        }
+        if (Val.vazio(this.dataFinal)) {
+            erros.campoObrigatorio("Data Final");
+        }
+        if (Val.vazio(this.valor)) {
+            erros.campoObrigatorio("Valor");
+        }
+        if (Val.vazio(this.descricao)) {
+            erros.campoObrigatorio("Descrição");
+        }
+        if (Val.vazio(this.numParcelas)) {
+            erros.campoObrigatorio("Número de Parcelas");
+        }
+        if (Val.vazio(this.entidade)) {
+            erros.campoObrigatorio("Entidade");
+        }
+        erros.gerarErrosNegocio();
+    }
 
-	/** {@inheritDoc} */
-	@Override
-	public void limpar() {
-		super.limpar();
-		this.contribuintes = new ArrayList<>();
-		this.entidade = new Entidade();
-	}
+    /**
+     * Verifica se o contribuinte já foi adicionado na campanha.
+     * @throws NegocioException em caso de erros.
+     */
+    public void validarContribuinte(Contribuinte contribuinte) throws NegocioException {
+        MsgErro erros = new MsgErro();
+        this.contribuintes.stream().forEach(c -> {
+            if (c.equals(contribuinte)) {
+                erros.adicionar("Este contribuinte já foi adicionado nesta campanha");
+            }
+        });
+        erros.gerarErrosNegocio();
+    }
 
-	public Long getId() {
-		return id;
-	}
+    /**
+     * Adiciona um contribuinte à campanha.
+     * @param contribuinte a ser incluído.
+     * @throws NegocioException em caso de erros.
+     */
+    public void addContribuinte(Membro membro) throws NegocioException {
+        validarBasico();
+        Contribuinte contribuinte = new Contribuinte();
+        contribuinte.setMembro(membro);
+        contribuinte.setCampanha(this);
+        validarContribuinte(contribuinte);
+        contribuintes.add(contribuinte);
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /** Distribui o valor da a cada contribuinte com base no número de parcelas. */
+    public void aplicarValorPorContribuinte() {
+        int conSize = this.contribuintes.size();
+        BigDecimal valorUnitario = this.valor.divide(new BigDecimal(conSize), 2);
+        this.contribuintes.stream().forEach(c -> c.setValor(valorUnitario));
+        this.contribuintes.stream().forEach(c -> System.out.println(c.getValor()));
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    /** {@inheritDoc} */
+    @Override
+    public void limpar() {
+        super.limpar();
+        this.contribuintes = new ArrayList<>();
+        this.entidade = new Entidade();
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public BigDecimal getValor() {
-		return valor;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
 
-	public Integer getNumParcelas() {
-		return numParcelas;
-	}
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
-	public void setNumParcelas(Integer numParcelas) {
-		this.numParcelas = numParcelas;
-	}
+    public BigDecimal getValor() {
+        return valor;
+    }
 
-	public Date getDataInicial() {
-		return dataInicial;
-	}
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
 
-	public void setDataInicial(Date dataInicial) {
-		this.dataInicial = dataInicial;
-	}
+    public Integer getNumParcelas() {
+        return numParcelas;
+    }
 
-	public Date getDataFinal() {
-		return dataFinal;
-	}
+    public void setNumParcelas(Integer numParcelas) {
+        this.numParcelas = numParcelas;
+    }
 
-	public void setDataFinal(Date dataFinal) {
-		this.dataFinal = dataFinal;
-	}
+    public Date getDataInicial() {
+        return dataInicial;
+    }
 
-	public StatusCampanha getStatus() {
-		return status;
-	}
+    public void setDataInicial(Date dataInicial) {
+        this.dataInicial = dataInicial;
+    }
 
-	public void setStatus(StatusCampanha status) {
-		this.status = status;
-	}
+    public Date getDataFinal() {
+        return dataFinal;
+    }
 
-	public Entidade getEntidade() {
-		return entidade;
-	}
+    public void setDataFinal(Date dataFinal) {
+        this.dataFinal = dataFinal;
+    }
 
-	public void setEntidade(Entidade entidade) {
-		this.entidade = entidade;
-	}
+    public StatusCampanha getStatus() {
+        return status;
+    }
 
-	public Date getDataInclusao() {
-		return dataInclusao;
-	}
+    public void setStatus(StatusCampanha status) {
+        this.status = status;
+    }
 
-	public void setDataInclusao(Date dataInclusao) {
-		this.dataInclusao = dataInclusao;
-	}
+    public Entidade getEntidade() {
+        return entidade;
+    }
 
-	public Date getDataAlteracao() {
-		return dataAlteracao;
-	}
+    public void setEntidade(Entidade entidade) {
+        this.entidade = entidade;
+    }
 
-	public void setDataAlteracao(Date dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
-	}
+    public Date getDataInclusao() {
+        return dataInclusao;
+    }
 
-	public String getUsuario() {
-		return usuario;
-	}
+    public void setDataInclusao(Date dataInclusao) {
+        this.dataInclusao = dataInclusao;
+    }
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
+    public Date getDataAlteracao() {
+        return dataAlteracao;
+    }
 
-	public List<Contribuinte> getContribuintes() {
-		return contribuintes;
-	}
+    public void setDataAlteracao(Date dataAlteracao) {
+        this.dataAlteracao = dataAlteracao;
+    }
 
-	public void setContribuintes(List<Contribuinte> contribuintes) {
-		this.contribuintes = contribuintes;
-	}
+    public String getUsuario() {
+        return usuario;
+    }
 
-	/** {@inheritDoc} */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
-	/** {@inheritDoc} */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Campanha)) {
-			return false;
-		}
-		Campanha other = (Campanha) obj;
-		if (id == null) {
-			if (other.id != null) {
-				return false;
-			}
-		} else if (!id.equals(other.id)) {
-			return false;
-		}
-		return true;
-	}
+    public List<Contribuinte> getContribuintes() {
+        return contribuintes;
+    }
 
-	/** {@inheritDoc} */
-	@Override
-	public String toString() {
-		return "Campanha [id=" + id + ", descricao=" + descricao + ", valor="
-				+ valor + ", numParcelas=" + numParcelas + ", dataInicial="
-				+ dataInicial + ", dataFinal=" + dataFinal + ", status="
-				+ status + ", entidade=" + entidade + ", dataInclusao="
-				+ dataInclusao + ", dataAlteracao=" + dataAlteracao
-				+ ", usuario=" + usuario + "]";
-	}
+    public void setContribuintes(List<Contribuinte> contribuintes) {
+        this.contribuintes = contribuintes;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Campanha)) {
+            return false;
+        }
+        Campanha other = (Campanha) obj;
+        if (id == null) {
+            if (other.id != null) {
+                return false;
+            }
+        } else if (!id.equals(other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public String toString() {
+        return "Campanha [id=" + id + ", descricao=" + descricao + ", valor=" + valor + ", numParcelas="
+            + numParcelas + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal + ", status="
+            + status + ", entidade=" + entidade + ", dataInclusao=" + dataInclusao + ", dataAlteracao="
+            + dataAlteracao + ", usuario=" + usuario + "]";
+    }
 
 }

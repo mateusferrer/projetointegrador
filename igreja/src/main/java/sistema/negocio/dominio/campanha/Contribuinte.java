@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 import sistema.negocio.dominio.membro.Membro;
 
 import com.forj.cirrus.negocio.dominio.beanvalidation.Obrigatorio;
+import com.forj.cirrus.negocio.dominio.beanvalidation.TamanhoMaximo;
 import com.forj.cirrus.negocio.dominio.modelo.AbstractDominio;
 
 /**
@@ -68,6 +69,7 @@ public class Contribuinte extends AbstractDominio {
     /** Armazena o valor da campanha. **/
     @Column(name = "vl_contribuido")
     @Obrigatorio(rotulo = "Valor Contribuído")
+    @TamanhoMaximo(rotulo = "Valor", maximo = 12)
     private BigDecimal valor;
 
     /** Armazena a data inicial da campanha. **/
@@ -81,6 +83,21 @@ public class Contribuinte extends AbstractDominio {
     @Temporal(TemporalType.DATE)
     @Obrigatorio(rotulo = "Data Final")
     private Date dataFinal;
+
+    /** Cria um novo objeto com valores padrões. */
+    public Contribuinte() {
+    }
+
+    /** Cria um novo objeto com valores definidos. */
+    public Contribuinte(
+            Long id, Campanha campanha, Membro membro, BigDecimal valor, Date dataInicial, Date dataFinal) {
+        this.id = id;
+        this.campanha = campanha;
+        this.membro = membro;
+        this.valor = valor;
+        this.dataInicial = dataInicial;
+        this.dataFinal = dataFinal;
+    }
 
     public Long getId() {
         return id;

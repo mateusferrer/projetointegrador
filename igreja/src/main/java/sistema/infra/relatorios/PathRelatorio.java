@@ -3,7 +3,7 @@
  * reservados. Este software contém informações confidenciais e de propriedade exclusiva da Uniprime Norte do
  * Paraná e não deve ser utilizado fora da corporação.
  */
-package sistema.infra.utils;
+package sistema.infra.relatorios;
 
 /**
  * Gerencia tipagem de <b>TipoRelatorio</b>.
@@ -254,5 +254,5 @@ public enum PathRelatorio {
     };
 
     /** Armazena o path padrão para o caminho do relatorio. **/
-    public static final String PADRAO = "/br/uniprime/ibank/infra/relatorio/ireport/jaspers/";
+    public static final String PADRAO = "/sistema/infra/relatorios/jaspers/";
 }

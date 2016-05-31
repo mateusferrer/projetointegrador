@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.0.1.final using JasperReports Library version 6.0.0  -->
+<!-- 2016-05-06T13:24:36 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="comprovanteDoc" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="361ee880-498d-42c0-a462-22e76d268779">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="logo" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="nomeCoopDeb" class="java.lang.String"/>
+	<parameter name="codBancoDeb" class="java.lang.Integer"/>
+	<parameter name="nomeBancoDeb" class="java.lang.String"/>
+	<parameter name="codAgenciaDeb" class="java.lang.Integer"/>
+	<parameter name="nomeAgenciaDeb" class="java.lang.String"/>
+	<parameter name="contaDeb" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="codBanco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[codBanco]]></fieldDescription>
+	</field>
+	<field name="banco" class="java.lang.String"/>
+	<field name="codAgencia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[codAgencia]]></fieldDescription>
+	</field>
+	<field name="agencia" class="java.lang.String"/>
+	<field name="conta" class="java.lang.String"/>
+	<field name="data" class="java.util.Date"/>
+	<field name="valor" class="java.math.BigDecimal"/>
+	<field name="comprovante" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[comprovante]]></fieldDescription>
+	</field>
+	<field name="finalidade" class="java.lang.String">
+		<fieldDescription><![CDATA[finalidade]]></fieldDescription>
+	</field>
+	<field name="titularidade" class="java.lang.String">
+		<fieldDescription><![CDATA[titularidade]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[status]]></fieldDescription>
+	</field>
+	<field name="pago" class="java.lang.Boolean"/>
+	<field name="dataMovimento" class="java.util.Date"/>
+	<variable name="Variable_1" class="java.lang.String"/>
+	<detail>
+		<band height="801" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="156" width="259" height="11" uuid="94bed42b-9b69-4366-a71c-d606eec445c6">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dados da conta creditada]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="160" y="228" width="100" height="11" uuid="de037578-8d4e-49a9-897b-a6686b4343bc">
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataMovimento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="228" width="159" height="11" uuid="0a288472-9a68-44a8-bc61-f5cd3b88bac9">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Transferência:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="240" width="159" height="11" uuid="6e007922-f269-47e2-aede-13e58d56ba08">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor da Transferência:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="160" y="240" width="100" height="11" uuid="b3f47616-aef9-4f13-8648-97d08963eaf4">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="252" width="260" height="1" uuid="5072e87a-574c-42db-9636-828a8f886838">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="94" width="259" height="11" uuid="d5b13cb6-b1a3-4c01-b581-7ba654c6cc62">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dados da conta debitada]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="154" width="260" height="1" uuid="0474c4d1-5e89-4cdb-b9eb-31da6cd83ef2">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="92" width="260" height="1" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" uuid="a6bcea8e-2f0a-44f2-85f5-bf31b9e03f59">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[!$F{comprovante}]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="68" width="259" height="11" isRemoveLineWhenBlank="true" uuid="f390e73c-2f5a-4d5b-b49b-1cc0af3628da">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[!$F{comprovante}]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titularidade} == "S"? "Mesma Titularidade" : "Titularidade Diferente"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="57" width="259" height="11" isRemoveLineWhenBlank="true" uuid="d39c5eb9-3744-4a17-b9b7-29708b16b181">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[!$F{comprovante}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informações Gerais]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="45" y="216" width="215" height="11" uuid="eaf2c68f-790d-4f69-b54f-6c7cb808fb76">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="42" width="259" height="11" uuid="b67c3738-eb54-4fa7-a36e-681f832bb257">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transferência de conta corrente para conta corrente]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="54" width="260" height="1" uuid="357a912c-9af5-4d5b-8e65-0f43c8779ff2">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<image>
+				<reportElement x="4" y="0" width="119" height="25" uuid="27fe05e6-3ddc-4f43-8522-1c35b6034f77">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="28" width="259" height="13" uuid="2b3ea689-f459-4ca5-890c-9105e3465a97">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Comprovante de DOC "]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="26" width="260" height="1" uuid="f0b713c5-566c-42aa-9b67-f9aca18fb9e8">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="1" y="252" width="259" height="10" isRemoveLineWhenBlank="true" uuid="b24c88d7-57a4-49e0-93a4-2ecbb478fd96"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pago} ? "Operação realizada via Internet Banking no dia "+DATEFORMAT($F{dataMovimento},"dd/MM/yyyy") + "."  : "Simples informação, sem valor legal de confirmação de transferência."]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="80" width="259" height="11" isRemoveLineWhenBlank="true" uuid="c281bda9-5fb8-467a-bd06-2a11e47c22d3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[!$F{comprovante}]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Finalidade: "+$F{finalidade}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0000" isBlankWhenNull="true">
+				<reportElement x="1" y="106" width="259" height="11" uuid="c1e3c027-13d2-48c9-aec8-e22a6095cbb4">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nome: " + $P{nomeCoopDeb}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="118" width="259" height="11" uuid="345d4b90-0dda-4cf1-a97d-864a57408ac5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Banco: " + TEXT($P{codBancoDeb},"000") + " - "+$P{nomeBancoDeb}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="130" width="259" height="11" uuid="c5f623e2-fe87-409d-8370-c1ee96b2d472">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Agência: " + TEXT($P{codAgenciaDeb},"0000") + " - " + $P{nomeAgenciaDeb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="142" width="259" height="11" uuid="2b8faa18-78e8-43cf-92b9-f398efaad4c8">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Conta: " + $P{contaDeb}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0000" isBlankWhenNull="true">
+				<reportElement x="1" y="168" width="259" height="11" uuid="515dc996-17cb-4e78-9df4-b037369baeab">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nome: " + $F{nome}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="180" width="259" height="11" uuid="b8687b17-e80f-42c1-b026-b5bf6bb2a4eb">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Banco: " + TEXT($F{codBanco},"000") + " - " + $F{banco}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="192" width="259" height="11" uuid="08fb303b-29ac-4205-9166-2ac7502b6477">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Agência: " + TEXT($F{codAgencia},"0000") + " - " + $F{agencia}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="204" width="259" height="11" uuid="42f85fed-4459-482b-b6c8-3d108bc0c5d3">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Conta: " + $F{conta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

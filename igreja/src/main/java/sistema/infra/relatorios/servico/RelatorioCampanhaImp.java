@@ -3,9 +3,12 @@
  * reservados. Este software contém informações confidenciais e de propriedade exclusiva da Uniprime Norte do
  * Paraná e não deve ser utilizado fora da corporação.
  */
-package sistema.infra.utils;
+package sistema.infra.relatorios.servico;
 
 import javax.inject.Named;
+
+import sistema.infra.relatorios.AbstractRelatorioBase;
+import sistema.infra.relatorios.PathRelatorio;
 
 /**
  * Gerenciador de relatorios de darf utilizando framework ireport com jasper studio.
@@ -14,10 +17,10 @@ import javax.inject.Named;
  * @since 26/03/2015
  */
 @Named
-public class RelatorioImpExemplo extends AbstractRelatorioBase {
+public class RelatorioCampanhaImp extends AbstractRelatorioBase {
 
     /** Armazena o path do relatorio jasper. **/
-    private static final String PATH_EXTRATO = PathRelatorio.PADRAO + "extratoDarf.jasper";
+    private static final String PATH_RELATORIO = PathRelatorio.PADRAO + "demonstrativoCampanha.jasper";
 
     // /** {@inheritDoc} */
     // @Override

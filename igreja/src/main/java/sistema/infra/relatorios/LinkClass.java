@@ -3,7 +3,7 @@
  * reservados. Este software contém informações confidenciais e de propriedade exclusiva da Uniprime Norte do
  * Paraná e não deve ser utilizado fora da corporação.
  */
-package sistema.infra.utils;
+package sistema.infra.relatorios;
 
 import java.io.Serializable;
 

@@ -10,8 +10,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 27/11/2015
  */
 @RunWith(Suite.class)
-@SuiteClasses({ TesteEntidadeSistema.class, TesteCampanhaSistema.class,
-		TesteTipoMembroSistema.class, TesteMembroSistema.class,
-		TesteCampanhaSistema.class })
+@SuiteClasses({ TesteEntidadeSistema.class, TesteCampanhaSistema.class, TesteTipoMembroSistema.class,
+        TesteMembroSistema.class, TesteCampanhaSistema.class })
 public class SuiteSistema {
 }
